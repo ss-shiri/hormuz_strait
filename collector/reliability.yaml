@@ -1,0 +1,61 @@
+# Source-reliability model  (confidence tag = a property of the SOURCE, not the claim)
+# ---------------------------------------------------------------------------
+# This is an OSINT COLLECTION feed. Nothing here is verified. The tag only tells
+# the reader how much weight the ORIGINATING OUTLET has historically earned,
+# loosely following the NATO Admiralty source-reliability scale (A best .. F unrated):
+#
+#   high   (A/B) - wire services, primary institutions, official / regulatory bodies
+#   medium (C/D) - established mainstream outlets and specialist trade press
+#                  (includes state-owned outlets: usually reliable but not independent)
+#   low    (E/F) - social platforms, aggregators, blogs, unattributed / unknown
+#
+# Matching: each rule's `match` list is tested (case-insensitive) against the
+# item's publisher domain AND publisher name. First rule that matches wins.
+# `letter` overrides the tier's default Admiralty letter for that outlet.
+# Anything unmatched falls through to `default` (low / F).
+
+default:
+  tier: low
+  letter: F
+
+rules:
+  # ---- HIGH (A): wire services & primary institutions -------------------
+  - tier: high
+    letter: A
+    match: [reuters, apnews, "ap.org", afp, "afp.com", bloomberg,
+            "iaea.org", "eia.gov", "iea.org", "opcw.org", "un.org", "nato.int",
+            "congress.gov", "crs", "state.gov", "defense.gov", "centcom",
+            "ukmto", "gov.uk", "imo.org"]
+
+  # ---- HIGH (B): high-quality institutions, analysis & specialist desks --
+  - tier: high
+    letter: B
+    match: ["ft.com", "wsj.com", economist, "crisisgroup.org", "isis-online",
+            "iiss.org", "csis.org", "rand.org", "chathamhouse", "brookings",
+            "lloydslist", "lloyds", ambrey, "tankertrackers", "kpler",
+            "janes.com", "washingtonpost", "nytimes"]
+
+  # ---- MEDIUM (C): established mainstream media -------------------------
+  - tier: medium
+    letter: C
+    match: [aljazeera, "bbc.co.uk", "bbc.com", cnn, cnbc, guardian, npr,
+            axios, politico, france24, "dw.com", "dw.de", thenationalnews,
+            arabnews, alarabiya, alhurra, timesofisrael, jpost, haaretz,
+            middleeasteye, "al-monitor", gcaptain, "maritime-executive",
+            splash247, tradewinds, "spglobal", "oilprice.com"]
+
+  # ---- MEDIUM (D): state-owned / state-aligned outlets -----------------
+  #   Usually reliable on facts, but not editorially independent -> flag D.
+  - tier: medium
+    letter: D
+    match: [irna, mehrnews, "mehr", tasnim, "press tv", presstv, farsnews,
+            "fars ", tabnak, isna, "iribnews", "sana", "rt.com", "russia today",
+            "sputnik", "ria novosti", xinhua, "cgtn", "wam.ae", "spa.gov",
+            "qna.org", "shafaq", "rudaw"]
+
+  # ---- LOW (E): aggregators & user-generated platforms -----------------
+  - tier: low
+    letter: E
+    match: ["news.google", "google news", reddit, "x.com", twitter, nitter,
+            "t.me", telegram, mastodon, bsky, bluesky, "medium.com", substack,
+            youtube, blogspot, wordpress, "yahoo", msn]
