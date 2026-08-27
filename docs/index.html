@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>رصد تنگه هرمز · Hormuz OSINT Monitor</title>
+<meta name="description" content="رصد لحظه‌ای منبع‌باز اخبار، مقالات و پست‌های عمومی درباره تنگه هرمز · بدون راستی‌آزمایی. Unverified OSINT collection on the Strait of Hormuz.">
+<meta name="color-scheme" content="light dark">
+
+<!-- old-print typography: Amiri (classical naskh) + IM Fell English (letterpress) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- promo ribbon: analyst's public profiles (requested top-of-header links) -->
+<div class="promo">
+  <div class="wrap">
+    <span class="promo-label" data-i18n="promoLabel">منتشرشده توسط</span>
+    <a href="https://x.com/CBRNE_OSINT" target="_blank" rel="noopener">Sajad Shiri · X @CBRNE_OSINT</a>
+    <span class="sep">✦</span>
+    <a href="https://www.linkedin.com/in/sajad-shiri/" target="_blank" rel="noopener">Sajad Shiri · LinkedIn</a>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="rule-heavy"></div>
+    <div class="mast-eyebrow" data-i18n="eyebrow">پایش اطلاعاتی منبع‌باز · CBRNE OSINT</div>
+    <h1 class="mast-title" data-i18n="title">روزنامهٔ رصد تنگهٔ هرمز</h1>
+    <div class="mast-tagline" data-i18n="tagline">اخبار، مقالات و پست‌های عمومی · لحظه به لحظه</div>
+    <div class="colophon">
+      <span data-i18n="place">خلیج فارس · تنگهٔ هرمز</span>
+      <span><span class="dot">◆</span> <span data-i18n="editionLabel">شمارهٔ</span> <b id="edition">·</b></span>
+      <span><span data-i18n="updatedLabel">آخرین به‌روزرسانی:</span> <b id="updated">·</b></span>
+    </div>
+    <div class="rule-heavy bottom"></div>
+
+    <!-- THE disclaimer: this is a collection feed, nothing is verified -->
+    <div class="notice" role="note">
+      <span class="stamp" data-i18n="unverifiedSeal">راستی‌آزمایی‌نشده</span>
+      <div class="notice-body" id="disclaimer" data-i18n="disclaimer">
+        این یک فید <b>جمع‌آوری خودکار منبع‌باز</b> است. تمام موارد بدون راستی‌آزمایی گردآوری می‌شوند و صحت آن‌ها تأیید نشده است. برچسب اطمینان فقط اعتبارِ تاریخیِ «منبع» را نشان می‌دهد، نه درستیِ خبر.
+      </div>
+    </div>
+
+    <!-- controls -->
+    <div class="toolbar">
+      <div class="toolgroup" role="group" aria-label="language">
+        <span class="lbl" data-i18n="langLabel">زبان</span>
+        <button class="chip" data-uilang="fa">فارسی</button>
+        <button class="chip" data-uilang="ar">العربية</button>
+        <button class="chip" data-uilang="en">English</button>
+      </div>
+      <div class="toolgroup" role="group" aria-label="confidence filter">
+        <span class="lbl" data-i18n="confLabel">اطمینان</span>
+        <button class="chip" data-conf="all"    data-i18n="fAll">همه</button>
+        <button class="chip" data-conf="high"   data-i18n="cHigh">بالا</button>
+        <button class="chip" data-conf="medium" data-i18n="cMed">متوسط</button>
+        <button class="chip" data-conf="low"    data-i18n="cLow">پایین</button>
+      </div>
+      <div class="toolgroup" role="group" aria-label="content language filter">
+        <span class="lbl" data-i18n="feedLangLabel">زبانِ خبر</span>
+        <select class="chip" id="contentLang" aria-label="content language">
+          <option value="all"  data-i18n="fAll">همه</option>
+          <option value="fa">فارسی</option>
+          <option value="ar">العربية</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+      <input class="search" id="search" type="search" data-i18n-ph="searchPh" placeholder="جست‌وجو…">
+      <button class="theme-toggle" id="themeToggle" aria-label="toggle day / night">
+        <span id="themeIcon">☾</span><span id="themeText" data-i18n="night">شب</span>
+      </button>
+    </div>
+
+    <div class="status" id="status" aria-live="polite"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="feed" id="feed" aria-live="polite"></section>
+  <div class="empty" id="empty" hidden>
+    <b data-i18n="emptyTitle">موردی برای نمایش نیست</b>
+    <span data-i18n="emptyBody">هنوز خبری مطابق فیلترها گردآوری نشده است. به‌زودی به‌روزرسانی می‌شود.</span>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h3 data-i18n="legendTitle">راهنمای برچسب اطمینانِ منبع</h3>
+    <div class="legend" id="legend"></div>
+    <p id="footNote" data-i18n="footNote">
+      مدل اعتبارِ منبع بر پایهٔ مقیاس اعتبارِ منبعِ آدمیرالتی (A بهترین تا F نامشخص) است و صرفاً جایگاهِ تاریخیِ رسانه را می‌سنجد. این ابزار «جمع‌آوری» می‌کند، «راستی‌آزمایی» نمی‌کند.
+    </p>
+    <p class="byline">
+      <span data-i18n="builtBy">تهیه و پایش:</span>
+      <a class="link" href="https://x.com/CBRNE_OSINT" target="_blank" rel="noopener">@CBRNE_OSINT</a> ·
+      <a class="link" href="https://www.linkedin.com/in/sajad-shiri/" target="_blank" rel="noopener">Sajad Shiri</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
