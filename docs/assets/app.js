@@ -906,9 +906,17 @@
           );
         }
 
-        return response.json();
+        return response.text();
       })
-      .then(function (json) {
+      .then(function (text) {
+        // Tolerate a stray markdown code fence (```json ... ```) or BOM
+        // around the JSON so a mis-pasted feed can never blank the site.
+        var cleaned = text
+          .replace(/^\uFEFF/, "")
+          .trim()
+          .replace(/^```[a-zA-Z0-9]*\s*/, "")
+          .replace(/\s*```$/, "");
+        var json = JSON.parse(cleaned);
         state.data = normalizeData(json);
         render();
       })
