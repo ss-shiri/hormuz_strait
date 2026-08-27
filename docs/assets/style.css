@@ -1,0 +1,311 @@
+/* =========================================================================
+   Hormuz OSINT Monitor  ·  "سنگ‌چاپ" lithograph newspaper skin
+   Signature: calligraphic masthead + inked source-reliability seals.
+   Two themes: روز (aged paper) / شب (lamp-lit night).
+   ========================================================================= */
+
+/* ---- Fonts (loaded via <link> in index.html) ----------------------------
+   IM Fell English / DW Pica  -> Latin, 17th-century letterpress
+   Noto Naskh Arabic          -> Persian & Arabic body
+   Noto Nastaliq Urdu         -> masthead flourish (fa/ar)
+-------------------------------------------------------------------------- */
+
+:root {
+  /* daytime: foxed cream paper, oxblood ink */
+  --paper:      #efe6d2;
+  --paper-2:    #e7dabf;
+  --panel:      #ece0c6;
+  --ink:        #221a11;
+  --ink-soft:   #473b2a;
+  --muted:      #736244;
+  --rule:       #ab9469;
+  --rule-soft:  #c7b48f;
+  --accent:     #6e1f18;   /* oxblood */
+  --accent-2:   #7c5426;   /* sepia */
+  --stamp-hi:   #7a241c;
+  --stamp-md:   #7c5426;
+  --stamp-lo:   #6b6151;
+  --paper-edge: rgba(90,60,20,.10);
+  --shadow:     rgba(60,40,15,.18);
+}
+
+html[data-theme="night"] {
+  /* night: dark rag paper, ember ink */
+  --paper:      #14110c;
+  --paper-2:    #1b1710;
+  --panel:      #1d190f;
+  --ink:        #e9dfc7;
+  --ink-soft:   #cabf9f;
+  --muted:      #9b8b6d;
+  --rule:       #4a3f2c;
+  --rule-soft:  #5a4c33;
+  --accent:     #dc9152;   /* ember */
+  --accent-2:   #c98a55;
+  --stamp-hi:   #e0965a;
+  --stamp-md:   #c79a5f;
+  --stamp-lo:   #8c8064;
+  --paper-edge: rgba(255,220,160,.05);
+  --shadow:     rgba(0,0,0,.45);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  /* faint foxing + paper grain, kept subtle so the page still reads "minimal" */
+  background-image:
+    radial-gradient(circle at 12% 18%, var(--paper-edge) 0, transparent 42%),
+    radial-gradient(circle at 88% 82%, var(--paper-edge) 0, transparent 42%),
+    radial-gradient(circle at 60% 8%,  var(--paper-edge) 0, transparent 30%);
+  color: var(--ink);
+  font-family: "Noto Naskh Arabic", "IM Fell English", Georgia, serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color .35s ease, color .35s ease;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 clamp(12px, 3vw, 34px); }
+
+/* ---- promo ribbon (top-of-header links) -------------------------------- */
+.promo {
+  border-bottom: 1px solid var(--rule);
+  background: var(--panel);
+}
+.promo .wrap {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 10px 22px; padding-block: 7px;
+  font-size: .82rem; letter-spacing: .04em;
+}
+.promo .promo-label {
+  color: var(--muted); text-transform: uppercase; letter-spacing: .18em;
+  font-size: .66rem;
+}
+.promo a {
+  color: var(--accent); border-bottom: 1px solid transparent; padding-bottom: 1px;
+  font-weight: 600;
+}
+.promo a:hover, .promo a:focus-visible { border-bottom-color: var(--accent); }
+.promo .sep { color: var(--rule); }
+
+/* ---- masthead ---------------------------------------------------------- */
+.masthead { padding-top: 18px; }
+.masthead .rule-heavy {
+  border-top: 3px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  height: 5px; margin-bottom: 12px;
+}
+.masthead .rule-heavy.bottom { margin: 12px 0 0; }
+
+.mast-title {
+  font-family: "Noto Nastaliq Urdu", "Noto Naskh Arabic", "IM Fell DW Pica", serif;
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink);
+  font-size: clamp(2.1rem, 6vw, 4.1rem);
+  line-height: 1.35;
+  margin: 4px 0 2px;
+  letter-spacing: .01em;
+}
+html[lang="en"] .mast-title {
+  font-family: "IM Fell DW Pica", "IM Fell English", Georgia, serif;
+  letter-spacing: .02em;
+}
+.mast-sub {
+  text-align: center; color: var(--muted);
+  font-size: clamp(.8rem, 2.2vw, 1rem); letter-spacing: .16em;
+  text-transform: uppercase; margin-bottom: 2px;
+}
+
+.colophon {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: 6px 18px; padding: 8px 2px 2px;
+  font-size: .78rem; color: var(--ink-soft);
+  font-variant: small-caps; letter-spacing: .06em;
+}
+.colophon .dot { color: var(--accent); }
+.colophon b { color: var(--accent); font-variant: normal; font-weight: 700; }
+
+/* ---- editorial notice: the UNVERIFIED disclaimer ----------------------- */
+.notice {
+  border: 2px solid var(--accent);
+  background:
+    repeating-linear-gradient(45deg,
+      transparent, transparent 9px,
+      var(--paper-edge) 9px, var(--paper-edge) 10px);
+  padding: 12px 16px; margin: 16px 0 6px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.notice .seal {
+  flex: 0 0 auto; margin-top: 2px;
+  border: 2px solid var(--accent); color: var(--accent);
+  font-family: "IM Fell English", serif; font-weight: 700;
+  font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+  padding: 5px 7px; transform: rotate(-4deg); border-radius: 3px;
+  white-space: nowrap;
+}
+.notice .notice-body { font-size: .9rem; color: var(--ink); }
+.notice .notice-body b { color: var(--accent); }
+
+/* ---- toolbar ----------------------------------------------------------- */
+.toolbar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+  padding: 12px 0; margin-top: 8px;
+  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+.toolgroup { display: inline-flex; align-items: center; gap: 6px; }
+.toolgroup > .lbl {
+  font-size: .66rem; text-transform: uppercase; letter-spacing: .16em;
+  color: var(--muted);
+}
+.chip {
+  font-family: inherit; font-size: .82rem; cursor: pointer;
+  background: transparent; color: var(--ink-soft);
+  border: 1px solid var(--rule); border-radius: 2px;
+  padding: 4px 10px; transition: all .18s ease;
+}
+.chip:hover { border-color: var(--accent); color: var(--ink); }
+.chip[aria-pressed="true"], .chip.active {
+  background: var(--ink); color: var(--paper); border-color: var(--ink);
+}
+html[data-theme="night"] .chip[aria-pressed="true"],
+html[data-theme="night"] .chip.active {
+  background: var(--accent); color: #14110c; border-color: var(--accent);
+}
+.search {
+  flex: 1 1 180px; min-width: 140px;
+  background: var(--paper-2); color: var(--ink);
+  border: 1px solid var(--rule); border-radius: 2px;
+  padding: 6px 10px; font-family: inherit; font-size: .86rem;
+}
+.search::placeholder { color: var(--muted); }
+select.chip { appearance: none; padding-inline-end: 22px; }
+
+.theme-toggle {
+  margin-inline-start: auto;
+  border: 1px solid var(--ink); background: transparent; color: var(--ink);
+  padding: 5px 12px; border-radius: 2px; cursor: pointer;
+  font-family: inherit; font-size: .8rem; letter-spacing: .04em;
+  display: inline-flex; gap: 7px; align-items: center;
+}
+.theme-toggle:hover { background: var(--ink); color: var(--paper); }
+html[data-theme="night"] .theme-toggle:hover { background: var(--accent); color:#14110c; border-color: var(--accent); }
+
+/* ---- status line ------------------------------------------------------- */
+.status {
+  padding: 10px 0 2px; font-size: .78rem; color: var(--muted);
+  display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline;
+  font-variant: small-caps; letter-spacing: .05em;
+}
+.status b { color: var(--accent); font-variant: normal; }
+
+/* ---- the feed: real multi-column newspaper flow ------------------------ */
+.feed {
+  column-width: 330px; column-gap: 30px;
+  column-rule: 1px solid var(--rule-soft);
+  padding: 14px 0 40px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .feed { animation: settle .5s ease both; }
+  @keyframes settle { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
+.entry {
+  break-inside: avoid;
+  padding-bottom: 16px; margin-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.entry-kicker {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin-bottom: 5px;
+}
+.src {
+  font-size: .72rem; letter-spacing: .04em; color: var(--muted);
+  text-transform: uppercase;
+}
+.time { font-size: .72rem; color: var(--muted); font-variant: small-caps; }
+
+.entry h2 {
+  font-size: 1.14rem; line-height: 1.4; margin: 2px 0 6px;
+  font-weight: 700; color: var(--ink);
+}
+.entry h2 a { border-bottom: 1px solid transparent; }
+.entry h2 a:hover, .entry h2 a:focus-visible { border-bottom-color: var(--accent); color: var(--accent); }
+.entry p.sum { font-size: .9rem; color: var(--ink-soft); margin: 0 0 8px; }
+
+.entry-foot {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: .72rem;
+}
+.tagx {
+  border: 1px solid var(--rule); color: var(--muted);
+  padding: 1px 7px; border-radius: 2px; font-variant: small-caps; letter-spacing: .05em;
+}
+.entry-foot .go { color: var(--accent); border-bottom: 1px solid transparent; }
+.entry-foot .go:hover { border-bottom-color: var(--accent); }
+
+/* lead entry gets a lithograph drop-cap */
+.entry.lead h2 { font-size: 1.32rem; }
+.entry.lead p.sum::first-letter {
+  font-family: "IM Fell DW Pica", "Noto Naskh Arabic", serif;
+  font-size: 3.1em; line-height: .82; font-weight: 700;
+  color: var(--accent); padding: 2px 6px 0 0; float: right; /* RTL default */
+}
+html[lang="en"] .entry.lead p.sum::first-letter { float: left; padding: 2px 6px 0 2px; }
+
+/* ---- the SIGNATURE: inked source-reliability seals --------------------- */
+.seal-rel {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: "IM Fell English", serif; font-weight: 700;
+  font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 3px;
+  border: 1.5px solid currentColor;
+  transform: rotate(-2.5deg);
+  position: relative;
+}
+.seal-rel .grade {
+  font-size: .74rem; border-inline-start: 1px solid currentColor; padding-inline-start: 5px;
+}
+.seal-rel.high   { color: var(--stamp-hi); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--stamp-hi) 30%, transparent); }
+.seal-rel.medium { color: var(--stamp-md); }
+.seal-rel.low    { color: var(--stamp-lo); border-style: dashed; transform: rotate(1.5deg); }
+
+/* item text direction handled inline via dir attribute; align accordingly */
+.entry[dir="ltr"] { text-align: left; }
+.entry[dir="rtl"] { text-align: right; }
+
+/* ---- footer ------------------------------------------------------------ */
+footer {
+  border-top: 3px solid var(--ink);
+  padding: 20px 0 60px; margin-top: 10px;
+  font-size: .82rem; color: var(--ink-soft);
+}
+footer h3 {
+  font-size: .74rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 8px;
+}
+.legend { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-bottom: 16px; }
+.legend .seal-rel { transform: none; }
+footer a.link { color: var(--accent); border-bottom: 1px solid transparent; }
+footer a.link:hover { border-bottom-color: var(--accent); }
+.byline { margin-top: 14px; color: var(--muted); font-variant: small-caps; letter-spacing: .05em; }
+
+/* ---- empty / error state ---------------------------------------------- */
+.empty {
+  text-align: center; padding: 50px 16px; color: var(--muted);
+  border: 1px dashed var(--rule); margin: 24px 0;
+}
+.empty b { color: var(--ink); display: block; margin-bottom: 6px; font-size: 1.05rem; }
+
+/* focus visibility everywhere */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (max-width: 560px) {
+  .feed { column-width: auto; columns: 1; }
+  .theme-toggle { margin-inline-start: 0; }
+}
