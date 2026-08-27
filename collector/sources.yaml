@@ -1,25 +1,34 @@
 # Hormuz OSINT Monitor - source feeds
-# Order mirrors the site language priority: Persian, then Arabic, then English.
+# ---------------------------------------------------------------------------
+# Source collection only. Nothing is fact-checked here.
 #
-# Two feed kinds are supported:
-#   - kind: gnews   -> a Google News RSS *search* built from `query` + locale.
-#                      This is the reliable multilingual backbone: it pulls
-#                      Hormuz-matching items from hundreds of publishers per
-#                      language, and each item keeps its ORIGINAL publisher,
-#                      which is what the confidence tag is scored on.
-#   - kind: rss     -> a direct RSS/Atom URL from a single publisher.
+# Feed kinds:
+#   gnews -> Google News RSS search
+#   rss   -> direct RSS/Atom feed
 #
-# `category` is informational only (news | social | maritime | official).
-# Add X/Twitter, Telegram or Mastodon feeds here later (kind: rss) once you
-# have a working bridge/instance or API key. Nothing here is fact-checked.
+# Google News preserves the original publisher in the feed item; the
+# collector uses that publisher for source-reliability classification.
+#
+# `category` is informational only:
+#   news | social | maritime | official
+#
+# Language priority:
+#   Persian -> Arabic -> English
+#
+# IMPORTANT:
+# Google News locale parameters are used only to bias regional/language
+# discovery. They do not restrict results exclusively to that country.
 
-# ---------------------------------------------------------------- Persian (fa)
+# ---------------------------------------------------------------------------
+# Persian (fa)
+# ---------------------------------------------------------------------------
+
 - name: "Google News (فارسی)"
   kind: gnews
   lang: fa
   query: "تنگه هرمز"
-  hl: fa
-  gl: IR
+  hl: "fa"
+  gl: "IR"
   ceid: "IR:fa"
   category: news
 
@@ -41,13 +50,17 @@
   url: "https://www.radiofarda.com/api/zrqiteuuir"
   category: news
 
-# ---------------------------------------------------------------- Arabic (ar)
+
+# ---------------------------------------------------------------------------
+# Arabic (ar)
+# ---------------------------------------------------------------------------
+
 - name: "Google News (العربية)"
   kind: gnews
   lang: ar
   query: "مضيق هرمز"
-  hl: ar
-  gl: EG
+  hl: "ar"
+  gl: "EG"
   ceid: "EG:ar"
   category: news
 
@@ -69,13 +82,17 @@
   url: "https://www.aljazeera.net/aljazeerarss/a7c186be-1baa-4bd4-9d80-a84db769f779/73d0e1b4-532f-45ef-b135-bfdff8b8cab9"
   category: news
 
-# ---------------------------------------------------------------- English (en)
+
+# ---------------------------------------------------------------------------
+# English (en)
+# ---------------------------------------------------------------------------
+
 - name: "Google News (English)"
   kind: gnews
   lang: en
   query: "\"Strait of Hormuz\""
-  hl: en-US
-  gl: US
+  hl: "en-US"
+  gl: "US"
   ceid: "US:en"
   category: news
 
@@ -103,7 +120,11 @@
   url: "https://www.maritime-executive.com/rss"
   category: maritime
 
-# ------------------------------------------------- Social / public posts (any)
+
+# ---------------------------------------------------------------------------
+# Social / public posts
+# ---------------------------------------------------------------------------
+
 - name: "Reddit search: hormuz"
   kind: rss
   lang: en
