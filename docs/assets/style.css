@@ -1,227 +1,1110 @@
+```css
 /* =========================================================================
-   Hormuz OSINT Monitor  ·  clean lithograph "سنگ‌چاپ" skin (v2)
-   Rebuilt for robustness: single reading column, classical Naskh masthead
-   (no Nastaliq overlap), no fragile CSS multicolumn. Day / night themes.
+   Hormuz OSINT Monitor · clean lithograph "سنگ‌چاپ" skin (v2.1)
+   -------------------------------------------------------------------------
+   Version: 2.1
+   Base concept preserved:
+     - Classical lithograph / newspaper aesthetic
+     - Single reading column
+     - Classical Naskh Persian masthead
+     - IM Fell English for Latin display elements
+     - Day / night themes
+     - No CSS multicolumn
+     - No framework
+   -------------------------------------------------------------------------
+   v2.1 improvements:
+     - Better Persian / Latin font separation
+     - Improved RTL/LTR behavior
+     - Better mobile toolbar wrapping
+     - Improved focus accessibility
+     - Reduced-motion compliance
+     - Better long-title wrapping
+     - Improved form-control rendering
+     - Safer drop-cap behavior
+     - Better night-mode contrast
+     - Media containment
+     - More robust logical spacing
    ========================================================================= */
 
-/* Fonts loaded in index.html:
-     Amiri            -> Persian / Arabic (classical naskh, newspaper feel)
-     IM Fell English  -> Latin display + body (antique letterpress)
-   Everything degrades to Georgia / serif if the network is slow.          */
+
+/* =========================================================================
+   DESIGN TOKENS
+   ========================================================================= */
 
 :root {
-  --paper:     #f1e8d5;
-  --paper-2:   #e9dec6;
-  --panel:     #ece1c8;
-  --ink:       #241c12;
-  --ink-soft:  #4a3d2b;
-  --muted:     #786646;
-  --rule:      #a8916a;
-  --rule-soft: #cbb891;
-  --accent:    #7a221a;   /* oxblood */
-  --accent-2:  #8a5a26;   /* sepia */
-  --hi:        #7a221a;
-  --md:        #8a5a26;
-  --lo:        #6f6553;
-  --shadow:    rgba(60,40,15,.12);
-}
-html[data-theme="night"] {
-  --paper:     #15120c;
-  --paper-2:   #1c1810;
-  --panel:     #1e1a11;
-  --ink:       #ece2cb;
-  --ink-soft:  #cabf9f;
-  --muted:     #9a8a6c;
-  --rule:      #4a3f2c;
-  --rule-soft: #574a33;
-  --accent:    #dd9153;   /* ember */
-  --accent-2:  #cc9560;
-  --hi:        #e0965a;
-  --md:        #cc9560;
-  --lo:        #90836a;
-  --shadow:    rgba(0,0,0,.4);
+  /* Paper */
+  --paper:      #f1e8d5;
+  --paper-2:    #e9dec6;
+  --panel:      #ece1c8;
+
+  /* Typography */
+  --ink:        #241c12;
+  --ink-soft:   #4a3d2b;
+  --muted:      #786646;
+
+  /* Rules */
+  --rule:       #a8916a;
+  --rule-soft:  #cbb891;
+
+  /* Accent */
+  --accent:     #7a221a;   /* oxblood */
+  --accent-2:   #8a5a26;   /* sepia */
+
+  /* Reliability */
+  --hi:         #7a221a;
+  --md:         #8a5a26;
+  --lo:         #6f6553;
+
+  /* Effects */
+  --shadow:     rgba(60, 40, 15, .12);
+
+  /* Geometry */
+  --measure:    820px;
+  --gutter:     20px;
+  --radius:     2px;
+
+  /* Motion */
+  --ease-fast:  .15s ease;
+  --ease-base:  .3s ease;
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+
+/* =========================================================================
+   NIGHT THEME
+   ========================================================================= */
+
+html[data-theme="night"] {
+  --paper:      #15120c;
+  --paper-2:    #1c1810;
+  --panel:      #1e1a11;
+
+  --ink:        #ece2cb;
+  --ink-soft:   #cabf9f;
+  --muted:      #a49374;
+
+  --rule:       #4a3f2c;
+  --rule-soft:  #574a33;
+
+  --accent:     #dd9153;   /* ember */
+  --accent-2:   #cc9560;
+
+  --hi:         #e0965a;
+  --md:         #cc9560;
+  --lo:         #a6977b;
+
+  --shadow:     rgba(0, 0, 0, .4);
+}
+
+
+/* =========================================================================
+   BASE / RESET
+   ========================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
 
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: "Amiri", "IM Fell English", Georgia, "Times New Roman", serif;
+
+  /*
+    Keep the original typographic identity, but prevent Amiri
+    from becoming the primary font for Latin text.
+  */
+  font-family:
+    "Amiri",
+    Georgia,
+    "Times New Roman",
+    serif;
+
   font-size: 17px;
   line-height: 1.75;
+
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  transition: background-color .3s ease, color .3s ease;
+
+  transition:
+    background-color var(--ease-base),
+    color var(--ease-base);
 }
-a { color: inherit; text-decoration: none; }
 
-/* one centered measure for the whole paper */
-.wrap { width: 100%; max-width: 820px; margin-inline: auto; padding-inline: 20px; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-/* ---- promo ribbon ------------------------------------------------------ */
-.promo { border-bottom: 1px solid var(--rule); background: var(--panel); }
+button,
+input,
+select {
+  font: inherit;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+
+/* =========================================================================
+   READING CONTAINER
+   ========================================================================= */
+
+.wrap {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+
+/* =========================================================================
+   PROMO RIBBON
+   ========================================================================= */
+
+.promo {
+  border-bottom: 1px solid var(--rule);
+  background: var(--panel);
+}
+
 .promo .wrap {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-  gap: 6px 16px; padding-block: 8px; font-size: .8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px 16px;
+  padding-block: 8px;
+
+  font-size: .8rem;
 }
+
 .promo .promo-label {
-  color: var(--muted); text-transform: uppercase; letter-spacing: .16em; font-size: .62rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+
+  font-size: .62rem;
   margin-inline-end: 4px;
 }
-.promo a { color: var(--accent); font-weight: 700; }
-.promo a:hover, .promo a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
-.promo .sep { color: var(--rule); }
 
-/* ---- masthead ---------------------------------------------------------- */
-.masthead { padding-top: 20px; }
-.rule-heavy { border-top: 3px double var(--ink); margin: 10px 0; height: 0; }
-.mast-eyebrow, .mast-tagline {
-  text-align: center; color: var(--muted);
-  text-transform: uppercase; letter-spacing: .2em; font-size: .68rem;
+.promo a {
+  color: var(--accent);
+  font-weight: 700;
 }
-.mast-tagline { text-transform: none; letter-spacing: .08em; font-size: .9rem; color: var(--ink-soft); margin-top: 4px; }
+
+.promo a:hover,
+.promo a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.promo .sep {
+  color: var(--rule);
+}
+
+
+/* =========================================================================
+   MASTHEAD
+   ========================================================================= */
+
+.masthead {
+  padding-top: 20px;
+}
+
+.rule-heavy {
+  border-top: 3px double var(--ink);
+  margin: 10px 0;
+  height: 0;
+}
+
+.mast-eyebrow,
+.mast-tagline {
+  text-align: center;
+  color: var(--muted);
+
+  text-transform: uppercase;
+  letter-spacing: .2em;
+
+  font-size: .68rem;
+}
+
+.mast-tagline {
+  text-transform: none;
+  letter-spacing: .08em;
+
+  font-size: .9rem;
+  color: var(--ink-soft);
+
+  margin-top: 4px;
+}
+
 .mast-title {
-  font-family: "Amiri", "IM Fell English", Georgia, serif;
-  font-weight: 700; text-align: center; color: var(--ink);
+  font-family:
+    "Amiri",
+    Georgia,
+    serif;
+
+  font-weight: 700;
+  text-align: center;
+  color: var(--ink);
+
   font-size: clamp(2rem, 6vw, 3.2rem);
   line-height: 1.5;
-  margin: 10px 0 6px; padding: 4px 0;
+
+  margin: 10px 0 6px;
+  padding: 4px 0;
+
+  overflow-wrap: anywhere;
 }
+
 html[lang="en"] .mast-title {
-  font-family: "IM Fell English", "Amiri", Georgia, serif;
-  letter-spacing: .01em; line-height: 1.2;
+  font-family:
+    "IM Fell English",
+    Georgia,
+    serif;
+
+  letter-spacing: .01em;
+  line-height: 1.2;
 }
+
 .colophon {
-  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
-  gap: 4px 16px; font-size: .74rem; color: var(--ink-soft); padding-top: 6px;
-}
-.colophon .dot { color: var(--accent); }
-.colophon b { color: var(--accent); }
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
 
-/* ---- unverified notice ------------------------------------------------- */
+  gap: 4px 16px;
+
+  font-size: .74rem;
+  color: var(--ink-soft);
+
+  padding-top: 6px;
+}
+
+.colophon .dot {
+  color: var(--accent);
+}
+
+.colophon b {
+  color: var(--accent);
+}
+
+
+/* =========================================================================
+   UNVERIFIED NOTICE
+   ========================================================================= */
+
 .notice {
-  border: 1.5px solid var(--accent); background: var(--panel);
-  padding: 12px 14px; margin: 14px 0 4px;
-  display: flex; gap: 0; align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
+
+  border: 1.5px solid var(--accent);
+  background: var(--panel);
+
+  padding: 12px 14px;
+  margin: 14px 0 4px;
+
+  gap: 12px;
 }
+
 .notice .stamp {
-  flex: 0 0 auto; margin-inline-end: 12px; margin-top: 2px;
-  border: 2px solid var(--accent); color: var(--accent);
-  font-family: "IM Fell English", serif; font-weight: 700;
-  font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
-  padding: 6px 8px; border-radius: 2px; white-space: nowrap; line-height: 1;
-}
-.notice .notice-body { font-size: .86rem; line-height: 1.55; color: var(--ink); }
-.notice .notice-body b { color: var(--accent); }
+  flex: 0 0 auto;
 
-/* ---- toolbar ----------------------------------------------------------- */
-.toolbar {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
-  padding: 12px 0; margin-top: 8px;
-  border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
-}
-.toolgroup { display: inline-flex; align-items: center; gap: 5px; }
-.toolgroup > .lbl {
-  font-size: .6rem; text-transform: uppercase; letter-spacing: .16em; color: var(--muted);
-}
-.chip {
-  font-family: inherit; font-size: .8rem; cursor: pointer; line-height: 1.4;
-  background: transparent; color: var(--ink-soft);
-  border: 1px solid var(--rule); border-radius: 2px; padding: 3px 9px;
-  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
-}
-.chip:hover { border-color: var(--accent); color: var(--ink); }
-.chip[aria-pressed="true"], .chip.active {
-  background: var(--ink); color: var(--paper); border-color: var(--ink);
-}
-html[data-theme="night"] .chip[aria-pressed="true"],
-html[data-theme="night"] .chip.active { background: var(--accent); color: #15120c; border-color: var(--accent); }
-.search {
-  flex: 1 1 150px; min-width: 120px; background: var(--paper-2); color: var(--ink);
-  border: 1px solid var(--rule); border-radius: 2px; padding: 5px 9px;
-  font-family: inherit; font-size: .82rem;
-}
-.search::placeholder { color: var(--muted); }
-select.chip { appearance: none; }
-.theme-toggle {
-  margin-inline-start: auto; border: 1px solid var(--ink); background: transparent;
-  color: var(--ink); padding: 4px 11px; border-radius: 2px; cursor: pointer;
-  font-family: inherit; font-size: .78rem; display: inline-flex; gap: 6px; align-items: center;
-}
-.theme-toggle:hover { background: var(--ink); color: var(--paper); }
-html[data-theme="night"] .theme-toggle { border-color: var(--accent); color: var(--accent); }
-html[data-theme="night"] .theme-toggle:hover { background: var(--accent); color: #15120c; }
+  margin-inline-end: 0;
+  margin-top: 2px;
 
-.status {
-  padding: 10px 0 0; font-size: .74rem; color: var(--muted);
-  display: flex; flex-wrap: wrap; gap: 3px 14px;
-}
-.status b { color: var(--accent); }
+  border: 2px solid var(--accent);
+  color: var(--accent);
 
-/* ---- feed: ONE clean reading column ----------------------------------- */
-.feed { padding: 6px 0 40px; }
-@media (prefers-reduced-motion: no-preference) {
-  .feed { animation: fade .4s ease both; }
-  @keyframes fade { from { opacity: 0 } to { opacity: 1 } }
-}
-.entry {
-  padding: 18px 0 16px;
-  border-bottom: 1px solid var(--rule);
-}
-.entry:first-child { padding-top: 8px; }
-.entry-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 6px; }
-.src { font-size: .72rem; letter-spacing: .05em; color: var(--muted); text-transform: uppercase; }
-.time { font-size: .72rem; color: var(--muted); }
-.entry h2 { font-size: 1.28rem; line-height: 1.45; margin: 2px 0 7px; font-weight: 700; color: var(--ink); }
-.entry h2 a { border-bottom: 1px solid transparent; }
-.entry h2 a:hover, .entry h2 a:focus-visible { color: var(--accent); border-bottom-color: var(--accent); }
-.entry p.sum { font-size: .96rem; line-height: 1.7; color: var(--ink-soft); margin: 0 0 9px; }
-.entry-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .72rem; }
-.tagx { border: 1px solid var(--rule); color: var(--muted); padding: 1px 7px; border-radius: 2px; letter-spacing: .03em; }
-.entry-foot .go { color: var(--accent); border-bottom: 1px solid transparent; }
-.entry-foot .go:hover { border-bottom-color: var(--accent); }
+  font-family:
+    "IM Fell English",
+    "Amiri",
+    serif;
 
-.entry[dir="ltr"] { text-align: left; }
-.entry[dir="rtl"] { text-align: right; }
+  font-weight: 700;
+  font-size: .6rem;
 
-/* lead article: a touch larger + a restrained drop cap (safe in one column) */
-.entry.lead h2 { font-size: 1.6rem; }
-.entry.lead p.sum { font-size: 1.02rem; }
-.entry.lead[dir="rtl"] p.sum::first-letter,
-.entry.lead[dir="ltr"] p.sum::first-letter {
-  font-family: "IM Fell English", "Amiri", serif;
-  font-size: 2.9em; line-height: .8; font-weight: 700; color: var(--accent);
-}
-.entry.lead[dir="rtl"] p.sum::first-letter { float: right; padding: 4px 0 0 8px; }
-.entry.lead[dir="ltr"] p.sum::first-letter { float: left;  padding: 4px 8px 0 0; }
+  letter-spacing: .12em;
+  text-transform: uppercase;
 
-/* ---- source-reliability stamp (the signature element) ------------------ */
-.seal-rel {
-  display: inline-flex; align-items: center; gap: 4px;
-  font-family: "IM Fell English", serif; font-weight: 700;
-  font-size: .62rem; letter-spacing: .1em; text-transform: uppercase;
-  padding: 2px 6px; border: 1.5px solid currentColor; border-radius: 2px;
+  padding: 6px 8px;
+  border-radius: var(--radius);
+
+  white-space: nowrap;
   line-height: 1;
 }
-.seal-rel .grade { font-size: .72rem; border-inline-start: 1px solid currentColor; padding-inline-start: 4px; }
-.seal-rel.high   { color: var(--hi); }
-.seal-rel.medium { color: var(--md); }
-.seal-rel.low    { color: var(--lo); border-style: dashed; }
 
-/* ---- footer ------------------------------------------------------------ */
-footer { border-top: 3px double var(--ink); padding: 18px 0 60px; margin-top: 8px; font-size: .82rem; color: var(--ink-soft); }
-footer h3 { font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
-.legend { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 14px; }
-footer p { line-height: 1.6; }
-footer a.link { color: var(--accent); }
-footer a.link:hover { text-decoration: underline; text-underline-offset: 3px; }
-.byline { margin-top: 12px; color: var(--muted); }
+.notice .notice-body {
+  min-width: 0;
 
-/* ---- empty state ------------------------------------------------------- */
-.empty { text-align: center; padding: 46px 16px; color: var(--muted); border: 1px dashed var(--rule); margin: 22px 0; }
-.empty b { color: var(--ink); display: block; margin-bottom: 6px; font-size: 1.05rem; }
+  font-size: .86rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
 
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.notice .notice-body b {
+  color: var(--accent);
+}
+
+
+/* =========================================================================
+   TOOLBAR
+   ========================================================================= */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 8px 12px;
+
+  padding: 12px 0;
+  margin-top: 8px;
+
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.toolgroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.toolgroup > .lbl {
+  font-size: .6rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--muted);
+
+  white-space: nowrap;
+}
+
+.chip {
+  font-family: inherit;
+  font-size: .8rem;
+
+  cursor: pointer;
+
+  line-height: 1.4;
+
+  background: transparent;
+  color: var(--ink-soft);
+
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+
+  padding: 3px 9px;
+
+  transition:
+    background-color var(--ease-fast),
+    color var(--ease-fast),
+    border-color var(--ease-fast);
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.chip[aria-pressed="true"],
+.chip.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+html[data-theme="night"] .chip[aria-pressed="true"],
+html[data-theme="night"] .chip.active {
+  background: var(--accent);
+  color: var(--paper);
+  border-color: var(--accent);
+}
+
+
+/* =========================================================================
+   SEARCH
+   ========================================================================= */
+
+.search {
+  flex: 1 1 150px;
+
+  min-width: 120px;
+  max-width: 100%;
+
+  background: var(--paper-2);
+  color: var(--ink);
+
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+
+  padding: 5px 9px;
+
+  font-family: inherit;
+  font-size: .82rem;
+
+  outline: none;
+
+  transition:
+    border-color var(--ease-fast),
+    background-color var(--ease-fast),
+    box-shadow var(--ease-fast);
+}
+
+.search::placeholder {
+  color: var(--muted);
+}
+
+.search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+
+/* =========================================================================
+   SELECT
+   ========================================================================= */
+
+select.chip {
+  appearance: auto;
+  min-height: 30px;
+}
+
+
+/* =========================================================================
+   THEME TOGGLE
+   ========================================================================= */
+
+.theme-toggle {
+  margin-inline-start: auto;
+
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+
+  padding: 4px 11px;
+
+  border-radius: var(--radius);
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: .78rem;
+
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+
+  transition:
+    background-color var(--ease-fast),
+    color var(--ease-fast),
+    border-color var(--ease-fast);
+}
+
+.theme-toggle:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+html[data-theme="night"] .theme-toggle {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+html[data-theme="night"] .theme-toggle:hover {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+
+/* =========================================================================
+   STATUS
+   ========================================================================= */
+
+.status {
+  padding: 10px 0 0;
+
+  font-size: .74rem;
+  color: var(--muted);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 3px 14px;
+}
+
+.status b {
+  color: var(--accent);
+}
+
+
+/* =========================================================================
+   FEED — ONE CLEAN READING COLUMN
+   ========================================================================= */
+
+.feed {
+  padding: 6px 0 40px;
+}
+
+.entry {
+  padding: 18px 0 16px;
+
+  border-bottom: 1px solid var(--rule);
+
+  /*
+    Prevent long URLs / source names / identifiers
+    from forcing horizontal overflow.
+  */
+  overflow-wrap: anywhere;
+}
+
+.entry:first-child {
+  padding-top: 8px;
+}
+
+.entry-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 6px;
+}
+
+.src {
+  font-size: .72rem;
+  letter-spacing: .05em;
+
+  color: var(--muted);
+
+  text-transform: uppercase;
+}
+
+.time {
+  font-size: .72rem;
+  color: var(--muted);
+}
+
+.entry h2 {
+  font-size: 1.28rem;
+  line-height: 1.45;
+
+  margin: 2px 0 7px;
+
+  font-weight: 700;
+  color: var(--ink);
+
+  overflow-wrap: anywhere;
+}
+
+.entry h2 a {
+  border-bottom: 1px solid transparent;
+
+  transition:
+    color var(--ease-fast),
+    border-color var(--ease-fast);
+}
+
+.entry h2 a:hover,
+.entry h2 a:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.entry p.sum {
+  font-size: .96rem;
+  line-height: 1.7;
+
+  color: var(--ink-soft);
+
+  margin: 0 0 9px;
+
+  overflow-wrap: anywhere;
+}
+
+.entry-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 8px;
+
+  font-size: .72rem;
+}
+
+.tagx {
+  border: 1px solid var(--rule);
+  color: var(--muted);
+
+  padding: 1px 7px;
+  border-radius: var(--radius);
+
+  letter-spacing: .03em;
+}
+
+.entry-foot .go {
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+
+  transition:
+    border-color var(--ease-fast),
+    color var(--ease-fast);
+}
+
+.entry-foot .go:hover {
+  border-bottom-color: var(--accent);
+}
+
+.entry[dir="ltr"] {
+  text-align: left;
+}
+
+.entry[dir="rtl"] {
+  text-align: right;
+}
+
+
+/* =========================================================================
+   LEAD ARTICLE
+   ========================================================================= */
+
+.entry.lead h2 {
+  font-size: 1.6rem;
+}
+
+.entry.lead p.sum {
+  font-size: 1.02rem;
+}
+
+
+/*
+  Drop-cap:
+  Keep it deliberately restrained.
+
+  For RTL, Amiri is used instead of IM Fell English so that
+  Persian/Arabic glyph metrics remain coherent.
+*/
+
+.entry.lead[dir="rtl"] p.sum::first-letter {
+  font-family:
+    "Amiri",
+    Georgia,
+    serif;
+
+  font-size: 2.9em;
+  line-height: .8;
+  font-weight: 700;
+  color: var(--accent);
+
+  float: right;
+
+  padding: 4px 0 0 8px;
+}
+
+.entry.lead[dir="ltr"] p.sum::first-letter {
+  font-family:
+    "IM Fell English",
+    Georgia,
+    serif;
+
+  font-size: 2.9em;
+  line-height: .8;
+  font-weight: 700;
+  color: var(--accent);
+
+  float: left;
+
+  padding: 4px 8px 0 0;
+}
+
+
+/* =========================================================================
+   SOURCE RELIABILITY STAMP
+   ========================================================================= */
+
+.seal-rel {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 4px;
+
+  font-family:
+    "IM Fell English",
+    "Amiri",
+    serif;
+
+  font-weight: 700;
+
+  font-size: .62rem;
+  letter-spacing: .1em;
+
+  text-transform: uppercase;
+
+  padding: 2px 6px;
+
+  border: 1.5px solid currentColor;
+  border-radius: var(--radius);
+
+  line-height: 1;
+}
+
+.seal-rel .grade {
+  font-size: .72rem;
+
+  border-inline-start: 1px solid currentColor;
+
+  padding-inline-start: 4px;
+}
+
+.seal-rel.high {
+  color: var(--hi);
+}
+
+.seal-rel.medium {
+  color: var(--md);
+}
+
+.seal-rel.low {
+  color: var(--lo);
+  border-style: dashed;
+}
+
+
+/* =========================================================================
+   FOOTER
+   ========================================================================= */
+
+footer {
+  border-top: 3px double var(--ink);
+
+  padding: 18px 0 60px;
+  margin-top: 8px;
+
+  font-size: .82rem;
+  color: var(--ink-soft);
+}
+
+footer h3 {
+  font-size: .68rem;
+
+  letter-spacing: .18em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+
+  margin: 0 0 8px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px 16px;
+
+  margin-bottom: 14px;
+}
+
+footer p {
+  line-height: 1.6;
+}
+
+footer a.link {
+  color: var(--accent);
+}
+
+footer a.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.byline {
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+
+/* =========================================================================
+   EMPTY STATE
+   ========================================================================= */
+
+.empty {
+  text-align: center;
+
+  padding: 46px 16px;
+
+  color: var(--muted);
+
+  border: 1px dashed var(--rule);
+
+  margin: 22px 0;
+}
+
+.empty b {
+  color: var(--ink);
+
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 1.05rem;
+}
+
+
+/* =========================================================================
+   ACCESSIBILITY / FOCUS
+   ========================================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+
+/* =========================================================================
+   RESPONSIVE — SMALL SCREENS
+   ========================================================================= */
+
+@media (max-width: 640px) {
+
+  :root {
+    --gutter: 14px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+
+  .masthead {
+    padding-top: 14px;
+  }
+
+  .mast-title {
+    font-size: clamp(1.8rem, 10vw, 2.7rem);
+  }
+
+  .colophon {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .notice {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .notice .stamp {
+    align-self: flex-start;
+  }
+
+  .toolbar {
+    align-items: stretch;
+  }
+
+  .toolgroup {
+    flex: 1 1 auto;
+  }
+
+  .search {
+    flex: 1 1 100%;
+    order: 10;
+  }
+
+  .theme-toggle {
+    margin-inline-start: 0;
+  }
+
+  .entry {
+    padding-block: 15px 14px;
+  }
+
+  .entry.lead h2 {
+    font-size: 1.42rem;
+  }
+
+  .entry.lead p.sum {
+    font-size: .98rem;
+  }
+}
+
+
+/* =========================================================================
+   VERY SMALL SCREENS
+   ========================================================================= */
+
+@media (max-width: 420px) {
+
+  .promo .wrap {
+    gap: 4px 10px;
+  }
+
+  .toolbar {
+    gap: 7px;
+  }
+
+  .toolgroup {
+    width: 100%;
+  }
+
+  .toolgroup .chip {
+    flex: 1 1 auto;
+  }
+
+  .theme-toggle {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .entry h2 {
+    font-size: 1.18rem;
+  }
+
+  .entry.lead h2 {
+    font-size: 1.34rem;
+  }
+
+  .entry.lead[dir="rtl"] p.sum::first-letter,
+  .entry.lead[dir="ltr"] p.sum::first-letter {
+    font-size: 2.5em;
+  }
+}
+
+
+/* =========================================================================
+   REDUCED MOTION
+   ========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* =========================================================================
+   FEED FADE — ENABLE ONLY WHEN MOTION IS ACCEPTABLE
+   ========================================================================= */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  .feed {
+    animation: fade .4s ease both;
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+
+/* =========================================================================
+   PRINT
+   ========================================================================= */
+
+@media print {
+
+  :root {
+    --paper: #fff;
+    --paper-2: #fff;
+    --panel: #fff;
+
+    --ink: #000;
+    --ink-soft: #222;
+    --muted: #444;
+
+    --rule: #777;
+    --rule-soft: #aaa;
+
+    --accent: #000;
+    --accent-2: #333;
+
+    --hi: #000;
+    --md: #333;
+    --lo: #555;
+
+    --shadow: none;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  .promo,
+  .toolbar,
+  .status,
+  .theme-toggle {
+    display: none !important;
+  }
+
+  .wrap {
+    max-width: none;
+    padding-inline: 0;
+  }
+
+  .masthead {
+    padding-top: 0;
+  }
+
+  .entry {
+    break-inside: avoid;
+  }
+
+  footer {
+    break-before: auto;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+```
