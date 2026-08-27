@@ -1,0 +1,40 @@
+# Hormuz OSINT Monitor - keyword filter
+# An item is kept only if its title or summary contains at least one "core" term.
+# "context" terms are NOT required, but when present they are recorded on the item
+# so the feed can surface closely-related maritime/security signals.
+
+core:
+  # Persian / Arabic share the spelling "هرمز", so this single term covers both.
+  - "هرمز"
+  - "تنگه هرمز"
+  - "مضيق هرمز"
+  # English
+  - "Hormuz"
+  - "Strait of Hormuz"
+
+context:
+  - "تنگه"
+  - "مضيق"
+  - "strait"
+  - "tanker"
+  - "نفتکش"
+  - "ناقلة"
+  - "IRGC"
+  - "سپاه"
+  - "الحرس الثوري"
+  - "blockade"
+  - "محاصره"
+  - "حصار"
+  - "mine"
+  - "مین"
+  - "لغم"
+  - "UKMTO"
+  - "Bandar Abbas"
+  - "بندرعباس"
+  - "Larak"
+  - "Qeshm"
+  - "قشم"
+  - "Musandam"
+  - "Oman"
+  - "عمان"
+  - "PGSA"
