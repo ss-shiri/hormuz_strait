@@ -29,6 +29,8 @@
       newRun: "{n} مورد در آخرین اجرا", failed: "{n} منبع ناموفق",
       emptyTitle: "موردی برای نمایش نیست",
       emptyBody: "هنوز خبری مطابق فیلترها گردآوری نشده است. به‌زودی به‌روزرسانی می‌شود.",
+      loadErrTitle: "دادهٔ فید بارگذاری نشد",
+      loadErrBody: "سایت باید روی HTTP باز شود (GitHub Pages یا python -m http.server)، نه با باز کردنِ مستقیمِ فایل. سپس data/feed.json بارگذاری می‌شود.",
       legendTitle: "راهنمای برچسب اطمینانِ منبع",
       footNote: "مدل اعتبارِ منبع بر پایهٔ مقیاس اعتبارِ منبعِ آدمیرالتی (A بهترین تا F نامشخص) است و صرفاً جایگاهِ تاریخیِ رسانه را می‌سنجد. این ابزار «جمع‌آوری» می‌کند، «راستی‌آزمایی» نمی‌کند.",
       builtBy: "تهیه و پایش:",
@@ -56,6 +58,8 @@
       newRun: "{n} في آخر تشغيل", failed: "{n} مصدر فشل",
       emptyTitle: "لا شيء لعرضه",
       emptyBody: "لم تُجمع أخبار مطابقة للمرشّحات بعد. سيُحدَّث قريباً.",
+      loadErrTitle: "تعذّر تحميل بيانات الخلاصة",
+      loadErrBody: "افتح الموقع عبر HTTP (GitHub Pages أو python -m http.server)، لا بفتح الملف مباشرة، لكي يُحمَّل data/feed.json.",
       legendTitle: "دليل وسم ثقة المصدر",
       footNote: "نموذج موثوقية المصدر مبني على سلّم موثوقية المصدر لدى الأميرالية (A الأفضل حتى F غير مُقدَّر)، ويقيس فقط المكانة التاريخية للوسيلة. هذه الأداة «تجمع» ولا «تتحقّق».",
       builtBy: "إعداد ورصد:",
@@ -83,6 +87,8 @@
       newRun: "{n} new this run", failed: "{n} feeds failed",
       emptyTitle: "Nothing to show",
       emptyBody: "No items match the current filters yet. This updates automatically.",
+      loadErrTitle: "Could not load the feed data",
+      loadErrBody: "Open the site over HTTP (GitHub Pages or python -m http.server), not by opening the file directly, so data/feed.json can load.",
       legendTitle: "Source-confidence key",
       footNote: "The source-reliability model follows the NATO Admiralty scale (A best … F unrated) and rates only an outlet's historical standing. This tool COLLECTS; it does not VERIFY.",
       builtBy: "Curated & monitored by:",
@@ -228,6 +234,9 @@
 
     if (!items.length) {
       feed.innerHTML = "";
+      var _et = state.loadError ? t("loadErrTitle") : t("emptyTitle");
+      var _eb = state.loadError ? t("loadErrBody")  : t("emptyBody");
+      empty.innerHTML = "<b>" + esc(_et) + "</b><span>" + esc(_eb) + "</span>";
       empty.hidden = false;
     } else {
       empty.hidden = true;
@@ -283,8 +292,9 @@
   function load() {
     fetch(DATA_URL, { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (json) { state.data = json || { meta: {}, items: [] }; render(); })
+      .then(function (json) { state.loadError = false; state.data = json || { meta: {}, items: [] }; render(); })
       .catch(function () {
+        state.loadError = true;
         state.data = { meta: {}, items: [] };
         render();
       });
