@@ -1,40 +1,180 @@
-# Hormuz OSINT Monitor - keyword filter
-# An item is kept only if its title or summary contains at least one "core" term.
-# "context" terms are NOT required, but when present they are recorded on the item
-# so the feed can surface closely-related maritime/security signals.
+# Hormuz OSINT Monitor - multilingual keyword filter
+#
+# An item is retained when its title or summary contains at least
+# one core term. Context terms are optional and are recorded when present.
+#
+# Matching is case-insensitive in the collector.
 
 core:
-  # Persian / Arabic share the spelling "هرمز", so this single term covers both.
+  # Persian
   - "هرمز"
   - "تنگه هرمز"
+  - "تنگه‌ی هرمز"
+  - "تنگهٔ هرمز"
+
+  # Arabic
   - "مضيق هرمز"
+  - "مضيق هرمز الدولي"
+  - "مضيق هرمز البحري"
+
   # English
   - "Hormuz"
   - "Strait of Hormuz"
+  - "Hormuz Strait"
 
 context:
+  # Maritime / geography
   - "تنگه"
   - "مضيق"
   - "strait"
+  - "maritime"
+  - "دریایی"
+  - "بحری"
+  - "shipping"
+  - "کشتیرانی"
+  - "الملاحة"
+  - "vessel"
+  - "کشتی"
+  - "سفینه"
+  - "کشتی‌رانی"
+
+  # Tankers / energy
   - "tanker"
+  - "oil tanker"
   - "نفتکش"
   - "ناقلة"
+  - "ناقلة نفط"
+  - "LNG"
+  - "oil"
+  - "نفت"
+  - "نفط"
+  - "gas"
+  - "گاز"
+  - "غاز"
+  - "crude"
+  - "خام"
+
+  # Military / security
   - "IRGC"
   - "سپاه"
+  - "سپاه پاسداران"
   - "الحرس الثوري"
+  - "Islamic Revolutionary Guard Corps"
+  - "military"
+  - "نظامی"
+  - "عسكري"
+  - "navy"
+  - "نیروی دریایی"
+  - "البحرية"
+  - "maritime security"
+  - "امنیت دریایی"
+  - "الأمن البحري"
+
+  # Blockade / interdiction
   - "blockade"
   - "محاصره"
   - "حصار"
+  - "حصار دریایی"
+  - "حظر"
+  - "حظر دریایی"
+  - "naval blockade"
+  - "محاصرة"
+  - "إغلاق"
+  - "closure"
+  - "بستن"
+  - "بسته شدن"
+  - "بسته"
+  - "إغلاق المضيق"
+
+  # Mines / explosive maritime threats
   - "mine"
+  - "mines"
+  - "minefield"
+  - "sea mine"
+  - "naval mine"
   - "مین"
+  - "مین دریایی"
+  - "مین‌گذاری"
   - "لغم"
+  - "ألغام"
+  - "لغم بحري"
+  - "زرع الألغام"
+
+  # Monitoring / warning organizations
   - "UKMTO"
+  - "United Kingdom Maritime Trade Operations"
+  - "MARAD"
+  - "MSCHOA"
+  - "IMO"
+  - "IMB"
+  - "PGSA"
+
+  # Iranian locations
   - "Bandar Abbas"
+  - "Bandar-Abbas"
   - "بندرعباس"
+  - "بندر عباس"
   - "Larak"
+  - "لارک"
+  - "جزیره لارک"
   - "Qeshm"
   - "قشم"
+  - "جزیره قشم"
+  - "Jask"
+  - "جاسک"
+  - "Chabahar"
+  - "چابهار"
+
+  # Oman / regional geography
   - "Musandam"
+  - "مسندم"
   - "Oman"
   - "عمان"
-  - "PGSA"
+  - "Strait of Hormuz"
+  - "Persian Gulf"
+  - "خلیج فارس"
+  - "الخليج العربي"
+  - "Gulf of Oman"
+  - "دریای عمان"
+  - "بحر عمان"
+
+  # Navigation / incidents
+  - "AIS"
+  - "GNSS"
+  - "GPS"
+  - "navigation"
+  - "ناوبری"
+  - "الملاحة"
+  - "signal interference"
+  - "اختلال سیگنال"
+  - "تشویش"
+  - "jamming"
+  - "spoofing"
+  - "collision"
+  - "تصادم"
+  - "تصادف"
+  - "boarding"
+  - "توقیف"
+  - "احتجاز"
+  - "seizure"
+  - "capture"
+  - "intercept"
+  - "interception"
+
+  # Threat / incident indicators
+  - "attack"
+  - "حمله"
+  - "هجوم"
+  - "تهدید"
+  - "تهديد"
+  - "threat"
+  - "incident"
+  - "حادثه"
+  - "حادث"
+  - "warning"
+  - "هشدار"
+  - "تحذير"
+  - "alert"
+  - "emergency"
+  - "اضطراری"
+  - "طوارئ"
