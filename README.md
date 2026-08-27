@@ -19,7 +19,7 @@ collector/collect.py      جمع‌آوری از فیدهای RSS و جست‌و
 docs/data/feed.json       تنها منبع دادهٔ سایت (the single data file)
         │
         ▼
-docs/index.html + app.js  روزنامهٔ سه‌زبانه، حالت روز/شب، فیلترها (the newspaper UI)
+docs/index.html + app.js   سه‌زبانه، حالت روز/شب، فیلترها (the newspaper UI)
         ▲
 .github/workflows/        هر ۱۵ دقیقه اجرا و کامیت می‌کند (runs & commits every ~15 min)
 ```
