@@ -1,61 +1,243 @@
-# Source-reliability model  (confidence tag = a property of the SOURCE, not the claim)
+# Source-reliability model
 # ---------------------------------------------------------------------------
-# This is an OSINT COLLECTION feed. Nothing here is verified. The tag only tells
-# the reader how much weight the ORIGINATING OUTLET has historically earned,
-# loosely following the NATO Admiralty source-reliability scale (A best .. F unrated):
+# IMPORTANT:
+# `confidence` describes SOURCE RELIABILITY ONLY, not the truth of an individual
+# claim. This is an OSINT COLLECTION feed; collected items are NOT fact-checked.
 #
-#   high   (A/B) - wire services, primary institutions, official / regulatory bodies
-#   medium (C/D) - established mainstream outlets and specialist trade press
-#                  (includes state-owned outlets: usually reliable but not independent)
-#   low    (E/F) - social platforms, aggregators, blogs, unattributed / unknown
+# Scale:
+#   A = high confidence source
+#   B = high-quality specialist / institutional source
+#   C = established mainstream / specialist media
+#   D = state-owned / state-aligned media
+#   E = aggregators / user-generated / platform sources
+#   F = unknown or unrated source
 #
-# Matching: each rule's `match` list is tested (case-insensitive) against the
-# item's publisher domain AND publisher name. First rule that matches wins.
-# `letter` overrides the tier's default Admiralty letter for that outlet.
-# Anything unmatched falls through to `default` (low / F).
+# Matching:
+# Each rule is tested case-insensitively against both publisher DOMAIN and NAME.
+# The FIRST matching rule wins.
+#
+# IMPORTANT:
+# More specific domains are intentionally included before generic outlet names
+# where possible to reduce false-positive source classification.
 
 default:
   tier: low
   letter: F
 
 rules:
-  # ---- HIGH (A): wire services & primary institutions -------------------
+
+  # -------------------------------------------------------------------------
+  # HIGH (A)
+  # Primary institutions, official authorities and major wire services
+  # -------------------------------------------------------------------------
   - tier: high
     letter: A
-    match: [reuters, apnews, "ap.org", afp, "afp.com", bloomberg,
-            "iaea.org", "eia.gov", "iea.org", "opcw.org", "un.org", "nato.int",
-            "congress.gov", "crs", "state.gov", "defense.gov", "centcom",
-            "ukmto", "gov.uk", "imo.org"]
+    match:
+      - "reuters.com"
+      - reuters
+      - "apnews.com"
+      - apnews
+      - "ap.org"
+      - afp
+      - "afp.com"
+      - bloomberg
+      - "bloomberg.com"
+      - "iaea.org"
+      - "eia.gov"
+      - "iea.org"
+      - "opcw.org"
+      - "un.org"
+      - "nato.int"
+      - "congress.gov"
+      - "crsreports.congress.gov"
+      - crs
+      - "state.gov"
+      - "defense.gov"
+      - "centcom.mil"
+      - centcom
+      - "ukmto.org"
+      - ukmto
+      - "gov.uk"
+      - "imo.org"
 
-  # ---- HIGH (B): high-quality institutions, analysis & specialist desks --
+  # -------------------------------------------------------------------------
+  # HIGH (B)
+  # Specialist institutions, established analytical organizations and
+  # specialist intelligence / maritime / energy research sources
+  # -------------------------------------------------------------------------
   - tier: high
     letter: B
-    match: ["ft.com", "wsj.com", economist, "crisisgroup.org", "isis-online",
-            "iiss.org", "csis.org", "rand.org", "chathamhouse", "brookings",
-            "lloydslist", "lloyds", ambrey, "tankertrackers", "kpler",
-            "janes.com", "washingtonpost", "nytimes"]
+    match:
+      - "ft.com"
+      - "wsj.com"
+      - "economist.com"
+      - economist
+      - "crisisgroup.org"
+      - "isis-online.org"
+      - "isis-online"
+      - "iiss.org"
+      - "csis.org"
+      - "rand.org"
+      - "chathamhouse.org"
+      - chathamhouse
+      - "brookings.edu"
+      - "lloydslist.com"
+      - lloydslist
+      - "lloyds.com"
+      - lloyds
+      - ambrey
+      - "ambrey.com"
+      - tankertrackers
+      - "tankertrackers.com"
+      - kpler
+      - "kpler.com"
+      - "janes.com"
+      - janes
+      - "washingtonpost.com"
+      - washingtonpost
+      - "nytimes.com"
+      - nytimes
 
-  # ---- MEDIUM (C): established mainstream media -------------------------
+  # -------------------------------------------------------------------------
+  # MEDIUM (C)
+  # Established mainstream media and specialist trade press
+  # -------------------------------------------------------------------------
   - tier: medium
     letter: C
-    match: [aljazeera, "bbc.co.uk", "bbc.com", cnn, cnbc, guardian, npr,
-            axios, politico, france24, "dw.com", "dw.de", thenationalnews,
-            arabnews, alarabiya, alhurra, timesofisrael, jpost, haaretz,
-            middleeasteye, "al-monitor", gcaptain, "maritime-executive",
-            splash247, tradewinds, "spglobal", "oilprice.com"]
+    match:
+      - "aljazeera.com"
+      - aljazeera
+      - "bbc.co.uk"
+      - "bbc.com"
+      - "cnn.com"
+      - cnn
+      - "cnbc.com"
+      - cnbc
+      - "theguardian.com"
+      - guardian
+      - "npr.org"
+      - npr
+      - "axios.com"
+      - axios
+      - "politico.com"
+      - politico
+      - "france24.com"
+      - france24
+      - "dw.com"
+      - "dw.de"
+      - "thenationalnews.com"
+      - thenationalnews
+      - "arabnews.com"
+      - arabnews
+      - "alarabiya.net"
+      - alarabiya
+      - "alhurra.com"
+      - alhurra
+      - "timesofisrael.com"
+      - timesofisrael
+      - "jpost.com"
+      - jpost
+      - "haaretz.com"
+      - haaretz
+      - "middleeasteye.net"
+      - middleeasteye
+      - "al-monitor.com"
+      - "al-monitor"
+      - "gcaptain.com"
+      - gcaptain
+      - "maritime-executive.com"
+      - "maritime-executive"
+      - "splash247.com"
+      - splash247
+      - "tradewindsnews.com"
+      - tradewinds
+      - "spglobal.com"
+      - "oilprice.com"
+      - oilprice
 
-  # ---- MEDIUM (D): state-owned / state-aligned outlets -----------------
-  #   Usually reliable on facts, but not editorially independent -> flag D.
+  # -------------------------------------------------------------------------
+  # MEDIUM (D)
+  # State-owned / state-aligned outlets.
+  #
+  # Classification reflects editorial independence, NOT factual accuracy of
+  # every individual report.
+  # -------------------------------------------------------------------------
   - tier: medium
     letter: D
-    match: [irna, mehrnews, "mehr", tasnim, "press tv", presstv, farsnews,
-            "fars ", tabnak, isna, "iribnews", "sana", "rt.com", "russia today",
-            "sputnik", "ria novosti", xinhua, "cgtn", "wam.ae", "spa.gov",
-            "qna.org", "shafaq", "rudaw"]
+    match:
+      - "irna.ir"
+      - irna
+      - "mehrnews.com"
+      - mehrnews
+      - "mehr"
+      - "tasnimnews.com"
+      - tasnim
+      - "presstv.ir"
+      - "press tv"
+      - presstv
+      - "farsnews.ir"
+      - farsnews
+      - "fars "
+      - "tabnak.ir"
+      - tabnak
+      - "isna.ir"
+      - isna
+      - "iribnews.ir"
+      - iribnews
+      - "sana.sy"
+      - sana
+      - "rt.com"
+      - "russia today"
+      - "sputniknews.com"
+      - sputnik
+      - "ria.ru"
+      - "ria novosti"
+      - "xinhua.net"
+      - xinhua
+      - "cgtn.com"
+      - cgtn
+      - "wam.ae"
+      - wam
+      - "spa.gov.sa"
+      - spa
+      - "qna.org.qa"
+      - qna
+      - "shafaq.com"
+      - shafaq
+      - "rudaw.net"
+      - rudaw
 
-  # ---- LOW (E): aggregators & user-generated platforms -----------------
+  # -------------------------------------------------------------------------
+  # LOW (E)
+  # Aggregators, social platforms, user-generated content and open publishing
+  # -------------------------------------------------------------------------
   - tier: low
     letter: E
-    match: ["news.google", "google news", reddit, "x.com", twitter, nitter,
-            "t.me", telegram, mastodon, bsky, bluesky, "medium.com", substack,
-            youtube, blogspot, wordpress, "yahoo", msn]
+    match:
+      - "news.google.com"
+      - "google news"
+      - reddit
+      - "reddit.com"
+      - "x.com"
+      - twitter
+      - "twitter.com"
+      - nitter
+      - "t.me"
+      - telegram
+      - mastodon
+      - bsky
+      - bluesky
+      - "medium.com"
+      - medium
+      - substack
+      - "substack.com"
+      - youtube
+      - "youtube.com"
+      - blogspot
+      - "blogspot.com"
+      - wordpress
+      - "wordpress.com"
+      - yahoo
+      - "yahoo.com"
+      - msn
+      - "msn.com"
