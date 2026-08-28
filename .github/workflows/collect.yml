@@ -1,20 +1,15 @@
-```yaml
 name: collect-hormuz-osint
 
 # Hormuz OSINT Monitor
-# Collection-only workflow.
-#
-# Runs approximately every 15 minutes and can also be started manually.
-# It intentionally does not trigger on push because the collector itself
-# commits feed.json back to the repository.
+# Collector workflow — runs every ~15 minutes and can also be triggered manually.
+# The collector commits feed.json itself, so no push trigger is needed.
 
 on:
   schedule:
     - cron: "7,22,37,52 * * * *"
-
   workflow_dispatch:
 
-# Prevent simultaneous collectors from modifying feed.json.
+# Prevent concurrent collectors from modifying feed.json simultaneously.
 concurrency:
   group: hormuz-osint-collector
   cancel-in-progress: false
@@ -64,32 +59,22 @@ jobs:
           path = Path("docs/data/feed.json")
 
           if not path.exists():
-              raise SystemExit(
-                  "ERROR: docs/data/feed.json does not exist"
-              )
+              raise SystemExit("ERROR: docs/data/feed.json does not exist")
 
           if path.stat().st_size == 0:
-              raise SystemExit(
-                  "ERROR: feed.json is empty"
-              )
+              raise SystemExit("ERROR: feed.json is empty")
 
           with path.open("r", encoding="utf-8") as f:
               data = json.load(f)
 
           if not isinstance(data, dict):
-              raise SystemExit(
-                  "ERROR: feed.json root must be an object"
-              )
+              raise SystemExit("ERROR: feed.json root must be an object")
 
           if not isinstance(data.get("meta"), dict):
-              raise SystemExit(
-                  "ERROR: meta must be an object"
-              )
+              raise SystemExit("ERROR: meta must be an object")
 
           if not isinstance(data.get("items"), list):
-              raise SystemExit(
-                  "ERROR: items must be a list"
-              )
+              raise SystemExit("ERROR: items must be a list")
 
           required = {
               "id",
@@ -102,21 +87,15 @@ jobs:
 
           for i, item in enumerate(data["items"]):
               if not isinstance(item, dict):
-                  raise SystemExit(
-                      f"ERROR: item {i} is not an object"
-                  )
+                  raise SystemExit(f"ERROR: item {i} is not an object")
 
               missing = required - item.keys()
-
               if missing:
                   raise SystemExit(
-                      f"ERROR: item {i} missing: "
-                      f"{sorted(missing)}"
+                      f"ERROR: item {i} missing: {sorted(missing)}"
                   )
 
-          print(
-              f"VALID: {len(data['items'])} feed items"
-          )
+          print(f"VALID: {len(data['items'])} feed items")
           PY
 
       - name: Show collection summary
@@ -124,37 +103,20 @@ jobs:
           python - <<'PY'
           import json
 
-          with open(
-              "docs/data/feed.json",
-              "r",
-              encoding="utf-8"
-          ) as f:
+          with open("docs/data/feed.json", "r", encoding="utf-8") as f:
               feed = json.load(f)
 
           meta = feed.get("meta", {})
 
           print("")
           print("==============================================")
-          print("       HORMUZ OSINT COLLECTION")
+          print("        HORMUZ OSINT COLLECTION")
           print("==============================================")
-          print(
-              f"Total items    : {meta.get('count', 0)}"
-          )
-          print(
-              f"New this run   : {meta.get('new_this_run', 0)}"
-          )
-          print(
-              f"Sources OK     : "
-              f"{len(meta.get('sources_ok', []))}"
-          )
-          print(
-              f"Sources failed : "
-              f"{len(meta.get('sources_failed', []))}"
-          )
-          print(
-              f"Generated      : "
-              f"{meta.get('generated_at', 'unknown')}"
-          )
+          print(f"Total items    : {meta.get('count', 0)}")
+          print(f"New this run   : {meta.get('new_this_run', 0)}")
+          print(f"Sources OK     : {len(meta.get('sources_ok', []))}")
+          print(f"Sources failed : {len(meta.get('sources_failed', [])}")
+          print(f"Generated      : {meta.get('generated_at', 'unknown')}")
           print("==============================================")
           print("")
           PY
@@ -171,8 +133,5 @@ jobs:
             exit 0
           fi
 
-          git commit \
-            -m "feed: refresh $(date -u '+%Y-%m-%d %H:%M UTC')"
-
+          git commit -m "feed: refresh $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push
-```
