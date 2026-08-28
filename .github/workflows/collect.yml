@@ -1,19 +1,12 @@
 ```yaml
 name: collect-hormuz-osint
 
-# ============================================================================
 # Hormuz OSINT Monitor
-#
 # Collection-only workflow.
 #
-# Runs:
-#   - every 15 minutes
-#   - manually from GitHub Actions
-#
-# It intentionally does NOT run on push.
-# The collector itself commits feed.json, and a push trigger could cause
-# unnecessary re-execution.
-# ============================================================================
+# Runs approximately every 15 minutes and can also be started manually.
+# It intentionally does not trigger on push because the collector itself
+# commits feed.json back to the repository.
 
 on:
   schedule:
@@ -21,7 +14,7 @@ on:
 
   workflow_dispatch:
 
-# Only one collector may modify feed.json at a time.
+# Prevent simultaneous collectors from modifying feed.json.
 concurrency:
   group: hormuz-osint-collector
   cancel-in-progress: false
@@ -40,20 +33,11 @@ jobs:
       PYTHONDONTWRITEBYTECODE: "1"
 
     steps:
-
-      # ----------------------------------------------------------------------
-      # Checkout
-      # ----------------------------------------------------------------------
-
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
           persist-credentials: true
-
-      # ----------------------------------------------------------------------
-      # Python
-      # ----------------------------------------------------------------------
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -62,26 +46,14 @@ jobs:
           cache: pip
           cache-dependency-path: collector/requirements.txt
 
-      # ----------------------------------------------------------------------
-      # Dependencies
-      # ----------------------------------------------------------------------
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r collector/requirements.txt
 
-      # ----------------------------------------------------------------------
-      # Collector
-      # ----------------------------------------------------------------------
-
       - name: Run collector
         run: |
           python collector/collect.py
-
-      # ----------------------------------------------------------------------
-      # Validate feed
-      # ----------------------------------------------------------------------
 
       - name: Validate feed.json
         run: |
@@ -92,22 +64,32 @@ jobs:
           path = Path("docs/data/feed.json")
 
           if not path.exists():
-              raise SystemExit("ERROR: docs/data/feed.json does not exist")
+              raise SystemExit(
+                  "ERROR: docs/data/feed.json does not exist"
+              )
 
           if path.stat().st_size == 0:
-              raise SystemExit("ERROR: feed.json is empty")
+              raise SystemExit(
+                  "ERROR: feed.json is empty"
+              )
 
           with path.open("r", encoding="utf-8") as f:
               data = json.load(f)
 
           if not isinstance(data, dict):
-              raise SystemExit("ERROR: feed.json root must be an object")
+              raise SystemExit(
+                  "ERROR: feed.json root must be an object"
+              )
 
           if not isinstance(data.get("meta"), dict):
-              raise SystemExit("ERROR: meta must be an object")
+              raise SystemExit(
+                  "ERROR: meta must be an object"
+              )
 
           if not isinstance(data.get("items"), list):
-              raise SystemExit("ERROR: items must be a list")
+              raise SystemExit(
+                  "ERROR: items must be a list"
+              )
 
           required = {
               "id",
@@ -137,10 +119,6 @@ jobs:
           )
           PY
 
-      # ----------------------------------------------------------------------
-      # Summary
-      # ----------------------------------------------------------------------
-
       - name: Show collection summary
         run: |
           python - <<'PY'
@@ -159,18 +137,27 @@ jobs:
           print("==============================================")
           print("       HORMUZ OSINT COLLECTION")
           print("==============================================")
-          print(f"Total items    : {meta.get('count', 0)}")
-          print(f"New this run   : {meta.get('new_this_run', 0)}")
-          print(f"Sources OK     : {len(meta.get('sources_ok', []))}")
-          print(f"Sources failed : {len(meta.get('sources_failed', []))}")
-          print(f"Generated      : {meta.get('generated_at', 'unknown')}")
+          print(
+              f"Total items    : {meta.get('count', 0)}"
+          )
+          print(
+              f"New this run   : {meta.get('new_this_run', 0)}"
+          )
+          print(
+              f"Sources OK     : "
+              f"{len(meta.get('sources_ok', []))}"
+          )
+          print(
+              f"Sources failed : "
+              f"{len(meta.get('sources_failed', []))}"
+          )
+          print(
+              f"Generated      : "
+              f"{meta.get('generated_at', 'unknown')}"
+          )
           print("==============================================")
           print("")
           PY
-
-      # ----------------------------------------------------------------------
-      # Commit and push
-      # ----------------------------------------------------------------------
 
       - name: Commit feed
         run: |
