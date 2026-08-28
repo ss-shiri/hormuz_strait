@@ -1,58 +1,38 @@
 ```yaml
-name: Hormuz OSINT — Collect Feed
+name: collect-hormuz-osint
 
 # ============================================================================
 # Hormuz OSINT Monitor
 #
-# Purpose:
-#   Scheduled RSS/Atom collection and publication of docs/data/feed.json
+# Collection-only workflow.
 #
-# IMPORTANT:
-#   This workflow performs COLLECTION only.
-#   It does not verify intelligence claims.
+# Runs:
+#   - every 15 minutes
+#   - manually from GitHub Actions
 #
-# Schedule:
-#   Every 15 minutes UTC
-#
-# Manual:
-#   workflow_dispatch
-#
-# Automatic push execution:
-#   Only when collector/workflow/dependency configuration changes.
+# It intentionally does NOT run on push.
+# The collector itself commits feed.json, and a push trigger could cause
+# unnecessary re-execution.
 # ============================================================================
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "7,22,37,52 * * * *"
 
   workflow_dispatch:
 
-  push:
-    branches:
-      - main
-    paths:
-      - "collector/**"
-      - ".github/workflows/collect.yml"
-
-# Prevent overlapping collectors from writing/pushing simultaneously.
+# Only one collector may modify feed.json at a time.
 concurrency:
   group: hormuz-osint-collector
   cancel-in-progress: false
 
-# Required to commit feed.json back to the repository.
 permissions:
   contents: write
 
 jobs:
-
-  # ==========================================================================
-  # COLLECT
-  # ==========================================================================
-
   collect:
-    name: Collect OSINT feeds
+    name: Collect Hormuz OSINT
     runs-on: ubuntu-latest
-
     timeout-minutes: 10
 
     env:
@@ -62,7 +42,7 @@ jobs:
     steps:
 
       # ----------------------------------------------------------------------
-      # CHECKOUT
+      # Checkout
       # ----------------------------------------------------------------------
 
       - name: Checkout repository
@@ -72,7 +52,7 @@ jobs:
           persist-credentials: true
 
       # ----------------------------------------------------------------------
-      # PYTHON
+      # Python
       # ----------------------------------------------------------------------
 
       - name: Set up Python
@@ -83,7 +63,7 @@ jobs:
           cache-dependency-path: collector/requirements.txt
 
       # ----------------------------------------------------------------------
-      # DEPENDENCIES
+      # Dependencies
       # ----------------------------------------------------------------------
 
       - name: Install dependencies
@@ -92,15 +72,15 @@ jobs:
           python -m pip install -r collector/requirements.txt
 
       # ----------------------------------------------------------------------
-      # COLLECT
+      # Collector
       # ----------------------------------------------------------------------
 
-      - name: Run OSINT collector
+      - name: Run collector
         run: |
           python collector/collect.py
 
       # ----------------------------------------------------------------------
-      # VALIDATE OUTPUT
+      # Validate feed
       # ----------------------------------------------------------------------
 
       - name: Validate feed.json
@@ -112,24 +92,24 @@ jobs:
           path = Path("docs/data/feed.json")
 
           if not path.exists():
-              raise SystemExit("ERROR: feed.json was not created.")
+              raise SystemExit("ERROR: docs/data/feed.json does not exist")
 
           if path.stat().st_size == 0:
-              raise SystemExit("ERROR: feed.json is empty.")
+              raise SystemExit("ERROR: feed.json is empty")
 
           with path.open("r", encoding="utf-8") as f:
               data = json.load(f)
 
           if not isinstance(data, dict):
-              raise SystemExit("ERROR: feed.json root must be an object.")
+              raise SystemExit("ERROR: feed.json root must be an object")
 
           if not isinstance(data.get("meta"), dict):
-              raise SystemExit("ERROR: feed.json meta must be an object.")
+              raise SystemExit("ERROR: meta must be an object")
 
           if not isinstance(data.get("items"), list):
-              raise SystemExit("ERROR: feed.json items must be a list.")
+              raise SystemExit("ERROR: items must be a list")
 
-          required_item_fields = {
+          required = {
               "id",
               "title",
               "link",
@@ -138,31 +118,30 @@ jobs:
               "published_ts",
           }
 
-          for index, item in enumerate(data["items"]):
+          for i, item in enumerate(data["items"]):
               if not isinstance(item, dict):
                   raise SystemExit(
-                      f"ERROR: item {index} is not an object."
+                      f"ERROR: item {i} is not an object"
                   )
 
-              missing = required_item_fields - item.keys()
+              missing = required - item.keys()
 
               if missing:
                   raise SystemExit(
-                      f"ERROR: item {index} missing fields: "
+                      f"ERROR: item {i} missing: "
                       f"{sorted(missing)}"
                   )
 
           print(
-              f"Feed validation OK: "
-              f"{len(data['items'])} items"
+              f"VALID: {len(data['items'])} feed items"
           )
           PY
 
       # ----------------------------------------------------------------------
-      # SHOW COLLECTION SUMMARY
+      # Summary
       # ----------------------------------------------------------------------
 
-      - name: Collection summary
+      - name: Show collection summary
         run: |
           python - <<'PY'
           import json
@@ -176,22 +155,24 @@ jobs:
 
           meta = feed.get("meta", {})
 
-          print("========================================")
-          print("Hormuz OSINT Collection Summary")
-          print("========================================")
-          print(f"Total items      : {meta.get('count', 0)}")
-          print(f"New this run     : {meta.get('new_this_run', 0)}")
-          print(f"Sources OK       : {len(meta.get('sources_ok', []))}")
-          print(f"Sources failed   : {len(meta.get('sources_failed', []))}")
-          print(f"Generated        : {meta.get('generated_at', 'unknown')}")
-          print("========================================")
+          print("")
+          print("==============================================")
+          print("       HORMUZ OSINT COLLECTION")
+          print("==============================================")
+          print(f"Total items    : {meta.get('count', 0)}")
+          print(f"New this run   : {meta.get('new_this_run', 0)}")
+          print(f"Sources OK     : {len(meta.get('sources_ok', []))}")
+          print(f"Sources failed : {len(meta.get('sources_failed', []))}")
+          print(f"Generated      : {meta.get('generated_at', 'unknown')}")
+          print("==============================================")
+          print("")
           PY
 
       # ----------------------------------------------------------------------
-      # COMMIT / PUSH
+      # Commit and push
       # ----------------------------------------------------------------------
 
-      - name: Commit updated feed
+      - name: Commit feed
         run: |
           git config user.name "hormuz-osint-bot"
           git config user.email "actions@users.noreply.github.com"
