@@ -1,216 +1,647 @@
 {
   "meta": {
+    "schema_version": "1.1",
+    "feed_id": "hormuz-osint-monitor",
     "generated_at": "2026-08-26T09:15:00+00:00",
+    "updated_at": "2026-08-26T09:15:00+00:00",
     "count": 12,
     "new_this_run": 12,
-    "by_confidence": {
-      "high": 4,
-      "medium": 5,
-      "low": 3
-    },
-    "by_language": {
-      "fa": 1,
-      "ar": 1,
-      "en": 10
-    },
-    "sources_ok": [],
-    "sources_failed": [],
     "verified": false,
-    "note": "SEED sample. Automated, UNVERIFIED OSINT aggregation. Confidence = source standing only. Replaced/augmented on first Actions run.",
+    "status": "seed",
+    "collection_mode": "automated_osint_aggregation",
+    "scope": {
+      "primary_topic": "Strait of Hormuz",
+      "region": [
+        "Iran",
+        "Gulf",
+        "Gulf of Oman"
+      ]
+    },
+    "statistics": {
+      "by_confidence": {
+        "high": 4,
+        "medium": 5,
+        "low": 3
+      },
+      "by_language": {
+        "fa": 1,
+        "ar": 1,
+        "en": 10
+      },
+      "by_source_type": {
+        "institutional": 4,
+        "media": 5,
+        "aggregator": 2,
+        "social": 1
+      }
+    },
+    "sources": {
+      "ok": [
+        "cnbc.com",
+        "aljazeera.com",
+        "cnn.com",
+        "iea.org",
+        "eia.gov",
+        "congress.gov",
+        "axios.com",
+        "crisisgroup.org",
+        "news.google.com",
+        "reddit.com"
+      ],
+      "failed": []
+    },
+    "methodology": {
+      "confidence_basis": "Source reliability only; confidence does not represent independent verification of the underlying claim.",
+      "verification_policy": "Items are unverified unless independently corroborated by authoritative or primary sources.",
+      "reliability_scale": "NATO-style source reliability A-F adapted for OSINT source assessment.",
+      "note": "SEED SAMPLE. Automated, UNVERIFIED OSINT aggregation. Seed records are intended to be replaced, deduplicated, enriched and independently assessed during the first production collection runs."
+    },
     "seed": true
   },
   "items": [
     {
       "id": "cefc02fbd9f580e3",
       "title": "Iran says US is blocking Hormuz deal as Oman talks near terms",
-      "summary": "Tehran's Revolutionary Guard says Iran and Oman have agreed terms for safe transit but the strait stays closed until Washington accepts Iranian conditions; only about five commercial vessels transited on the day.",
+      "summary": "CNBC reports that Iran's Revolutionary Guard said Iran and Oman had agreed terms for safe transit, while the Strait would remain closed until Washington accepted Iranian conditions. The report also stated that only about five commercial vessels transited that day.",
       "link": "https://www.cnbc.com/2026/08/26/us-iran-war-trump-hormuz.html",
       "lang": "en",
-      "source": "CNBC",
-      "domain": "cnbc.com",
-      "feed": "CNBC",
-      "category": "news",
-      "confidence": "medium",
-      "reliability_letter": "C",
+      "source": {
+        "name": "CNBC",
+        "domain": "cnbc.com",
+        "type": "media",
+        "reliability_letter": "C"
+      },
+      "collection": {
+        "method": "web",
+        "feed": "CNBC"
+      },
+      "classification": {
+        "category": "news",
+        "source_class": "secondary",
+        "claim_status": "reported",
+        "verification_status": "unverified",
+        "confidence": "medium"
+      },
       "published": "2026-08-26T09:00:00+00:00",
       "published_ts": 1787734800,
-      "keywords": ["Hormuz"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "maritime_security",
+        "Iran-US_relations",
+        "Oman",
+        "shipping"
+      ],
+      "entities": [
+        "Iran",
+        "United States",
+        "Oman",
+        "Strait of Hormuz"
+      ],
+      "keywords": [
+        "Hormuz",
+        "Iran",
+        "Oman",
+        "shipping"
+      ],
+      "analytical_tags": [
+        "maritime_disruption",
+        "negotiations",
+        "access_control"
+      ]
     },
     {
       "id": "9dd64331dc9728d7",
       "title": "جست‌وجوی زندهٔ «تنگه هرمز» در گوگل‌نیوز",
-      "summary": "نقطهٔ ورود تجمیعی به آخرین اخبار فارسی دربارهٔ تنگهٔ هرمز؛ اعتبار پایین چون منبعِ منفرد ندارد و راستی‌آزمایی نشده است.",
+      "summary": "Google News search endpoint aggregating recent Persian-language reporting related to the Strait of Hormuz. This is a discovery source rather than a single originating publication and has not been independently verified.",
       "link": "https://news.google.com/search?q=%D8%AA%D9%86%DA%AF%D9%87%20%D9%87%D8%B1%D9%85%D8%B2&hl=fa",
       "lang": "fa",
-      "source": "Google News",
-      "domain": "news.google.com",
-      "feed": "Google News",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "E",
+      "source": {
+        "name": "Google News",
+        "domain": "news.google.com",
+        "type": "aggregator",
+        "reliability_letter": "E"
+      },
+      "collection": {
+        "method": "search",
+        "feed": "Google News"
+      },
+      "classification": {
+        "category": "discovery",
+        "source_class": "aggregator",
+        "claim_status": "unattributed",
+        "verification_status": "unverified",
+        "confidence": "low"
+      },
       "published": "2026-08-26T07:00:00+00:00",
       "published_ts": 1787727600,
-      "keywords": ["هرمز"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "Iran",
+        "Persian_media"
+      ],
+      "entities": [
+        "Strait of Hormuz"
+      ],
+      "keywords": [
+        "هرمز",
+        "تنگه هرمز"
+      ],
+      "analytical_tags": [
+        "discovery_source",
+        "persian_language"
+      ]
     },
     {
       "id": "fe239152b7ce3be2",
       "title": "بحث حيّ عن «مضيق هرمز» في غوغل نيوز",
-      "summary": "نقطة دخول تجميعية لأحدث الأخبار العربية عن مضيق هرمز؛ الثقة منخفضة لأنه مُجمِّع وليس مصدراً منفرداً، وغير مُتحقَّق.",
+      "summary": "Google News search endpoint aggregating recent Arabic-language reporting related to the Strait of Hormuz. This is a discovery source rather than a single originating publication and has not been independently verified.",
       "link": "https://news.google.com/search?q=%D9%85%D8%B6%D9%8A%D9%82%20%D9%87%D8%B1%D9%85%D8%B2&hl=ar",
       "lang": "ar",
-      "source": "Google News",
-      "domain": "news.google.com",
-      "feed": "Google News",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "E",
+      "source": {
+        "name": "Google News",
+        "domain": "news.google.com",
+        "type": "aggregator",
+        "reliability_letter": "E"
+      },
+      "collection": {
+        "method": "search",
+        "feed": "Google News"
+      },
+      "classification": {
+        "category": "discovery",
+        "source_class": "aggregator",
+        "claim_status": "unattributed",
+        "verification_status": "unverified",
+        "confidence": "low"
+      },
       "published": "2026-08-26T07:00:00+00:00",
       "published_ts": 1787727600,
-      "keywords": ["هرمز"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "Iran",
+        "Arabic_media"
+      ],
+      "entities": [
+        "Strait of Hormuz"
+      ],
+      "keywords": [
+        "هرمز",
+        "مضيق هرمز"
+      ],
+      "analytical_tags": [
+        "discovery_source",
+        "arabic_language"
+      ]
     },
     {
       "id": "8fa87e0ada0b1a50",
       "title": "Reddit search: public posts mentioning Hormuz",
-      "summary": "User-generated posts and discussion threads referencing the strait; lowest confidence tier, unverified social chatter.",
+      "summary": "Reddit search results containing public user-generated posts and discussion threads mentioning the Strait of Hormuz. The material represents social chatter and is unverified.",
       "link": "https://www.reddit.com/search/?q=hormuz&sort=new",
       "lang": "en",
-      "source": "Reddit",
-      "domain": "reddit.com",
-      "feed": "Reddit",
-      "category": "social",
-      "confidence": "low",
-      "reliability_letter": "E",
+      "source": {
+        "name": "Reddit",
+        "domain": "reddit.com",
+        "type": "social",
+        "reliability_letter": "E"
+      },
+      "collection": {
+        "method": "search",
+        "feed": "Reddit"
+      },
+      "classification": {
+        "category": "social",
+        "source_class": "user_generated",
+        "claim_status": "unattributed",
+        "verification_status": "unverified",
+        "confidence": "low"
+      },
       "published": "2026-08-25T18:00:00+00:00",
       "published_ts": 1787680800,
-      "keywords": ["Hormuz"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "social_media",
+        "maritime_security"
+      ],
+      "entities": [
+        "Strait of Hormuz"
+      ],
+      "keywords": [
+        "Hormuz"
+      ],
+      "analytical_tags": [
+        "social_chatter",
+        "discovery_source",
+        "unverified"
+      ]
     },
     {
       "id": "a80a65b94c4f94f9",
       "title": "Tracking data shows how many ships still defy the Hormuz risk",
-      "summary": "Analysis of transit data shows the waterway split into a northern Iranian route and a southern Omani route, with daily crossings far below the pre-war average.",
+      "summary": "Al Jazeera reports analysis of vessel-transit data showing a division between a northern Iranian route and a southern Omani route, with daily crossings substantially below the pre-war average.",
       "link": "https://www.aljazeera.com/news/2026/8/20/are-hormuz-ships-more-willing-to-defy-iran-or-the-us-what-data-shows",
       "lang": "en",
-      "source": "Al Jazeera",
-      "domain": "aljazeera.com",
-      "feed": "Al Jazeera",
-      "category": "news",
-      "confidence": "medium",
-      "reliability_letter": "C",
+      "source": {
+        "name": "Al Jazeera",
+        "domain": "aljazeera.com",
+        "type": "media",
+        "reliability_letter": "C"
+      },
+      "collection": {
+        "method": "web",
+        "feed": "Al Jazeera"
+      },
+      "classification": {
+        "category": "news",
+        "source_class": "secondary",
+        "claim_status": "reported_analysis",
+        "verification_status": "unverified",
+        "confidence": "medium"
+      },
       "published": "2026-08-20T10:00:00+00:00",
       "published_ts": 1787220000,
-      "keywords": ["Hormuz"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "shipping",
+        "maritime_security",
+        "vessel_tracking"
+      ],
+      "entities": [
+        "Strait of Hormuz",
+        "Iran",
+        "Oman"
+      ],
+      "keywords": [
+        "Hormuz",
+        "ships",
+        "transit",
+        "shipping"
+      ],
+      "analytical_tags": [
+        "maritime_disruption",
+        "route_diversion",
+        "vessel_tracking"
+      ]
     },
     {
       "id": "4c1924571ce4e21b",
       "title": "Ships face a perilous path through the Strait of Hormuz",
-      "summary": "Live coverage reports continued standoff between Washington and Tehran over control of the waterway, with shipping disruptions compounded by Red Sea attacks.",
+      "summary": "CNN reports continued tension between Washington and Tehran over control of the waterway, with shipping disruption occurring alongside wider maritime security incidents in the region.",
       "link": "https://www.cnn.com/2026/08/15/world/live-news/iran-war-trump",
       "lang": "en",
-      "source": "CNN",
-      "domain": "cnn.com",
-      "feed": "CNN",
-      "category": "news",
-      "confidence": "medium",
-      "reliability_letter": "C",
+      "source": {
+        "name": "CNN",
+        "domain": "cnn.com",
+        "type": "media",
+        "reliability_letter": "C"
+      },
+      "collection": {
+        "method": "web",
+        "feed": "CNN"
+      },
+      "classification": {
+        "category": "news",
+        "source_class": "secondary",
+        "claim_status": "reported",
+        "verification_status": "unverified",
+        "confidence": "medium"
+      },
       "published": "2026-08-15T08:00:00+00:00",
       "published_ts": 1786780800,
-      "keywords": ["Hormuz"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "shipping",
+        "Iran-US_relations",
+        "maritime_security"
+      ],
+      "entities": [
+        "Strait of Hormuz",
+        "Iran",
+        "United States"
+      ],
+      "keywords": [
+        "Hormuz",
+        "ships",
+        "Iran",
+        "United States"
+      ],
+      "analytical_tags": [
+        "maritime_disruption",
+        "geopolitical_tension"
+      ]
     },
     {
       "id": "2ac3ce595043621e",
       "title": "IEA calls Hormuz closure the largest oil-supply disruption on record",
-      "summary": "The August Oil Market Report cuts 2026 supply and demand forecasts, citing continued closure of the strait and renewed maritime attacks.",
+      "summary": "The International Energy Agency's August Oil Market Report discusses the impact of the Strait of Hormuz disruption on global oil supply and revises 2026 supply and demand forecasts.",
       "link": "https://www.iea.org/reports/oil-market-report-august-2026",
       "lang": "en",
-      "source": "International Energy Agency",
-      "domain": "iea.org",
-      "feed": "International Energy Agency",
-      "category": "official",
-      "confidence": "high",
-      "reliability_letter": "A",
+      "source": {
+        "name": "International Energy Agency",
+        "domain": "iea.org",
+        "type": "institutional",
+        "reliability_letter": "A"
+      },
+      "collection": {
+        "method": "web",
+        "feed": "International Energy Agency"
+      },
+      "classification": {
+        "category": "official",
+        "source_class": "institutional",
+        "claim_status": "official_report",
+        "verification_status": "source_verified",
+        "confidence": "high"
+      },
       "published": "2026-08-12T11:00:00+00:00",
       "published_ts": 1786532400,
-      "keywords": ["Hormuz"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "energy_security",
+        "oil_supply",
+        "global_energy_market"
+      ],
+      "entities": [
+        "Strait of Hormuz",
+        "International Energy Agency"
+      ],
+      "keywords": [
+        "Hormuz",
+        "oil",
+        "supply",
+        "energy"
+      ],
+      "analytical_tags": [
+        "energy_disruption",
+        "strategic_chokepoint",
+        "economic_impact"
+      ]
     },
     {
       "id": "cfb218dff0b7a5ea",
       "title": "EIA: Hormuz oil transit fell to about 4.9 million b/d in Q2 2026",
-      "summary": "Short-Term Energy Outlook estimates crude and liquids through the strait dropped sharply from roughly 21.6 million b/d before the conflict, with prices easing if traffic recovers.",
+      "summary": "The U.S. Energy Information Administration estimates that crude oil and petroleum liquids transported through the Strait fell sharply from approximately 21.6 million barrels per day before the conflict.",
       "link": "https://www.eia.gov/outlooks/steo/report/global_oil.php",
       "lang": "en",
-      "source": "U.S. Energy Information Administration",
-      "domain": "eia.gov",
-      "feed": "U.S. Energy Information Administration",
-      "category": "official",
-      "confidence": "high",
-      "reliability_letter": "A",
+      "source": {
+        "name": "U.S. Energy Information Administration",
+        "domain": "eia.gov",
+        "type": "institutional",
+        "reliability_letter": "A"
+      },
+      "collection": {
+        "method": "web",
+        "feed": "U.S. Energy Information Administration"
+      },
+      "classification": {
+        "category": "official",
+        "source_class": "institutional",
+        "claim_status": "official_estimate",
+        "verification_status": "source_verified",
+        "confidence": "high"
+      },
       "published": "2026-08-11T12:00:00+00:00",
       "published_ts": 1786449600,
-      "keywords": ["Hormuz"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "energy_security",
+        "oil_supply",
+        "maritime_trade"
+      ],
+      "entities": [
+        "Strait of Hormuz",
+        "U.S. Energy Information Administration"
+      ],
+      "keywords": [
+        "Hormuz",
+        "oil",
+        "barrels_per_day",
+        "transit"
+      ],
+      "analytical_tags": [
+        "energy_disruption",
+        "quantitative_indicator",
+        "strategic_chokepoint"
+      ]
     },
     {
       "id": "4125709c9f99a329",
       "title": "Iran sets sweeping conditions to reopen Hormuz after tanker hit",
-      "summary": "Tehran demands the US lift its naval blockade and sanctions, withdraw regional forces and pay reparations before reopening; a UAE-operated vessel was reportedly struck.",
+      "summary": "CNBC reports that Tehran demanded changes including the lifting of a U.S. naval blockade and sanctions, withdrawal of regional forces and reparations before reopening the Strait. The report also described an alleged strike involving a UAE-operated vessel.",
       "link": "https://www.cnbc.com/2026/08/08/uae-ship-targeted-missile-us-iran-tensions-stay-high.html",
       "lang": "en",
-      "source": "CNBC",
-      "domain": "cnbc.com",
-      "feed": "CNBC",
-      "category": "news",
-      "confidence": "medium",
-      "reliability_letter": "C",
+      "source": {
+        "name": "CNBC",
+        "domain": "cnbc.com",
+        "type": "media",
+        "reliability_letter": "C"
+      },
+      "collection": {
+        "method": "web",
+        "feed": "CNBC"
+      },
+      "classification": {
+        "category": "news",
+        "source_class": "secondary",
+        "claim_status": "reported",
+        "verification_status": "unverified",
+        "confidence": "medium"
+      },
       "published": "2026-08-08T14:00:00+00:00",
       "published_ts": 1786197600,
-      "keywords": ["Hormuz"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "Iran-US_relations",
+        "shipping",
+        "maritime_security"
+      ],
+      "entities": [
+        "Iran",
+        "United States",
+        "United Arab Emirates",
+        "Strait of Hormuz"
+      ],
+      "keywords": [
+        "Hormuz",
+        "Iran",
+        "United States",
+        "tanker"
+      ],
+      "analytical_tags": [
+        "maritime_incident",
+        "negotiations",
+        "access_conditions"
+      ]
     },
     {
       "id": "eb559b547de0f763",
       "title": "CRS: prolonged instability in the Strait of Hormuz could persist",
-      "summary": "Congressional Research Service reviews security developments and market impacts, noting the status quo may hold as long as both sides bear the cost.",
+      "summary": "The Congressional Research Service reviews security developments and market impacts surrounding the Strait of Hormuz and assesses conditions under which prolonged instability could continue.",
       "link": "https://www.congress.gov/crs-product/R45281",
       "lang": "en",
-      "source": "Congressional Research Service",
-      "domain": "congress.gov",
-      "feed": "Congressional Research Service",
-      "category": "official",
-      "confidence": "high",
-      "reliability_letter": "A",
+      "source": {
+        "name": "Congressional Research Service",
+        "domain": "congress.gov",
+        "type": "institutional",
+        "reliability_letter": "A"
+      },
+      "collection": {
+        "method": "web",
+        "feed": "Congressional Research Service"
+      },
+      "classification": {
+        "category": "official",
+        "source_class": "institutional",
+        "claim_status": "institutional_analysis",
+        "verification_status": "source_verified",
+        "confidence": "high"
+      },
       "published": "2026-08-07T13:00:00+00:00",
       "published_ts": 1786107600,
-      "keywords": ["Hormuz"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "security",
+        "geopolitics",
+        "energy_security"
+      ],
+      "entities": [
+        "Strait of Hormuz",
+        "Congressional Research Service"
+      ],
+      "keywords": [
+        "Hormuz",
+        "instability",
+        "security",
+        "markets"
+      ],
+      "analytical_tags": [
+        "strategic_risk",
+        "escalation_risk",
+        "energy_security"
+      ]
     },
     {
       "id": "4a624712e6ce8ef6",
       "title": "US, Iran and Oman near an interim deal to reopen Hormuz",
-      "summary": "Sources describe a proposed 60-day temporary arrangement between Oman and Iran, brokered with Qatari, Pakistani and Saudi mediation, aimed at restoring the ceasefire.",
+      "summary": "Axios reports that sources described a proposed temporary arrangement involving Iran and Oman, with regional mediation, intended to support maritime access and broader de-escalation.",
       "link": "https://www.axios.com/2026/08/05/us-iran-strait-of-hormuz-deal-nears",
       "lang": "en",
-      "source": "Axios",
-      "domain": "axios.com",
-      "feed": "Axios",
-      "category": "news",
-      "confidence": "medium",
-      "reliability_letter": "C",
+      "source": {
+        "name": "Axios",
+        "domain": "axios.com",
+        "type": "media",
+        "reliability_letter": "C"
+      },
+      "collection": {
+        "method": "web",
+        "feed": "Axios"
+      },
+      "classification": {
+        "category": "news",
+        "source_class": "secondary",
+        "claim_status": "source_attributed",
+        "verification_status": "unverified",
+        "confidence": "medium"
+      },
       "published": "2026-08-05T16:00:00+00:00",
       "published_ts": 1785945600,
-      "keywords": ["Hormuz"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "Iran",
+        "Oman",
+        "diplomacy",
+        "shipping"
+      ],
+      "entities": [
+        "Iran",
+        "United States",
+        "Oman",
+        "Strait of Hormuz"
+      ],
+      "keywords": [
+        "Hormuz",
+        "deal",
+        "Oman",
+        "Iran"
+      ],
+      "analytical_tags": [
+        "negotiations",
+        "de_escalation",
+        "maritime_access"
+      ]
     },
     {
       "id": "774042fde33b0453",
       "title": "Crisis Group flags Hormuz threat level as critical",
-      "summary": "The watchlist entry tracks Iran-Oman talks and warns an intentional or inadvertent incident at sea could escalate quickly.",
+      "summary": "The International Crisis Group's watchlist tracks developments around the Strait of Hormuz and identifies the possibility that an intentional or inadvertent maritime incident could trigger rapid escalation.",
       "link": "https://www.crisisgroup.org/trigger-list/iran-usisrael-trigger-list/flashpoints/strait-hormuz",
       "lang": "en",
-      "source": "International Crisis Group",
-      "domain": "crisisgroup.org",
-      "feed": "International Crisis Group",
-      "category": "official",
-      "confidence": "high",
-      "reliability_letter": "B",
+      "source": {
+        "name": "International Crisis Group",
+        "domain": "crisisgroup.org",
+        "type": "institutional",
+        "reliability_letter": "B"
+      },
+      "collection": {
+        "method": "web",
+        "feed": "International Crisis Group"
+      },
+      "classification": {
+        "category": "analysis",
+        "source_class": "institutional",
+        "claim_status": "analytical_assessment",
+        "verification_status": "source_verified",
+        "confidence": "high"
+      },
       "published": "2026-08-05T09:00:00+00:00",
       "published_ts": 1785920400,
-      "keywords": ["Hormuz"]
+      "first_seen": "2026-08-26T09:15:00+00:00",
+      "last_seen": "2026-08-26T09:15:00+00:00",
+      "topics": [
+        "Hormuz",
+        "escalation",
+        "maritime_security",
+        "Iran-US_relations"
+      ],
+      "entities": [
+        "Strait of Hormuz",
+        "Iran",
+        "United States",
+        "International Crisis Group"
+      ],
+      "keywords": [
+        "Hormuz",
+        "escalation",
+        "flashpoint",
+        "maritime_incident"
+      ],
+      "analytical_tags": [
+        "escalation_risk",
+        "early_warning",
+        "strategic_flashpoint"
+      ]
     }
   ]
 }
