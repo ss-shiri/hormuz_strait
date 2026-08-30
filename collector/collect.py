@@ -1,4 +1,3 @@
-```python
 #!/usr/bin/env python3
 """
 Hormuz OSINT Monitor — RSS/Atom Collector
@@ -13,7 +12,7 @@ Responsibilities
 4. Filter stale items.
 5. Deduplicate by stable item ID.
 6. Merge newly collected items with the existing feed.
-7. Prune the feed to MAX_ITEMS.
+7. Prune the feed to MAX_ITEMS and MAX_AGE_DAYS.
 8. Generate deterministic, analyst-friendly metadata.
 9. Write docs/data/feed.json atomically.
 
@@ -34,6 +33,7 @@ import json
 import logging
 import os
 import tempfile
+import time
 from datetime import datetime, timedelta, timezone
 from typing import Any
 from urllib.parse import urlsplit, urlunsplit
@@ -150,7 +150,7 @@ def iso_utc(dt: datetime) -> str:
 def load_yaml(path: str) -> Any:
     """Load a UTF-8 YAML file safely."""
     if not os.path.exists(path):
-        raise FileNotFoundError(path)
+        raise FileNotFoundError(f"Configuration file missing: {path}")
 
     with open(path, "r", encoding="utf-8") as handle:
         return yaml.safe_load(handle) or {}
@@ -348,7 +348,7 @@ def fetch(
                         url,
                         delay,
                     )
-                    time_sleep(delay)
+                    time.sleep(delay)
                     continue
 
             response.raise_for_status()
@@ -368,7 +368,7 @@ def fetch(
                     exc,
                     delay,
                 )
-                time_sleep(delay)
+                time.sleep(delay)
                 continue
 
             logger.warning(
@@ -386,13 +386,6 @@ def fetch(
             break
 
     return None
-
-
-def time_sleep(seconds: float) -> None:
-    """Small wrapper to make sleep easy to test/replace."""
-    import time
-
-    time.sleep(seconds)
 
 
 # ============================================================================
@@ -482,25 +475,8 @@ def build_keyword_list(
     """
     Determine relevant configured keywords.
 
-    Supports either:
-
-        default:
-          - hormuz
-          - strait
-
-    or:
-
-        default:
-          - hormuz
-        english:
-          - tanker
-          - iran
-        dutch:
-          - hormuz
-
     Matching is case-insensitive against title + summary.
-
-    If no configured keyword matches, returns the configured default list.
+    If no category keyword matches, returns the configured default list.
     """
 
     if not isinstance(keywords_config, dict):
@@ -513,7 +489,6 @@ def build_keyword_list(
     matched: list[str] = []
 
     for category, values in keywords_config.items():
-
         if not isinstance(values, list):
             continue
 
@@ -553,19 +528,11 @@ def get_reliability(
     """
     Resolve source reliability.
 
-    Preferred format:
-
-        source_name:
-          confidence: high
-          letter: A
-
-    Also supports the legacy format:
-
-        source_name: high
-
     Returns:
         confidence, reliability_letter
     """
+    if not isinstance(reliability_config, dict):
+        return "low", "F"
 
     record = reliability_config.get(source_name)
 
@@ -573,27 +540,18 @@ def get_reliability(
         return "low", "F"
 
     if isinstance(record, dict):
-        confidence = clean_text(
-            record.get("confidence", "low")
-        ).lower()
-
-        letter = clean_text(
-            record.get("letter", "F")
-        ).upper()
-
+        confidence = clean_text(record.get("confidence", "low")).lower()
+        letter = clean_text(record.get("letter", "F")).upper()
         return confidence or "low", letter or "F"
 
     if isinstance(record, str):
         value = record.strip()
 
-        # Legacy confidence-only configuration.
         if value.lower() in {"high", "medium", "low"}:
             return value.lower(), "F"
 
-        # Legacy reliability letter.
         if len(value) == 1 and value.upper() in "ABCDEF":
             letter = value.upper()
-
             confidence_map = {
                 "A": "high",
                 "B": "high",
@@ -602,8 +560,7 @@ def get_reliability(
                 "E": "low",
                 "F": "low",
             }
-
-            return confidence_map[letter], letter
+            return confidence_map.get(letter, "low"), letter
 
     return "low", "F"
 
@@ -630,7 +587,6 @@ def collect() -> tuple[list[dict[str, Any]], list[str], list[str]]:
         raise ValueError("sources.yaml must contain a YAML list")
 
     session = create_session()
-
     cutoff = utc_now() - timedelta(days=MAX_AGE_DAYS)
 
     items: list[dict[str, Any]] = []
@@ -638,12 +594,8 @@ def collect() -> tuple[list[dict[str, Any]], list[str], list[str]]:
     sources_failed: list[str] = []
 
     for index, source in enumerate(sources, start=1):
-
         if not isinstance(source, dict):
-            logger.warning(
-                "Skipping malformed source #%s",
-                index,
-            )
+            logger.warning("Skipping malformed source #%s", index)
             continue
 
         name = clean_text(source.get("name"))
@@ -651,8 +603,7 @@ def collect() -> tuple[list[dict[str, Any]], list[str], list[str]]:
 
         if not name or not url:
             logger.warning(
-                "Skipping source #%s: missing name or URL",
-                index,
+                "Skipping source #%s: missing name or URL", index
             )
             sources_failed.append(name or f"source_{index}")
             continue
@@ -681,10 +632,7 @@ def collect() -> tuple[list[dict[str, Any]], list[str], list[str]]:
             )
 
         if not parsed.entries:
-            logger.warning(
-                "No entries found: %s",
-                name,
-            )
+            logger.warning("No entries found: %s", name)
             sources_failed.append(name)
             continue
 
@@ -696,23 +644,16 @@ def collect() -> tuple[list[dict[str, Any]], list[str], list[str]]:
         )
 
         for entry in parsed.entries:
-
             title = clean_text(entry.get("title"))
-
             if not title:
                 continue
 
             link = extract_link(entry)
-
             if not link:
                 continue
 
             published_dt = extract_published(entry)
-
-            if published_dt is None:
-                continue
-
-            if published_dt < cutoff:
+            if published_dt is None or published_dt < cutoff:
                 continue
 
             summary = extract_summary(entry)
@@ -726,30 +667,21 @@ def collect() -> tuple[list[dict[str, Any]], list[str], list[str]]:
                 "title": title,
                 "summary": summary,
                 "link": link,
-                "lang": clean_text(
-                    source.get("lang") or "en"
-                ),
+                "lang": clean_text(source.get("lang") or "en"),
                 "source": name,
                 "domain": domain_of(link),
                 "feed": name,
-                "category": clean_text(
-                    source.get("category") or "news"
-                ),
+                "category": clean_text(source.get("category") or "news"),
                 "confidence": confidence,
                 "reliability_letter": reliability_letter,
                 "published": iso_utc(published_dt),
-                "published_ts": int(
-                    published_dt.timestamp()
-                ),
-                "keywords": build_keyword_list(
-                    entry,
-                    keywords,
-                ),
+                "published_ts": int(published_dt.timestamp()),
+                "keywords": build_keyword_list(entry, keywords),
             }
 
             items.append(item)
 
-        time_sleep(REQUEST_DELAY_SECONDS)
+        time.sleep(REQUEST_DELAY_SECONDS)
 
     return items, sources_ok, sources_failed
 
@@ -761,32 +693,34 @@ def collect() -> tuple[list[dict[str, Any]], list[str], list[str]]:
 def merge_and_prune(
     existing_items: list[dict[str, Any]],
     new_items: list[dict[str, Any]],
+    cutoff_ts: int,
 ) -> tuple[list[dict[str, Any]], int]:
     """
-    Merge existing and new items.
-
-    New records replace existing records with the same ID.
+    Merge existing and new items, applying retention cutoff and capacity cap.
 
     Returns:
         merged items
-        number of genuinely new IDs
+        number of genuinely new unique item IDs
     """
 
     existing_by_id: dict[str, dict[str, Any]] = {}
 
     for item in existing_items:
-
         if not isinstance(item, dict):
             continue
 
         item_id_value = clean_text(item.get("id"))
+        pub_ts = int(item.get("published_ts", 0) or 0)
 
-        if not item_id_value:
+        # Drop historical items older than MAX_AGE_DAYS
+        if not item_id_value or pub_ts < cutoff_ts:
             continue
 
         existing_by_id[item_id_value] = item
 
     existing_ids = set(existing_by_id)
+    seen_new_ids: set[str] = set()
+    new_count = 0
 
     for item in new_items:
         item_id_value = item.get("id")
@@ -794,25 +728,21 @@ def merge_and_prune(
         if not item_id_value:
             continue
 
+        if item_id_value not in existing_ids and item_id_value not in seen_new_ids:
+            new_count += 1
+            seen_new_ids.add(item_id_value)
+
         existing_by_id[item_id_value] = item
 
     merged = list(existing_by_id.values())
 
-    # Ensure deterministic ordering.
+    # Sort descending by timestamp
     merged.sort(
-        key=lambda item: int(
-            item.get("published_ts", 0) or 0
-        ),
+        key=lambda item: int(item.get("published_ts", 0) or 0),
         reverse=True,
     )
 
     merged = merged[:MAX_ITEMS]
-
-    new_count = sum(
-        1
-        for item in new_items
-        if item.get("id") not in existing_ids
-    )
 
     return merged, new_count
 
@@ -824,6 +754,7 @@ def merge_and_prune(
 def build_meta(
     merged: list[dict[str, Any]],
     new_count: int,
+    collected_count: int,
     sources_ok: list[str],
     sources_failed: list[str],
 ) -> dict[str, Any]:
@@ -838,23 +769,15 @@ def build_meta(
     by_language: dict[str, int] = {}
 
     for item in merged:
-
-        confidence = clean_text(
-            item.get("confidence") or "low"
-        ).lower()
+        confidence = clean_text(item.get("confidence") or "low").lower()
 
         if confidence in by_confidence:
             by_confidence[confidence] += 1
         else:
             by_confidence["low"] += 1
 
-        language = clean_text(
-            item.get("lang") or "unknown"
-        ).lower()
-
-        by_language[language] = (
-            by_language.get(language, 0) + 1
-        )
+        language = clean_text(item.get("lang") or "unknown").lower()
+        by_language[language] = by_language.get(language, 0) + 1
 
     return {
         "generated_at": iso_utc(utc_now()),
@@ -862,18 +785,12 @@ def build_meta(
         "collector_version": "1.0",
         "count": len(merged),
         "new_this_run": new_count,
-        "collected_this_run": len(
-            merged
-        ),
+        "collected_this_run": collected_count,
         "by_confidence": by_confidence,
-        "by_language": dict(
-            sorted(by_language.items())
-        ),
+        "by_language": dict(sorted(by_language.items())),
         "sources_ok": sources_ok,
         "sources_failed": sources_failed,
-        "source_count": len(
-            sources_ok
-        ) + len(sources_failed),
+        "source_count": len(sources_ok) + len(sources_failed),
         "verified": False,
         "seed": False,
         "collection_only": True,
@@ -889,8 +806,6 @@ def build_meta(
 def validate_feed(feed: dict[str, Any]) -> None:
     """
     Basic structural validation before writing feed.json.
-
-    Raises ValueError if the feed is malformed.
     """
 
     if not isinstance(feed, dict):
@@ -902,32 +817,23 @@ def validate_feed(feed: dict[str, Any]) -> None:
     if not isinstance(feed.get("items"), list):
         raise ValueError("Feed items must be a list")
 
+    required = (
+        "id",
+        "title",
+        "link",
+        "source",
+        "published",
+        "published_ts",
+    )
+
     for index, item in enumerate(feed["items"]):
-
         if not isinstance(item, dict):
-            raise ValueError(
-                f"Item {index} is not an object"
-            )
+            raise ValueError(f"Item {index} is not an object")
 
-        required = (
-            "id",
-            "title",
-            "link",
-            "source",
-            "published",
-            "published_ts",
-        )
-
-        missing = [
-            key
-            for key in required
-            if key not in item
-        ]
+        missing = [key for key in required if key not in item]
 
         if missing:
-            raise ValueError(
-                f"Item {index} missing: {missing}"
-            )
+            raise ValueError(f"Item {index} missing: {missing}")
 
 
 # ============================================================================
@@ -937,29 +843,28 @@ def validate_feed(feed: dict[str, Any]) -> None:
 def main() -> int:
     """Collector entry point."""
 
-    logger.info(
-        "Starting Hormuz OSINT Collector"
-    )
+    logger.info("Starting Hormuz OSINT Collector")
 
     try:
         new_items, sources_ok, sources_failed = collect()
 
         existing = load_json(FEED_PATH)
+        existing_items = existing.get("items", [])
 
-        existing_items = existing.get(
-            "items",
-            [],
-        )
+        cutoff_dt = utc_now() - timedelta(days=MAX_AGE_DAYS)
+        cutoff_ts = int(cutoff_dt.timestamp())
 
         merged, new_count = merge_and_prune(
             existing_items,
             new_items,
+            cutoff_ts=cutoff_ts,
         )
 
         feed = {
             "meta": build_meta(
                 merged=merged,
                 new_count=new_count,
+                collected_count=len(new_items),
                 sources_ok=sources_ok,
                 sources_failed=sources_failed,
             ),
@@ -968,13 +873,10 @@ def main() -> int:
 
         validate_feed(feed)
 
-        atomic_write_json(
-            FEED_PATH,
-            feed,
-        )
+        atomic_write_json(FEED_PATH, feed)
 
         logger.info(
-            "Collection complete | collected=%s | new=%s | total=%s | ok=%s | failed=%s",
+            "Collection complete | fetched=%s | new=%s | total=%s | ok=%s | failed=%s",
             len(new_items),
             new_count,
             len(merged),
@@ -982,22 +884,14 @@ def main() -> int:
             len(sources_failed),
         )
 
-        logger.info(
-            "Wrote feed.json → %s",
-            FEED_PATH,
-        )
+        logger.info("Wrote feed.json → %s", FEED_PATH)
 
-        # Do not fail GitHub Actions merely because one RSS source failed.
-        # Fail only on a complete collector/runtime error.
         return 0
 
     except Exception:
-        logger.exception(
-            "Fatal collector error"
-        )
+        logger.exception("Fatal collector error")
         return 1
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-```
