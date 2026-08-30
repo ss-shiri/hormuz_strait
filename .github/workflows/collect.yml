@@ -31,7 +31,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
           persist-credentials: true
 
       - name: Set up Python
@@ -91,9 +91,7 @@ jobs:
 
               missing = required - item.keys()
               if missing:
-                  raise SystemExit(
-                      f"ERROR: item {i} missing: {sorted(missing)}"
-                  )
+                  raise SystemExit(f"ERROR: item {i} missing: {sorted(missing)}")
 
           print(f"VALID: {len(data['items'])} feed items")
           PY
@@ -102,29 +100,42 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          import os
 
           with open("docs/data/feed.json", "r", encoding="utf-8") as f:
               feed = json.load(f)
 
           meta = feed.get("meta", {})
 
-          print("")
-          print("==============================================")
-          print("        HORMUZ OSINT COLLECTION")
-          print("==============================================")
-          print(f"Total items    : {meta.get('count', 0)}")
-          print(f"New this run   : {meta.get('new_this_run', 0)}")
-          print(f"Sources OK     : {len(meta.get('sources_ok', []))}")
-          print(f"Sources failed : {len(meta.get('sources_failed', [])}")
-          print(f"Generated      : {meta.get('generated_at', 'unknown')}")
-          print("==============================================")
-          print("")
+          summary = (
+              "\n==============================================\n"
+              "        HORMUZ OSINT COLLECTION\n"
+              "==============================================\n"
+              f"Total items    : {meta.get('count', 0)}\n"
+              f"New this run   : {meta.get('new_this_run', 0)}\n"
+              f"Sources OK     : {len(meta.get('sources_ok', []))}\n"
+              f"Sources failed : {len(meta.get('sources_failed', []))}\n"
+              f"Generated      : {meta.get('generated_at', 'unknown')}\n"
+              "==============================================\n"
+          )
+          print(summary)
+
+          # Render visually in GitHub Actions Run Summary UI
+          summary_file = os.getenv("GITHUB_STEP_SUMMARY")
+          if summary_file:
+              with open(summary_file, "a", encoding="utf-8") as sf:
+                  sf.write("### Hormuz OSINT Collection Summary\n")
+                  sf.write(f"- **Total items**: {meta.get('count', 0)}\n")
+                  sf.write(f"- **New this run**: {meta.get('new_this_run', 0)}\n")
+                  sf.write(f"- **Sources OK**: {len(meta.get('sources_ok', []))}\n")
+                  sf.write(f"- **Sources failed**: {len(meta.get('sources_failed', []))}\n")
+                  sf.write(f"- **Generated**: {meta.get('generated_at', 'unknown')}\n")
           PY
 
       - name: Commit feed
         run: |
-          git config user.name "hormuz-osint-bot"
-          git config user.email "actions@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add docs/data/feed.json
 
@@ -134,4 +145,5 @@ jobs:
           fi
 
           git commit -m "feed: refresh $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git pull --rebase origin ${{ github.ref_name }}
           git push
