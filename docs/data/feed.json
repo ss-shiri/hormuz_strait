@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated_at": "2026-09-04T23:24:55.795015Z",
+    "generated_at": "2026-09-05T01:18:51.928956Z",
     "collector": "hormuz-osint-collector",
     "collector_version": "1.0",
     "count": 200,
-    "new_this_run": 119,
+    "new_this_run": 108,
     "collected_this_run": 204,
     "by_confidence": {
       "high": 0,
@@ -12,9 +12,9 @@
       "low": 200
     },
     "by_language": {
-      "ar": 80,
-      "en": 109,
-      "fa": 11
+      "ar": 79,
+      "en": 111,
+      "fa": 10
     },
     "sources_ok": [
       "BBC News فارسی",
@@ -43,6 +43,90 @@
   },
   "items": [
     {
+      "id": "6317d0f7773b6686",
+      "title": "South Korea Reviews Military Options to Enter Strait of Hormuz",
+      "summary": "<table> <tr><td> <a href=\"https://www.reddit.com/r/NewsWhatever/comments/1w7lz3c/south_korea_reviews_military_options_to_enter/\"> <img alt=\"South Korea Reviews Military Options to Enter Strait of Hormuz\" src=\"https://external-preview.redd.it/R5oa8srFnS3WR2ILwMuQXbkVliaQm-fg3oNbZJESpP8.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=e756b522fd48da3a7cd40bf04e1a04d939ff0d6d\" title=\"South Korea Reviews Military Options to Enter Strait of Hormuz\" /> </a> </td><td> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/dirtyharrison\"> /u/dirtyharrison </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/NewsWhatever/\"> r/NewsWhatever </a> <br /> <span><a href=\"https://www.breitbart.com/asia/2026/09/04/south-korea-reviews-military-options-enter-strait-hormuz/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/NewsWhatever/comments/1w7lz3c/south_korea_reviews_military_options_to_enter/\">[comments]</a></span> </td></tr></table>",
+      "link": "https://www.reddit.com/r/NewsWhatever/comments/1w7lz3c/south_korea_reviews_military_options_to_enter/",
+      "lang": "en",
+      "source": "Reddit search: hormuz",
+      "domain": "www.reddit.com",
+      "feed": "Reddit search: hormuz",
+      "category": "social",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-05T00:40:27Z",
+      "published_ts": 1788568827,
+      "keywords": [
+        "Hormuz",
+        "Strait of Hormuz",
+        "strait"
+      ]
+    },
+    {
+      "id": "219d966837e6cee5",
+      "title": "Senior EU official cancels Serbia trip over planned tribute to Mladic",
+      "summary": "EU&#039;s Marta Kos cancels Serbia visit, condemning Ratko Mladic &#039;glorification&#039; as incompatible with European values.",
+      "link": "https://www.aljazeera.com/news/2026/9/5/senior-eu-official-cancels-serbia-trip-over-planned-tribute-to-mladic?traffic_source=rss",
+      "lang": "en",
+      "source": "Al Jazeera English",
+      "domain": "www.aljazeera.com",
+      "feed": "Al Jazeera English",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-05T00:19:17Z",
+      "published_ts": 1788567557,
+      "keywords": []
+    },
+    {
+      "id": "1c76c76ae513856d",
+      "title": "Panama Canal Scraps Planned October Draft Cut—for Now",
+      "summary": "The Panama Canal has postponed a planned reduction in the maximum draft for vessels using its Neopanamax locks, offering some near-term relief for ship operators even as the waterway continues...",
+      "link": "https://gcaptain.com/panama-canal-scraps-planned-october-draft-cut-for-now/",
+      "lang": "en",
+      "source": "gCaptain (maritime)",
+      "domain": "gcaptain.com",
+      "feed": "gCaptain (maritime)",
+      "category": "maritime",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-05T00:08:05Z",
+      "published_ts": 1788566885,
+      "keywords": []
+    },
+    {
+      "id": "fc83ddae3bf40458",
+      "title": "Iran war live: Trump says US may target Iran’s Pickaxe Mountain ‘very soon’",
+      "summary": "US President Donald Trump has repeated an earlier warning that the US may attack Iran&#039;s Pickaxe Mountain &quot;very soon&quot;.",
+      "link": "https://www.aljazeera.com/news/liveblog/2026/9/5/iran-war-live-trump-says-us-may-target-irans-pickaxe-mountain-very-soon?traffic_source=rss",
+      "lang": "en",
+      "source": "Al Jazeera English",
+      "domain": "www.aljazeera.com",
+      "feed": "Al Jazeera English",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-05T00:00:00Z",
+      "published_ts": 1788566400,
+      "keywords": []
+    },
+    {
+      "id": "8101da91933d6f12",
+      "title": "‘Small potatoes’: US President Trump downplays war on Iran",
+      "summary": "Trump tells reporters the US is &#039;not fighting right now&#039; despite a recent exchange of fire with Iran.",
+      "link": "https://www.aljazeera.com/news/2026/9/4/small-potatoes-us-president-trump-downplays-war-on-iran?traffic_source=rss",
+      "lang": "en",
+      "source": "Al Jazeera English",
+      "domain": "www.aljazeera.com",
+      "feed": "Al Jazeera English",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-04T23:55:50Z",
+      "published_ts": 1788566150,
+      "keywords": []
+    },
+    {
       "id": "37a2eb0302d06d2e",
       "title": "SPR drawdown update 2 September based on data to 28 August",
       "summary": "<table> <tr><td> <a href=\"https://www.reddit.com/r/oil/comments/1w7k7eq/spr_drawdown_update_2_september_based_on_data_to/\"> <img alt=\"SPR drawdown update 2 September based on data to 28 August\" src=\"https://preview.redd.it/4hez8pa77lnh1.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=c6d4c5b86cd085c62a8aac1e3cfb58ec2d6aac03\" title=\"SPR drawdown update 2 September based on data to 28 August\" /> </a> </td><td> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/MarmotFullofWoe\"> /u/MarmotFullofWoe </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/oil/\"> r/oil </a> <br /> <span><a href=\"https://i.redd.it/4hez8pa77lnh1.jpeg\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/oil/comments/1w7k7eq/spr_drawdown_update_2_september_based_on_data_to/\">[comments]</a></span> </td></tr></table>",
@@ -56,6 +140,22 @@
       "reliability_letter": "F",
       "published": "2026-09-04T23:20:53Z",
       "published_ts": 1788564053,
+      "keywords": []
+    },
+    {
+      "id": "a5cdadc9ca305bbd",
+      "title": "Tunisia arrests journalist Mohamed Yousfi amid crackdown on critics",
+      "summary": "Tunisia faces criticism as prosecutions of journalists continue under President Kais Saied&#039;s rule.",
+      "link": "https://www.aljazeera.com/news/2026/9/4/tunisia-arrests-journalist-amid-crackdown-on-government-critics?traffic_source=rss",
+      "lang": "en",
+      "source": "Al Jazeera English",
+      "domain": "www.aljazeera.com",
+      "feed": "Al Jazeera English",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-04T23:19:43Z",
+      "published_ts": 1788563983,
       "keywords": []
     },
     {
@@ -100,7 +200,7 @@
     },
     {
       "id": "0a6179f4517e5436",
-      "title": "Mock Republican convention website redirects users to Epstein Files",
+      "title": "Mock Republican convention website tops Google, redirects to Epstein files",
       "summary": "Democratic lawmakers poke fun at prank website, while Republicans slam &#039;fake news&#039; and redirect users to real one.",
       "link": "https://www.aljazeera.com/news/2026/9/4/mock-republican-convention-website-redirects-users-to-epstein-files?traffic_source=rss",
       "lang": "en",
@@ -309,6 +409,22 @@
       "keywords": []
     },
     {
+      "id": "0e2702f8c8c62b0b",
+      "title": "هل تطيح فضيحة تمويل حزب \"إصلاح المملكة المتحدة\" بمستقبل نايجل فاراج السياسي؟",
+      "summary": "كشفت تحقيق صحفي عن محادثات شارك فيها اثنان من كبار مساعدي فاراج بشأن استطلاعات رأي ممولة من جهة أمريكية متخفية، وعن آلية مقترحة لتمرير تبرع بـ 500 ألف جنيه، مما يضعف الصورة التي يحاول تقديمها عن نفسه.",
+      "link": "https://www.aljazeera.net/politics/2026/9/5/%d9%87%d9%84-%d8%aa%d8%b7%d9%8a%d8%ad-%d9%81%d8%b6%d9%8a%d8%ad%d8%a9-%d8%aa%d9%85%d9%88%d9%8a%d9%84-%d8%ad%d8%b2%d8%a8-%d8%a5%d8%b5%d9%84%d8%a7%d8%ad-%d8%a7%d9%84%d9%85%d9%85%d9%84%d9%83%d8%a9?traffic_source=rss",
+      "lang": "ar",
+      "source": "Al Jazeera (عربي)",
+      "domain": "www.aljazeera.net",
+      "feed": "Al Jazeera (عربي)",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-04T21:16:25Z",
+      "published_ts": 1788556585,
+      "keywords": []
+    },
+    {
       "id": "3356621a7a456bf6",
       "title": "woops",
       "summary": "<table> <tr><td> <a href=\"https://www.reddit.com/r/2westerneurope4u/comments/1w7gyr1/woops/\"> <img alt=\"woops\" src=\"https://preview.redd.it/hgdsjbtljknh1.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=5ae02fdeeb042f084b9d345dd41eef4dc3119ffe\" title=\"woops\" /> </a> </td><td> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/VAiSiA\"> /u/VAiSiA </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/2westerneurope4u/\"> r/2westerneurope4u </a> <br /> <span><a href=\"https://i.redd.it/hgdsjbtljknh1.jpeg\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/2westerneurope4u/comments/1w7gyr1/woops/\">[comments]</a></span> </td></tr></table>",
@@ -389,6 +505,22 @@
       "keywords": []
     },
     {
+      "id": "996423c3b6f19ea7",
+      "title": "من قهبان إلى الساحل.. كيف يضغط التصعيد الحوثي على غرب تعز؟",
+      "summary": "سيطرت جماعة أنصار الله &quot;الحوثيين&quot; على منطقة &quot;قهبان&quot; الإستراتيجية و&quot;جبل الشيخ سعيد&quot; غربي محافظة تعز، بينما يستعد الجيش اليمني لشن هجوم مضاد لاستعادة المواقع.",
+      "link": "https://www.aljazeera.net/news/2026/9/5/%d9%85%d9%86-%d9%82%d9%87%d8%a8%d8%a7%d9%86-%d8%a5%d9%84%d9%89-%d8%a7%d9%84%d8%b3%d8%a7%d8%ad%d9%84-%d9%83%d9%8a%d9%81-%d9%8a%d8%b6%d8%ba%d8%b7-%d8%a7%d9%84%d8%aa%d8%b5%d8%b9%d9%8a%d8%af?traffic_source=rss",
+      "lang": "ar",
+      "source": "Al Jazeera (عربي)",
+      "domain": "www.aljazeera.net",
+      "feed": "Al Jazeera (عربي)",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-04T20:52:21Z",
+      "published_ts": 1788555141,
+      "keywords": []
+    },
+    {
       "id": "8d130a0a54604bd3",
       "title": "Trump says Iran conflict, which has killed 18 US service members and injured hundreds more, is ‘small potatoes’",
       "summary": "<table> <tr><td> <a href=\"https://www.reddit.com/r/WhatTrumpHasDone/comments/1w7galx/trump_says_iran_conflict_which_has_killed_18_us/\"> <img alt=\"Trump says Iran conflict, which has killed 18 US service members and injured hundreds more, is ‘small potatoes’\" src=\"https://external-preview.redd.it/uu5VimpRzUbl1xUk9jAsekUl5DIlKaPQi9RjvVV8dHc.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=df70f08eb7ece3f58b8c5adb2709adb7e93ffe4d\" title=\"Trump says Iran conflict, which has killed 18 US service members and injured hundreds more, is ‘small potatoes’\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>President Donald Trump on Friday labeled the Iran war “small potatoes,” the latest attempt to minimize a six-month conflict that caused a spike in gas prices and led to the deaths of 18 American service-members.</p> <p>“A lot of people don’t call it a war. I call it a military conflict because it’s small potatoes for us. It’s not a big thing,” he said in the Oval Office.</p> <p>A day earlier, Vice President JD Vance said the conflict shouldn’t be termed a “war” since major combat operations ended months ago.</p> <p>Trump similarly cast the conflict as periodic and low-grade, despite routine rounds of back-and-forth strikes.</p> <p>“I would say that it’s intermittent. You know, we do intermittent strikes,” Trump said, adding: “There’s a lot of truth that we’re not fighting right now. There’s no fighting.”</p> <p>This week the US said it had targeted nearly 60 military targets around the Strait of Hormuz — including air defense sites, radar systems, maritime assets, mine-laying capabilities and communications sites — while simultaneously escorting ships through the waterway.</p> <p>Trump himself also raised the prospect of a new operation soon to take out a suspected Iranian nuclear site south of Tehran.</p> <p>“We may hit Pickaxe very soon,” he said, referring to the underground facility where Iran is believed to have moved some of its stockpile of highly enriched uranium.</p> <p>But he still insisted the conflict was not a war.</p> <p>“It’s a military conflict, but it’s very intermittent. I could see somebody not calling it a war,” he said.</p> <p>He continued: “I don’t think it matters what you call it. What matters is the fact that we have had tremendous success.”</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/John3262005\"> /u/John3262005 </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/WhatTrumpHasDone/\"> r/WhatTrumpHasDone </a> <br /> <span><a href=\"https://www.cnn.com/2026/09/04/politics/small-potatoes-trump-iran\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/WhatTrumpHasDone/comments/1w7galx/trump_says_iran_conflict_which_has_killed_18_us/\">[comments]</a></span> </td></tr></table>",
@@ -442,6 +574,22 @@
       "keywords": [
         "mine"
       ]
+    },
+    {
+      "id": "87ab1d20d6915acc",
+      "title": "خمسة علماء في قلب جدل كورونا",
+      "summary": "أعاد تقرير البيت الأبيض الجدل حول أصل فيروس كورونا، مستندا إلى ورقة لمجلة &quot;نيتشر&quot; (Nature) رجحت المنشأ الطبيعي، وسط اتهامات لفاوتشي بالتأثير على الباحثين والتستر على فرضية التسرب المخبري.",
+      "link": "https://www.aljazeera.net/health/2026/9/5/%d8%ae%d9%85%d8%b3%d8%a9-%d8%b9%d9%84%d9%85%d8%a7%d8%a1-%d9%81%d9%8a-%d9%82%d9%84%d8%a8-%d8%ac%d8%af%d9%84-%d9%83%d9%88%d8%b1%d9%88%d9%86%d8%a7?traffic_source=rss",
+      "lang": "ar",
+      "source": "Al Jazeera (عربي)",
+      "domain": "www.aljazeera.net",
+      "feed": "Al Jazeera (عربي)",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-04T20:27:47Z",
+      "published_ts": 1788553667,
+      "keywords": []
     },
     {
       "id": "d61c0adafbb25ed1",
@@ -547,6 +695,22 @@
       "reliability_letter": "F",
       "published": "2026-09-04T20:04:13Z",
       "published_ts": 1788552253,
+      "keywords": []
+    },
+    {
+      "id": "dd8bf09fd3a47547",
+      "title": "صحيفة إسرائيلية: حماس ترفض تسليم سلاحها وكوشنر محبط من نتنياهو",
+      "summary": "قالت صحيفة &quot;تايمز أوف إسرائيل&quot; نقلا عن دبلوماسي من إحدى الدول الوسيطة، إن حركة حماس أبلغت الوسطاء أنها لا تعتزم تسليم سلاحها، في ظل التصعيد الإسرائيلي المتواصل في قطاع غزة.",
+      "link": "https://www.aljazeera.net/news/2026/9/5/%d8%b5%d8%ad%d9%8a%d9%81%d8%a9-%d8%a5%d8%b3%d8%b1%d8%a7%d8%a6%d9%8a%d9%84%d9%8a%d8%a9-%d8%ad%d9%85%d8%a7%d8%b3-%d8%aa%d8%b1%d9%81%d8%b6-%d8%aa%d8%b3%d9%84%d9%8a%d9%85?traffic_source=rss",
+      "lang": "ar",
+      "source": "Al Jazeera (عربي)",
+      "domain": "www.aljazeera.net",
+      "feed": "Al Jazeera (عربي)",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-04T19:58:14Z",
+      "published_ts": 1788551894,
       "keywords": []
     },
     {
@@ -952,8 +1116,8 @@
     },
     {
       "id": "2c752aac702c5007",
-      "title": "عاجل | الجيش اليمني: طيراننا الحربي استهدف بـ15 غارة مواقع مليشيا الحوثي في الساحل الغربي بتعز والحديدة",
-      "summary": "الجيش اليمني: طيراننا الحربي استهدف بـ15 غارة مواقع مليشيا الحوثي في الساحل الغربي بتعز والحديدة التفاصيل بعد قليل..",
+      "title": "تجدد المعارك في تعز وقصف جوي يمني يستهدف مواقع الحوثيين بالساحل الغربي",
+      "summary": "أعلن الجيش اليمني أن طيرانه الحربي استهدف بـ15 غارة مواقع الحوثيين في الساحل الغربي بتعز والحديدة، لأول مرة منذ تجدد التصعيد في يوليو/تموز الماضي.",
       "link": "https://www.aljazeera.net/news/2026/9/5/%d8%b9%d8%a7%d8%ac%d9%84-%d8%a7%d9%84%d8%ac%d9%8a%d8%b4-%d8%a7%d9%84%d9%8a%d9%85%d9%86%d9%8a-%d8%b7%d9%8a%d8%b1%d8%a7%d9%86%d9%86%d8%a7-%d8%a7%d9%84%d8%ad%d8%b1%d8%a8%d9%8a?traffic_source=rss",
       "lang": "ar",
       "source": "Al Jazeera (عربي)",
@@ -1048,8 +1212,8 @@
     },
     {
       "id": "85c05451e66533a4",
-      "title": "ثورة دي زيربي في توتنهام.. 400 مليون للتعاقدات وخطة \"غريبة\" لإرعاب الخصوم",
-      "summary": "أطلق دي زيربي ثورة شاملة لتغيير ثقافة توتنهام، وأنفق النادي أربعمئة مليون لضم لاعبين جدد، كما ألغى رفاهية غرف ملابس الفرق الزائرة.",
+      "title": "ثورة دي زيربي في توتنهام.. 400 مليون إسترليني للتعاقدات وخطة \"غريبة\" لإرعاب الخصوم",
+      "summary": "أطلق دي زيربي ثورة شاملة لتغيير ثقافة توتنهام، وأنفق النادي 400 مليون لضم لاعبين جدد، كما ألغى رفاهية غرف ملابس الفرق الزائرة.",
       "link": "https://www.aljazeera.net/sport/2026/9/5/%d8%aa%d9%88%d8%aa%d9%86%d9%87%d8%a7%d9%85-%d8%af%d9%8a-%d8%b2%d9%8a%d8%b1%d8%a8%d9%8a-%d8%aa%d9%88%d9%86%d8%a7%d9%84%d9%8a-%d8%a7%d9%84%d8%a8%d8%b1%d9%8a%d9%85%d9%8a%d8%b1%d9%84%d9%8a%d8%ba?traffic_source=rss",
       "lang": "ar",
       "source": "Al Jazeera (عربي)",
@@ -1586,7 +1750,7 @@
     {
       "id": "5ae0da2374bf1565",
       "title": "اليويفا يوقع عقوبات مزدوجة على الغندوزي وغرينوود ثنائي فنربخشة التركي",
-      "summary": "أعلن يويفا عن توقيع عقوبات على الغندوزي وغرينوود ثنائي فريق فنربخشة التركي بسبب تصرفات غير لائقة.",
+      "summary": "أعلن يويفا فرض عقوبات على الغندوزي وغرينوود ثنائي فريق فنربخشة التركي بسبب تصرفات غير لائقة.",
       "link": "https://www.aljazeera.net/sport/2026/9/4/%d8%a7%d9%84%d9%8a%d9%88%d9%8a%d9%81%d8%a7-%d9%8a%d9%88%d9%82%d8%b9-%d8%b9%d9%82%d9%88%d8%a8%d8%a7%d8%aa-%d9%85%d8%b2%d8%af%d9%88%d8%ac%d8%a9-%d8%b9%d9%84%d9%89?traffic_source=rss",
       "lang": "ar",
       "source": "Al Jazeera (عربي)",
@@ -3247,175 +3411,6 @@
       "published": "2026-09-04T11:48:15Z",
       "published_ts": 1788522495,
       "keywords": []
-    },
-    {
-      "id": "4327f81d4584cf9b",
-      "title": "85 مرة في 13 دقيقة.. \"لازمة\" أداما تراوري تتحول إلى لقطة طريفة خلال تقديمه (فيديو)",
-      "summary": "تحول مؤتمر تقديم النجم الإسباني أداما تراوري مع فريقه الجديد ديبورتيفو لاكورونيا إلى مقطع رائج على مواقع التواصل بسبب لقطة طريفة لفتت انتباه الجميع.",
-      "link": "https://www.aljazeera.net/sport/2026/9/4/%d8%aa%d9%82%d8%af%d9%8a%d9%85-%d9%81%d9%8a%d8%af%d9%8a%d9%88-%d8%aa%d8%b1%d8%a7%d9%88%d8%b1%d9%8a-%d8%af%d9%8a%d8%a8%d9%88%d8%b1%d8%aa%d9%8a%d9%81%d9%88-%d9%84%d9%8a%d8%ba%d8%a7?traffic_source=rss",
-      "lang": "ar",
-      "source": "Al Jazeera (عربي)",
-      "domain": "www.aljazeera.net",
-      "feed": "Al Jazeera (عربي)",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-04T11:48:01Z",
-      "published_ts": 1788522481,
-      "keywords": []
-    },
-    {
-      "id": "658aa501c58f75ca",
-      "title": "جورج كلوني يدافع عن رافالو ويحذر من ابتلاع الشركات الكبرى لهوليوود",
-      "summary": "دافع جورج كلوني عن حق مارك رافالو في انتقاد صفقة دمج &quot;باراماونت ووارنر براذرز&quot;، محذرا من الاندماج والذكاء الاصطناعي، وتهديد الوظائف وحرية الإعلام.",
-      "link": "https://www.aljazeera.net/arts/2026/9/4/%d8%ac%d9%88%d8%b1%d8%ac-%d9%83%d9%84%d9%88%d9%86%d9%8a-%d9%8a%d8%af%d8%a7%d9%81%d8%b9-%d8%b9%d9%86-%d8%b1%d8%a7%d9%81%d8%a7%d9%84%d9%88-%d9%88%d9%8a%d8%ad%d8%b0%d8%b1-%d9%85%d9%86?traffic_source=rss",
-      "lang": "ar",
-      "source": "Al Jazeera (عربي)",
-      "domain": "www.aljazeera.net",
-      "feed": "Al Jazeera (عربي)",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-04T11:43:25Z",
-      "published_ts": 1788522205,
-      "keywords": []
-    },
-    {
-      "id": "83ce86a2afb982f2",
-      "title": "ما الذي تملكه الصين حقا في مواجهة ترمب بشأن إيران؟",
-      "summary": "تراهن واشنطن على خنق اقتصاد إيران بالعقوبات، لكن نجاح الخطة يمر عبر الصين، أكبر مشترٍ لنفط طهران، مما يضع الولايات المتحدة أمام مواجهة مكلفة مع بكين ويكشف حدود قدرتها على فرض العزلة.",
-      "link": "https://www.aljazeera.net/politics/2026/9/4/%d9%85%d8%a7-%d8%a7%d9%84%d8%b0%d9%8a-%d8%aa%d9%85%d9%84%d9%83%d9%87-%d8%a7%d9%84%d8%b5%d9%8a%d9%86-%d8%ad%d9%82%d8%a7-%d9%81%d9%8a-%d9%85%d9%88%d8%a7%d8%ac%d9%87%d8%a9-%d8%aa%d8%b1%d9%85%d8%a8?traffic_source=rss",
-      "lang": "ar",
-      "source": "Al Jazeera (عربي)",
-      "domain": "www.aljazeera.net",
-      "feed": "Al Jazeera (عربي)",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-04T11:40:05Z",
-      "published_ts": 1788522005,
-      "keywords": []
-    },
-    {
-      "id": "b4d3b554864c1c6f",
-      "title": "Tehran’s Hormuz Blockade Looks Like History’s Dumbest Trade Own-Goal",
-      "summary": "<table> <tr><td> <a href=\"https://www.reddit.com/r/conservatives/comments/1w71tnu/tehrans_hormuz_blockade_looks_like_historys/\"> <img alt=\"Tehran’s Hormuz Blockade Looks Like History’s Dumbest Trade Own-Goal\" src=\"https://external-preview.redd.it/5fP8tbO30Zu1-x0LldSZVa1dHZkq6fVjNP1cKN34agc.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=e74a4cdf51cf9ee1341abbc168b0341747b00c8b\" title=\"Tehran’s Hormuz Blockade Looks Like History’s Dumbest Trade Own-Goal\" /> </a> </td><td> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/interestingfactoid\"> /u/interestingfactoid </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/conservatives/\"> r/conservatives </a> <br /> <span><a href=\"https://redstate.com/streiff/2026/09/03/tehrans-hormuz-blockade-looks-like-historys-dumbest-trade-own-goal-n2206471\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/conservatives/comments/1w71tnu/tehrans_hormuz_blockade_looks_like_historys/\">[comments]</a></span> </td></tr></table>",
-      "link": "https://www.reddit.com/r/conservatives/comments/1w71tnu/tehrans_hormuz_blockade_looks_like_historys/",
-      "lang": "en",
-      "source": "Reddit search: hormuz",
-      "domain": "www.reddit.com",
-      "feed": "Reddit search: hormuz",
-      "category": "social",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-04T11:33:37Z",
-      "published_ts": 1788521617,
-      "keywords": [
-        "Hormuz",
-        "blockade"
-      ]
-    },
-    {
-      "id": "5561864f1a044f25",
-      "title": "Tehran’s Hormuz Blockade Looks Like History’s Dumbest Trade Own-Goal",
-      "summary": "<table> <tr><td> <a href=\"https://www.reddit.com/r/NewRepublicans/comments/1w71tjl/tehrans_hormuz_blockade_looks_like_historys/\"> <img alt=\"Tehran’s Hormuz Blockade Looks Like History’s Dumbest Trade Own-Goal\" src=\"https://external-preview.redd.it/5fP8tbO30Zu1-x0LldSZVa1dHZkq6fVjNP1cKN34agc.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=e74a4cdf51cf9ee1341abbc168b0341747b00c8b\" title=\"Tehran’s Hormuz Blockade Looks Like History’s Dumbest Trade Own-Goal\" /> </a> </td><td> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/readingreviewsnow\"> /u/readingreviewsnow </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/NewRepublicans/\"> r/NewRepublicans </a> <br /> <span><a href=\"https://redstate.com/streiff/2026/09/03/tehrans-hormuz-blockade-looks-like-historys-dumbest-trade-own-goal-n2206471\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/NewRepublicans/comments/1w71tjl/tehrans_hormuz_blockade_looks_like_historys/\">[comments]</a></span> </td></tr></table>",
-      "link": "https://www.reddit.com/r/NewRepublicans/comments/1w71tjl/tehrans_hormuz_blockade_looks_like_historys/",
-      "lang": "en",
-      "source": "Reddit search: hormuz",
-      "domain": "www.reddit.com",
-      "feed": "Reddit search: hormuz",
-      "category": "social",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-04T11:33:27Z",
-      "published_ts": 1788521607,
-      "keywords": [
-        "Hormuz",
-        "blockade"
-      ]
-    },
-    {
-      "id": "3b561b0e3834435e",
-      "title": "الناخبون الألمان قد يبعثون بإشارة لتغيير جذري بمسار السياسة الأوروبية - مقال في \"آيريش إندبندنت\"",
-      "summary": "تتضمن جولة الصحف، الجمعة، مقالات من أيرلندا وبريطانيا والولايات المتحدة تركز على إمكانية فوز حزب يميني في انتخابات ألمانية، والتطور الصيني في مجال الذكاء الاصطناعي، وكيفية التعامل مع نقص الصواريخ الاعتراضية في أوكرانيا.",
-      "link": "https://www.bbc.com/arabic/articles/c8jde301nk1o?at_medium=RSS&at_campaign=rss",
-      "lang": "ar",
-      "source": "BBC News عربي",
-      "domain": "www.bbc.com",
-      "feed": "BBC News عربي",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-04T11:27:59Z",
-      "published_ts": 1788521279,
-      "keywords": []
-    },
-    {
-      "id": "80471a2a558ce862",
-      "title": "سابقة طبية لافتة.. رجل يعيش لأشهر بكلية خنزير قبل زراعة كلية بشرية",
-      "summary": "عاش أميركي قرابة تسعة أشهر بكلية خنزير معدّلة وراثيا قبل أن يتلقى بنجاح كلية من متبرع بشري. التجربة الأولى من نوعها أظهرت إمكانية استخدام أعضاء الحيوانات كحل مؤقت لتجاوز قوائم الانتظار الطويلة لزراعة الأعضاء.",
-      "link": "https://www.dw.com/ar/سابقة-طبية-لافتة-رجل-يعيش-لأشهر-بكلية-خنزير-قبل-زراعة-كلية-بشرية/a-78939351?maca=ara-rss-ar-all-1125-rdf",
-      "lang": "ar",
-      "source": "DW عربية",
-      "domain": "www.dw.com",
-      "feed": "DW عربية",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-04T11:19:00Z",
-      "published_ts": 1788520740,
-      "keywords": []
-    },
-    {
-      "id": "f727df8c59e3bac4",
-      "title": "رکورد کارکرد کلیه خوک پیوندی، در بدن مرد آمریکایی",
-      "summary": "پزشکان آمریکایی می‌گویند یک کلیه خوک که به یک بیمار آمریکایی پیوند زده شد، به مدت ۲۷۱ روز کار کرده که رکورد جدیدی محسوب می‌شود.",
-      "link": "https://www.bbc.com/persian/articles/czjzn1wwdnpo?at_medium=RSS&at_campaign=rss",
-      "lang": "fa",
-      "source": "BBC News فارسی",
-      "domain": "www.bbc.com",
-      "feed": "BBC News فارسی",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-04T11:16:20Z",
-      "published_ts": 1788520580,
-      "keywords": []
-    },
-    {
-      "id": "8345da81a9886376",
-      "title": "Iran war: Why US midterms could be a pivotal moment",
-      "summary": "Rising prices and opposition to war may pressure Trump to de-escalate until after the midterms, analysts say.",
-      "link": "https://www.aljazeera.com/news/2026/9/4/iran-war-why-us-midterms-could-be-a-pivotal-moment?traffic_source=rss",
-      "lang": "en",
-      "source": "Al Jazeera English",
-      "domain": "www.aljazeera.com",
-      "feed": "Al Jazeera English",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-04T11:12:51Z",
-      "published_ts": 1788520371,
-      "keywords": []
-    },
-    {
-      "id": "270f781a2afd6ec9",
-      "title": "Ironic..",
-      "summary": "<table> <tr><td> <a href=\"https://www.reddit.com/r/AdviceAnimals/comments/1w71e3x/ironic/\"> <img alt=\"Ironic..\" src=\"https://preview.redd.it/jvp6ino4lhnh1.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=4818d025e54f71b9028b3f6c9ae858483395bd4f\" title=\"Ironic..\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p><a href=\"https://apnews.com/article/iran-war-trump-strait-of-hormuz-vance-oil-7ab86fbec23313f055fc2ab47933c199?utm%5C_source=copy&amp;utm%5C_medium=share\">https://apnews.com/article/iran-war-trump-strait-of-hormuz-vance-oil-7ab86fbec23313f055fc2ab47933c199?utm\\_source=copy&amp;utm\\_medium=share</a></p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Yamaben\"> /u/Yamaben </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/AdviceAnimals/\"> r/AdviceAnimals </a> <br /> <span><a href=\"https://i.redd.it/jvp6ino4lhnh1.jpeg\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/AdviceAnimals/comments/1w71e3x/ironic/\">[comments]</a></span> </td></tr></table>",
-      "link": "https://www.reddit.com/r/AdviceAnimals/comments/1w71e3x/ironic/",
-      "lang": "en",
-      "source": "Reddit search: hormuz",
-      "domain": "www.reddit.com",
-      "feed": "Reddit search: hormuz",
-      "category": "social",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-04T11:11:48Z",
-      "published_ts": 1788520308,
-      "keywords": [
-        "Hormuz",
-        "strait"
-      ]
     }
   ]
 }
