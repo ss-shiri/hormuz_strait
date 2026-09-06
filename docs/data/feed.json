@@ -1,19 +1,19 @@
 {
   "meta": {
-    "generated_at": "2026-09-05T23:46:33.918294Z",
+    "generated_at": "2026-09-06T01:21:24.188868Z",
     "collector": "hormuz-osint-collector",
     "collector_version": "1.0",
     "count": 200,
-    "new_this_run": 116,
-    "collected_this_run": 209,
+    "new_this_run": 118,
+    "collected_this_run": 211,
     "by_confidence": {
       "high": 0,
       "medium": 0,
       "low": 200
     },
     "by_language": {
-      "ar": 86,
-      "en": 101,
+      "ar": 83,
+      "en": 104,
       "fa": 13
     },
     "sources_ok": [
@@ -42,6 +42,141 @@
     "max_items": 200
   },
   "items": [
+    {
+      "id": "84f6fadc938e84e8",
+      "title": "FRO this week?",
+      "summary": "<!-- SC_OFF --><div class=\"md\"><p>New to chart reading, but getting better!<br /> I saw a $9 million pump into FRO on Friday at end of lunch. I followed the money @ about 45.90</p> <p>What do I look for when it’s time to get out? Just setting stop losses as the ticker rises and breaks through floors / holds? </p> <p>Also - 30 min after the $9 million, Hormuz shut down, then FRO competition started sinking on Saturday - they went from $25k day breakeven, to now almost $500k daily. </p> <p>Thanks in advance </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Salmon-Train\"> /u/Salmon-Train </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/Daytrading/\"> r/Daytrading </a> <br /> <span><a href=\"https://www.reddit.com/r/Daytrading/comments/1w8i765/fro_this_week/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/Daytrading/comments/1w8i765/fro_this_week/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/Daytrading/comments/1w8i765/fro_this_week/",
+      "lang": "en",
+      "source": "Reddit search: hormuz",
+      "domain": "www.reddit.com",
+      "feed": "Reddit search: hormuz",
+      "category": "social",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-06T01:14:56Z",
+      "published_ts": 1788657296,
+      "keywords": [
+        "Hormuz"
+      ]
+    },
+    {
+      "id": "8bdad7db16f82b06",
+      "title": "Flappy Taco: Strait of Hormuz",
+      "summary": "&#32; submitted by &#32; <a href=\"https://www.reddit.com/user/elchemy\"> /u/elchemy </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/IndieGaming/\"> r/IndieGaming </a> <br /> <span><a href=\"https://flappytaco.ai.studio/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/IndieGaming/comments/1w8hgbp/flappy_taco_strait_of_hormuz/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/IndieGaming/comments/1w8hgbp/flappy_taco_strait_of_hormuz/",
+      "lang": "en",
+      "source": "Reddit search: hormuz",
+      "domain": "www.reddit.com",
+      "feed": "Reddit search: hormuz",
+      "category": "social",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-06T00:38:54Z",
+      "published_ts": 1788655134,
+      "keywords": [
+        "Hormuz",
+        "Strait of Hormuz",
+        "strait"
+      ]
+    },
+    {
+      "id": "0fb02fa5353c0a23",
+      "title": "Flappy Taco: Strait of Hormuz",
+      "summary": "<!-- SC_OFF --><div class=\"md\"><p>Flappy TACO in the strait of Hormuz </p> <p>built in ai studio </p> <p>I vibe-coded a geopolitical arcade game where a taco de-escalates the Strait of Hormuz (and wins the Nobel Peace Prize). Here’s the architecture, audio pipeline, and lessons learned.</p> <p><strong>Body:</strong></p> <h1>The Premise</h1> <p>What started as a joke concept—&quot;What if Flappy Bird was set in the world’s most critical maritime chokepoint, but you play as a hot-sauce-propelled taco navigating VLCC supertankers?&quot;—turned into a surprisingly deep canvas engine. In our latest update, we added a full <strong>&quot;Peace Prize&quot; round</strong> where your objective shifts from dodging naval hazards to collecting diplomatic delegate votes and escorting peaceful vessels to secure the Nobel Peace Prize.</p> <p>Here is a breakdown of how it was built, the tooling involved, technical hurdles, and patterns you can use in your own vibe-coded projects.</p> <h1>1. The Tech Stack &amp; Tooling</h1> <ul> <li><strong>Prompting / Agent Framework:</strong> Google AI Studio Build (using Gemini models for autonomous file orchestration, iterative linting, and refactoring).</li> <li><strong>Frontend:</strong> React 18 + TypeScript + Vite.</li> <li><strong>Styling:</strong> Tailwind CSS (utility classes + dark terminal/tactical HUD styling).</li> <li><strong>Rendering Engine:</strong> Vanilla HTML5 2D Canvas with a delta-time requestAnimationFrame loop.</li> <li><strong>Audio:</strong> Zero external audio assets—100% procedurally synthesized Web Audio API soundscapes (FM synthesis, noise buffers, harmonic arpeggios).</li> <li><strong>Icons:</strong> lucide-react.</li> </ul> <h1>2. The Development Workflow: Step-by-Step Prompting</h1> <p>Rather than dumping a monolithic 5,000-line prompt, the project was built using <strong>domain-constrained modular iterations</strong>:</p> <ol> <li><strong>State &amp; Core Loop First:</strong> Prompted the physics engine with explicit sub-pixel calculations (y += velocity * dt, gravity, terminal fall speeds, and bounding-box hitboxes with margin forgiveness to prevent frustrating edge clips).</li> <li><strong>Procedural Maritime Canvas Renderer:</strong> Separated visual rendering completely from game state logic (canvasRenderer.ts). Background parallax layers, supertanker hulls, wake spray, radar sweeps, and weather effects (sandstorms, night-vision modes) are drawn procedurally via canvas primitives (arc, roundRect, and radial gradients).</li> <li><strong>The Web Audio Synthesizer:</strong> Instead of loading bulky .mp3 or .wav files (which cause latency and asset 404s), every sound effect is synthesized on-the-fly: <ul> <li><strong>Flap/Thrust:</strong> Short low-frequency pitch drops on triangle waves.</li> <li><strong>Hot Sauce Rocket:</strong> Bandpass-filtered white noise bursts.</li> <li><strong>Diplomatic Ballot Pickup:</strong> Ascending pentatonic chord harps (sine oscillators with staggered decay).</li> <li><strong>Nobel Fanfare:</strong> A layered multi-voice brass arpeggio (C5 → G6).</li> </ul></li> <li><strong>The &quot;Peace Summit&quot; Phase Logic:</strong> When the player reaches Sector 2 or selects <strong>Peace Summit</strong> mode, the procedural obstacle generator swaps out naval mines for diplomatic delegate envelopes (peace_vote), olive branch shields, and peace doves. A dedicated ballot counter tracks delegate progress on the HUD, triggering a custom coronation modal and unlocking a 24K gold Nobel Laureate chassis once 5/5 votes are secured.</li> </ol> <h1>3. Key Code &amp; Architecture Insights</h1> <h1>A. Keep Renderers Stateless &amp; Decoupled</h1> <p>A common pitfall with canvas games in React is putting draw logic inside the React component tree or state hooks. Doing this causes massive re-render overhead.</p> <ul> <li><strong>The Fix:</strong> Treat React purely as a thin state controller for modals, HUDs, and high scores. The canvas loop references raw mutable refs (tacoRef, obstaclesRef, particlesRef) and passes them to pure drawing functions.</li> </ul> <p>code TypeScript</p> <pre><code>// Sample pattern: State stays in refs, React only syncs on key ticks or game transitions const updateLoop = (timestamp: number) =&gt; { const dt = Math.min((timestamp - lastTimeRef.current) / 16.67, 2.0); lastTimeRef.current = timestamp; // 1. Update positions // 2. Resolve collisions // 3. Trigger Web Audio nodes directly without React re-renders // 4. Draw to Canvas via CanvasRenderer requestAnimationFrame(updateLoop); }; </code></pre> <h1>B. Asset-Free Audio via Web Audio API</h1> <p>Loading sounds over network requests can hitch the main thread or fail entirely if assets are blocked. Procedural audio keeps everything instant:</p> <p>code TypeScript</p> <pre><code>// Procedural Nobel Peace Harp Chime (Ascending D-major chord) const playPeaceVoteCollect = (voteCount: number) =&gt; { const scale = [587.33, 739.99, 880.0, 1108.73, 1174.66]; const chord = [scale[voteCount - 1], scale[voteCount], scale[voteCount + 1]]; chord.forEach((freq, i) =&gt; { const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.type = 'sine'; osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.04); gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.04 + 0.35); osc.connect(gain); gain.connect(ctx.destination); osc.start(ctx.currentTime + i * 0.04); osc.stop(ctx.currentTime + i * 0.04 + 0.35); }); }; </code></pre> <h1>C. Handling Feature Scope Creep</h1> <p>When prompting autonomous coding agents, the urge is to ask for 10 things at once. We found that the highest-quality output came from:</p> <ol> <li>Asking for type interfaces first (types.tsadditions like PeacePrizeState).</li> <li>Updating mock data / registries (gameData.ts).</li> <li>Updating game loop math (GameCanvas.tsx).</li> <li>Writing UI presentation layers last (HUD.tsx, PeacePrizeVictoryModal.tsx).</li> </ol> <h1>4. What Went Wrong / Challenges</h1> <ul> <li><strong>Audio Context autoplay policy:</strong> Mobile browsers block audio until the first user gesture. We had to implement an explicit interaction handler that lazily creates and resumes the AudioContext on the very first touch/spacebar hit.</li> <li><strong>Mobile Canvas Pixel Ratios:</strong> High-DPI screens (Retina) made initial canvas renders blurry. We solved this by sizing the canvas buffer to window.innerWidth * window.devicePixelRatiowhile keeping CSS layout dimensions at 100%.</li> </ul> <h1>Takeaways for Fellow Vibe-Coders</h1> <ul> <li><strong>Procedural &gt; Static Assets:</strong> Building UI, visuals, and sound procedurally saves hours of asset hunting and produces completely self-contained, lightning-fast builds.</li> <li><strong>Let the AI write strict TypeScript types first:</strong> If the agent generates clear contracts in types.ts, subsequent component and game logic prompts hallucinate far less and compile on the first try.</li> </ul> <p>Happy to answer any questions about the canvas physics, Web Audio synthesizer, or prompting workflow in the comments</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/elchemy\"> /u/elchemy </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/vibecoding/\"> r/vibecoding </a> <br /> <span><a href=\"https://flappytaco.ai.studio/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/vibecoding/comments/1w8hds3/flappy_taco_strait_of_hormuz/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/vibecoding/comments/1w8hds3/flappy_taco_strait_of_hormuz/",
+      "lang": "en",
+      "source": "Reddit search: hormuz",
+      "domain": "www.reddit.com",
+      "feed": "Reddit search: hormuz",
+      "category": "social",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-06T00:35:31Z",
+      "published_ts": 1788654931,
+      "keywords": [
+        "Hormuz",
+        "Strait of Hormuz",
+        "strait",
+        "tanker",
+        "mine"
+      ]
+    },
+    {
+      "id": "d2588d7cdae385b2",
+      "title": "چرا بحران بازار اوراق قرضه خواب را از چشم رهبران جهان ربوده است؟",
+      "summary": "مشکل فقط آشفتگی بازارهای اوراق قرضه نیست؛ بازاری که بسیاری از کشورها را با نرخ‌های بهره‌ای در بالاترین سطح چند دهه گذشته مواجه کرده است. به نظر می‌رسد بازارهایی که به دولت‌ها وام می‌دهند نیز در حال تجربه تغییراتی عمیق‌تر و بنیادی‌تر هستند.",
+      "link": "https://www.bbc.com/persian/articles/cqjk4rdn0pwo?at_medium=RSS&at_campaign=rss",
+      "lang": "fa",
+      "source": "BBC News فارسی",
+      "domain": "www.bbc.com",
+      "feed": "BBC News فارسی",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-06T00:28:59Z",
+      "published_ts": 1788654539,
+      "keywords": []
+    },
+    {
+      "id": "d8cb9e2d20b8d882",
+      "title": "“No to Hormuz deployment”: Anti-war protests in Korea",
+      "summary": "<table> <tr><td> <a href=\"https://www.reddit.com/r/neoliberal/comments/1w8h5v9/no_to_hormuz_deployment_antiwar_protests_in_korea/\"> <img alt=\"“No to Hormuz deployment”: Anti-war protests in Korea\" src=\"https://preview.redd.it/fgxb9f8knsnh1.jpg?width=140&amp;height=113&amp;auto=webp&amp;s=12d2519d53df94763f28147999b091b141b32aa9\" title=\"“No to Hormuz deployment”: Anti-war protests in Korea\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>Source: <a href=\"https://www.ohmynews.com/NWS%5C_Web/OhmyPhoto/annual/2026%5C_at%5C_pg.aspx?CNTN%5C_CD=A0003264851\">https://www.ohmynews.com/NWS\\_Web/OhmyPhoto/annual/2026\\_at\\_pg.aspx?CNTN\\_CD=A0003264851</a></p> <p>As the reports of Hormuz deployment of Korean troops came out, protests against Hormuz deployment erupted and the government is backtracking. </p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/Freewhale98\"> /u/Freewhale98 </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/neoliberal/\"> r/neoliberal </a> <br /> <span><a href=\"https://www.reddit.com/gallery/1w8h5v9\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/neoliberal/comments/1w8h5v9/no_to_hormuz_deployment_antiwar_protests_in_korea/\">[comments]</a></span> </td></tr></table>",
+      "link": "https://www.reddit.com/r/neoliberal/comments/1w8h5v9/no_to_hormuz_deployment_antiwar_protests_in_korea/",
+      "lang": "en",
+      "source": "Reddit search: hormuz",
+      "domain": "www.reddit.com",
+      "feed": "Reddit search: hormuz",
+      "category": "social",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-06T00:25:03Z",
+      "published_ts": 1788654303,
+      "keywords": [
+        "Hormuz"
+      ]
+    },
+    {
+      "id": "34488e0942002663",
+      "title": "We Didn't Start the Dumpster Fire",
+      "summary": "<!-- SC_OFF --><div class=\"md\"><p>We Didn't Start the Dumpster Fire<br /> Parody By R. Barr original by Billy Joel</p> <p>Market booming, 20s way, Red China comes to play,<br /> Billionaires Autocracy<br /> Tyrants kill democracy<br /> Plastic junk, cancer kids<br /> People scamming making bids build a crypto pyramid<br /> KushyDrumpfs beat the spread. </p> <p>Podcasters— truth gone, gym rats, siren songs.<br /> News is a pay to play<br /> Journalism goes astray.<br /> COVID 19 vaccine,<br /> England lost their old queen<br /> NATO- TACO tries to flee Sidesteps history.</p> <p>Ai will start a new fire<br /> And the jobs Will burn and<br /> stop the world from turning<br /> It is greed that started the fire<br /> Stupidity fueled it, but we<br /> Have to fight it</p> <p>Robert Reich class war,<br /> Send in class warriors!<br /> Cash paves the way, we have no say<br /> Cause we can’t pay.<br /> Roy Cohn, song lives on,<br /> made his protégée go wrong<br /> And Straight of Hormuz falls<br /> Knocks downs white house walls</p> <p>Epstein, Pedo King<br /> Check the FBI docstream<br /> Jasmine Crockett, Firebrand,<br /> Massie, Khanna make a stand<br /> Civil rights. Big Easy, Tennessee on Hennessy<br /> Texas too, drunk on red want to see the midterms dead.</p> <p>We see the dumpster fire<br /> It was always burning since the world's been turning<br /> We see the dumpster fire<br /> Built by entitled evil<br /> To crush the working people.</p> <p>Greta Thunder, mighty Freya<br /> Young and strong and super bright—<br /> And there’s Malala, bravely stood for women’s rights.<br /> Lebanon, suffers bombs,<br /> Haitis government is gone.<br /> Minnesota’s blue homicides, red side weaponized.</p> <p>Birthrate decline is bad<br /> In the new Gilead<br /> Mifepristone, not for thee<br /> Consequences deadly.<br /> Stupid court they can’t see<br /> won’t allow a Plan B.<br /> 3 amigos, Uncle Tom,<br /> chief Rob, sicko Alito</p> <p>We didn't start the fire<br /> It was always burning since the algae’s green turning<br /> That may have killed the ducklings<br /> So, they tried to hide it, but we have to fight it</p> <p>Must find a way to make a way danger in this strange land<br /> John Lewis, Pettus bridge<br /> Where a sea of pigs invaded.<br /> Mad king mania<br /> makes a mess o’ potamia.<br /> Votes cost, court tossed,<br /> 2020 YOU LOST.<br /> El Santo prince of peace<br /> Shut up preisty Says the creep.<br /> RFK, coke head quack, we really want your uncle back.</p> <p>They didn’t patent the grifting<br /> It was always burning since the world's been turning<br /> But the gold-plated dynasty<br /> sold out you and they sold out me </p> <p>Birth control, it’s not a sin, Roe V will rise again.<br /> Ak47, Glock NRA<br /> On TikTok.<br /> Uvalde, Sandy, stoneman too<br /> The policy is point and shoot,<br /> Guns kill people.<br /> Assahollah bombed Iran, Taliban back in Afghanistan</p> <p>Hegseth 2-tap guy<br /> Gaza is a genocide<br /> Foreign debts, homeless vets,<br /> 50-year mortgage bets.<br /> Sending soldiers foreign wars<br /> No money for the US poor<br /> MaraLago Gatsby tours, I can't take it anymore.</p> <p>We didn't need a data center<br /> But it keeps on humming<br /> Till our ears are drumming<br /> Ai sucks water and light bills<br /> But when we are gone, it will still drink on<br /> And on, and on, and on, and on, and on, and on, and on</p> <p>Ai will often be lying<br /> But it’s not a problem since the world can’t solve it<br /> Congress is slowly dying<br /> Old heads keep on lying,<br /> If the money is flying.</p> <p>Housing costs skyrocket higher<br /> Student loans a funeral pyre<br /> Gas prices quagmire<br /> Congress nothing burger<br /> We didn't even get married<br /> Till we were 39<br /> Chatbot said it’s fine </p> <p>Common Folk didn't start the fire<br /> But our world is burning<br /> And the world's ignoring<br /> That we can’t get hired<br /> But we can get fired, but we are so so damn tired.</p> <p>Tech Lords started the fire<br /> Edge Lord egos burning since the world's been turning</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/ArrivalSea3543\"> /u/ArrivalSea3543 </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/art_for_change/\"> r/art_for_change </a> <br /> <span><a href=\"https://www.reddit.com/r/art_for_change/comments/1w8gnlf/we_didnt_start_the_dumpster_fire/\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/art_for_change/comments/1w8gnlf/we_didnt_start_the_dumpster_fire/\">[comments]</a></span>",
+      "link": "https://www.reddit.com/r/art_for_change/comments/1w8gnlf/we_didnt_start_the_dumpster_fire/",
+      "lang": "en",
+      "source": "Reddit search: hormuz",
+      "domain": "www.reddit.com",
+      "feed": "Reddit search: hormuz",
+      "category": "social",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-06T00:01:24Z",
+      "published_ts": 1788652884,
+      "keywords": [
+        "Hormuz",
+        "mine"
+      ]
+    },
+    {
+      "id": "8730e4f247a24ad8",
+      "title": "Iran war live: IRGC claims new attacks on US warships over naval blockade",
+      "summary": "IRGC says it fired ballistic missiles at US aircraft carrier and destroyer as standoff intensifies in Strait of Hormuz.",
+      "link": "https://www.aljazeera.com/news/liveblog/2026/9/6/iran-war-live-irgc-claims-new-attacks-on-us-warships-over-naval-blockade?traffic_source=rss",
+      "lang": "en",
+      "source": "Al Jazeera English",
+      "domain": "www.aljazeera.com",
+      "feed": "Al Jazeera English",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-06T00:00:00Z",
+      "published_ts": 1788652800,
+      "keywords": [
+        "Hormuz",
+        "Strait of Hormuz",
+        "strait",
+        "IRGC",
+        "blockade"
+      ]
+    },
     {
       "id": "3e12b1df2196fc0c",
       "title": "WSJ: Say, Trump May Actually Win the Hormuz Crisis – by Mooting It",
@@ -95,6 +230,24 @@
       "keywords": []
     },
     {
+      "id": "3e20e544fc3cfc55",
+      "title": "US and Iran trade retaliatory attacks on ships as conflict flares",
+      "summary": "The US says it hit three Iranian oil tankers, while Iran says it targeted three US-linked ships.",
+      "link": "https://www.bbc.co.uk/news/articles/cj64rrne643o?at_medium=RSS&at_campaign=rss",
+      "lang": "en",
+      "source": "BBC News - Middle East",
+      "domain": "www.bbc.co.uk",
+      "feed": "BBC News - Middle East",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-05T22:44:07Z",
+      "published_ts": 1788648247,
+      "keywords": [
+        "tanker"
+      ]
+    },
+    {
       "id": "a71ed53b9e50221b",
       "title": "محادثات بوتين ومبعوثي ترامب تنتهي بعد أكثر من ثلاث ساعات قبيل زيارة مرتقبة لكييف",
       "summary": "اختتم الرئيس الروسي فلاديمير بوتين محادثات استمرت أكثر من ثلاث ساعات مع مبعوثي الرئيس الأمريكي دونالد ترامب، في إطار مساعٍ لإنهاء الحرب في أوكرانيا. وبينما وصف الكرملين اللقاء بأنه \"بناء وصريح\"، لم يُعلن عن تحقيق اختراق، فيما يستعد المبعوثان لزيارة كييف.",
@@ -144,6 +297,22 @@
       "reliability_letter": "F",
       "published": "2026-09-05T21:29:46Z",
       "published_ts": 1788643786,
+      "keywords": []
+    },
+    {
+      "id": "4b30f7f6e65510ca",
+      "title": "TV presenter among 11 sentenced to death in Egypt drugs case",
+      "summary": "Sarah Khalifa is best known for her TV programme Mission Impossible which dealt with crime issues.",
+      "link": "https://www.bbc.co.uk/news/articles/c5y7gk9knnlo?at_medium=RSS&at_campaign=rss",
+      "lang": "en",
+      "source": "BBC News - Middle East",
+      "domain": "www.bbc.co.uk",
+      "feed": "BBC News - Middle East",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-05T21:29:38Z",
+      "published_ts": 1788643778,
       "keywords": []
     },
     {
@@ -365,6 +534,22 @@
       "keywords": []
     },
     {
+      "id": "048dacc405fdcf36",
+      "title": "بن غفير يتوعد بعدم التراجع عن خطة تهجير سكان غزة",
+      "summary": "تعهد وزير الأمن القومي الإسرائيلي اليميني المتطرف إيتمار بن غفير بمواصلة تنفيذ خطة لتهجير نحو 1.86 مليون فلسطيني من قطاع غزة خلال 7 سنوات، مؤكدا عدم التراجع عنها.",
+      "link": "https://www.aljazeera.net/news/2026/9/6/%d8%a8%d9%86-%d8%ba%d9%81%d9%8a%d8%b1-%d9%8a%d8%aa%d9%88%d8%b9%d8%af-%d8%a8%d8%b9%d8%af%d9%85-%d8%a7%d9%84%d8%aa%d8%b1%d8%a7%d8%ac%d8%b9-%d8%b9%d9%86-%d8%ae%d8%b7%d8%a9?traffic_source=rss",
+      "lang": "ar",
+      "source": "Al Jazeera (عربي)",
+      "domain": "www.aljazeera.net",
+      "feed": "Al Jazeera (عربي)",
+      "category": "news",
+      "confidence": "low",
+      "reliability_letter": "F",
+      "published": "2026-09-05T20:23:19Z",
+      "published_ts": 1788639799,
+      "keywords": []
+    },
+    {
       "id": "76b380488d60ec83",
       "title": "Are We Heading Toward Another 1970s Oil Shock?",
       "summary": "<table> <tr><td> <a href=\"https://www.reddit.com/r/selfevidenttruth/comments/1w8bd2z/are_we_heading_toward_another_1970s_oil_shock/\"> <img alt=\"Are We Heading Toward Another 1970s Oil Shock?\" src=\"https://preview.redd.it/f8jifivmfrnh1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=91a75951f03cd937e6cbc11385f721cf7b661aaf\" title=\"Are We Heading Toward Another 1970s Oil Shock?\" /> </a> </td><td> <!-- SC_OFF --><div class=\"md\"><p>&#x200b;</p> <p><a href=\"https://www.the-express.com/news/us-news/215324/irans-vice-president-threatens-dark\">Iran's vice president recently warned Americans to think about stockpiling gasoline and fuel because &quot;dark months&quot; could be ahead for the American economy.</a> Taken alone, that sounds like wartime rhetoric. Put beside the disruption in the Strait of Hormuz, though, and it deserves a closer look. Roughly one-fifth of the world's petroleum normally moves through that narrow passage, so even a partial disruption can reach far beyond the Middle East.</p> <p>I do not think we can say we are reliving the 1970s. The United States produces much more energy today, vehicles are more efficient, and institutions such as the Strategic Petroleum Reserve exist specifically because of what happened fifty years ago. But the comparison is worth understanding, because the oil crises of the 1970s were never just about expensive gasoline.</p> <p>The story actually begins before 1973</p> <p>In 1951, Iranian Prime Minister Mohammad Mossadegh nationalized Iran's oil industry, challenging the enormous influence Britain held through the Anglo-Iranian Oil Company. Two years later, Mossadegh was overthrown in an operation in which declassified American records show the CIA played a direct role, alongside British involvement. Shah Mohammad Reza Pahlavi emerged with his position strengthened and became one of Washington's closest allies in the Middle East.</p> <p>It would be too simple to say the 1953 coup caused the Iranian Revolution. Iran had deep internal political, religious, economic and social conflicts of its own. But 1953 became part of the larger history of resentment toward foreign interference, the Shah's increasingly authoritarian government and Iran's close relationship with the West. Those tensions would matter enormously by the end of the 1970s.</p> <p>Then came the first oil shock</p> <p>Richard Nixon was president when Egypt and Syria attacked Israel on October 6, 1973, beginning the Yom Kippur War. The United States resupplied Israel, and Arab oil-producing countries responded by cutting production and imposing an embargo against the United States and several other nations they believed were supporting Israel.</p> <p>This is often called the &quot;OPEC embargo,&quot; although that is not quite accurate. OPEC included Arab and non-Arab producers. The embargo was primarily carried out by Arab petroleum-exporting countries associated with OAPEC. Oil had become a geopolitical weapon intended to pressure Western governments over Israel and the territories it had occupied after the 1967 war.</p> <p>The economic consequences spread rapidly. Oil prices rose severalfold, Americans encountered shortages and gas lines, transportation costs increased and inflation accelerated while economic growth weakened. The United States eventually found itself dealing with something that came to define the decade: stagflation, the miserable combination of high inflation and weak economic growth.</p> <p>Oil was not responsible for everything that went wrong. Inflation had already been building, Bretton Woods was collapsing, Nixon had ended the dollar's convertibility into gold in 1971, and American monetary policy had problems of its own. The important lesson is that the oil shock struck an economy that was already under stress, allowing several separate problems to begin reinforcing one another.</p> <p>The embargo ended in March 1974 after American diplomacy helped produce progress toward military disengagement between Israel and its Arab neighbors. The underlying conflict was nowhere near solved, but enough movement had occurred for the Arab exporters to lift the embargo. What did not return was the old assumption that cheap imported oil could always be taken for granted.</p> <p>America built defenses because of 1973</p> <p>The shock fundamentally changed American energy policy. The International Energy Agency was created in 1974 so major oil-consuming nations could coordinate during future emergencies. Gerald Ford signed the Energy Policy and Conservation Act in 1975, establishing the framework for the Strategic Petroleum Reserve and federal automobile fuel-efficiency standards.</p> <p>The first oil entered the Strategic Petroleum Reserve in 1977. Jimmy Carter then signed legislation creating the Department of Energy that same year, consolidating numerous federal energy responsibilities under one department.</p> <p>That history matters now because many of the tools being used during today's crisis are descendants of 1973. The reserve, coordinated international emergency responses and much of the country's modern energy-security structure were created because policymakers never wanted another embargo to catch the United States as unprepared as it had been.</p> <p>Then Iran collapsed</p> <p>By the late 1970s, the Shah faced growing opposition from religious movements, secular activists, nationalists, workers and others who opposed the monarchy for very different reasons. Jimmy Carter was president when the Shah left Iran in January 1979. Ayatollah Ruhollah Khomeini returned from exile soon afterward, the monarchy collapsed and the Islamic Republic emerged.</p> <p>Iranian oil production plunged during the upheaval, causing a second oil shock. Unlike 1973, there was no initial coordinated Arab embargo against the United States. One of the world's largest oil producers was simply undergoing a revolution, and markets reacted by competing for uncertain supplies.</p> <p>Relations between Washington and Tehran then collapsed completely. Iranian militants seized the American embassy in November 1979, beginning the 444-day hostage crisis. Less than a year later, Iraq invaded Iran, creating a war between two major Persian Gulf oil producers just as the world was still absorbing the effects of the Iranian Revolution.</p> <p>That is probably the most important part of the 1970s comparison. The problem was not one terrible month. It was years of instability. When energy prices stay elevated long enough, businesses stop treating them as temporary. Prices change, wages respond, investment gets delayed, governments intervene and central banks face increasingly difficult decisions.</p> <p>China was transforming at the same time</p> <p>The 1970s were also a turning point far beyond the Middle East. Nixon traveled to China in 1972, beginning the major opening between Washington and Beijing. Mao Zedong died in 1976, the Gang of Four fell, Deng Xiaoping emerged as China's dominant leader and China began moving toward the economic reforms that would eventually transform the global economy.</p> <p>The United States and the People's Republic of China formally established diplomatic relations on January 1, 1979 under Carter. China at that time was nothing like the petroleum-consuming industrial giant it is today. That difference makes the Strait of Hormuz even more important now because enormous amounts of Persian Gulf energy travel east toward China, India, Japan and South Korea.</p> <p>A serious Hormuz disruption therefore does not simply hurt America. It affects Asian manufacturing, shipping, European energy markets and the price everyone pays while competing for alternative supplies.</p> <p>Iran-Contra came later</p> <p>Iran-Contra is connected to this history, but it should not be confused with the events that caused the 1979 oil shock. It happened during Ronald Reagan's presidency in the mid-1980s, when American officials secretly facilitated arms sales to Iran while seeking leverage connected to American hostages in Lebanon. Money from those transactions was diverted to support Contra forces fighting Nicaragua's Sandinista government.</p> <p>When the operation became public in 1986, it triggered congressional investigations, the Tower Commission and an independent counsel investigation. Iran-Contra was not a cause of the Iranian Revolution. It was evidence of how complicated the relationship between the United States and post-revolutionary Iran had become.</p> <p>So how similar is 2026?</p> <p>The Strait of Hormuz normally carries around 20 million barrels of petroleum each day. Pipelines can bypass some of that traffic, but nowhere near all of it. That means a sustained disruption can remove enormous amounts of energy from normal global trade routes.</p> <p>The United States is better positioned than it was in 1973. Domestic production is much higher, vehicles are more efficient, the economy uses less energy for each dollar of output and emergency reserves exist. Those are real advantages, and they are why a major physical disruption does not automatically produce 1970s-style economic conditions.</p> <p>But being a major oil producer does not isolate America from the world market. Oil is globally priced, so losing supplies overseas still increases the value of petroleum produced in Texas or North Dakota. The effects then move through refineries, transportation, agriculture, manufacturing and eventually consumer prices.</p> <p>Diesel may be more important to watch than gasoline. Diesel moves trucks, agricultural machinery, construction equipment and much of the physical economy. A few weeks of expensive diesel can be absorbed. Months of expensive diesel eventually appear in the price of food, shipping, construction and manufactured goods.</p> <p>That is where an energy crisis can become an inflation crisis. If inflation begins rising while economic growth is weakening, the Federal Reserve faces the same basic dilemma that made the 1970s so difficult. Cutting interest rates could support growth but risk worsening inflation, while keeping rates high could fight inflation while putting additional pressure on businesses, housing and employment.</p> <p>We are not there yet. Today's American economy is not the economy of 1979, and it would be a mistake to pretend otherwise. But the Strategic Petroleum Reserve is being used, supply routes are under stress and the longer the disruption lasts, the less useful it becomes to think about this as simply another temporary spike in gasoline prices.</p> <p>What I think citizens should watch</p> <p>The biggest variable is duration. A temporary disruption in Hormuz hurts. Six months can begin changing business decisions. A year can change supply chains, investment and government policy. If high diesel prices persist, transportation and food become more expensive. If those costs spread into broader inflation while economic growth weakens, the comparison with the 1970s becomes much stronger.</p> <p>That is why I would pay less attention to any single threat from Iran or any single day's oil price and more attention to whether the disruption becomes embedded in the economy. The dangerous moment comes when companies, governments and households stop expecting energy prices to return to normal and begin making long-term decisions around scarcity.</p> <p>The 1970s became a turning point because several things that looked separate at the time eventually connected. The postwar monetary system was breaking apart, oil producers were gaining geopolitical power, the United States was dealing with Vietnam and Watergate, Iran's monarchy collapsed, China began transforming its economy, and the Cold War entered another unstable period.</p> <p>Looking backward, we can easily draw lines between those events. Living through them would have felt different. An oil crisis looked like an oil crisis, inflation looked like an economic problem, a revolution looked regional and China's reforms looked like a completely separate story.</p> <p>That is what makes the current moment interesting. Maybe the Hormuz crisis is brought under control, production returns, fuel prices fall and 2026 becomes another serious disruption that the modern energy system successfully absorbed. That remains entirely possible.</p> <p>But historical turning points rarely announce themselves while they are happening. I do not think we have enough evidence to say we are entering another 1970s. I do think we have enough evidence to start watching for the same pattern.</p> <p>Sources and further reading</p> <p>Bibliography</p> <ol> <li>U.S. Department of State, Office of the Historian. “Oil Embargo, 1973–1974.” Milestones in the History of U.S. Foreign Relations. This is one of the best primary-government overviews of why the embargo began, how it interacted with the Yom Kippur War, and why it ended in March 1974.</li> </ol> <p>[Oil Embargo, 1973–1974](<a href=\"https://history.state.gov/milestones/1969-1976/oil-embargo?utm%5C_source=chatgpt.com\">https://history.state.gov/milestones/1969-1976/oil-embargo?utm\\_source=chatgpt.com</a>)</p> <ol> <li>U.S. Department of State, Foreign Relations of the United States. “Memorandum Prepared in the Directorate of Plans, Central Intelligence Agency,” March 8, 1954. This declassified document directly describes the 1953 operation against Mohammad Mossadegh and its objective of installing a pro-Western government under the Shah.</li> </ol> <p>[FRUS document on the 1953 Iran operation](<a href=\"https://history.state.gov/historicaldocuments/frus1951-54IranEd2/d363?utm%5C_source=chatgpt.com\">https://history.state.gov/historicaldocuments/frus1951-54IranEd2/d363?utm\\_source=chatgpt.com</a>)</p> <ol> <li>U.S. Department of Energy. “SPR Origins.” This explains how the 1973–74 embargo led Congress and the Ford administration to establish the Strategic Petroleum Reserve under the Energy Policy and Conservation Act of 1975.</li> </ol> <p>[Origins of the Strategic Petroleum Reserve](<a href=\"https://www.energy.gov/hgeo/opr/spr-origins?utm%5C_source=chatgpt.com\">https://www.energy.gov/hgeo/opr/spr-origins?utm\\_source=chatgpt.com</a>)</p> <ol> <li>International Energy Agency. Sheltering From Oil Shocks. 2026. This is especially useful for comparing the current crisis with 1973. The IEA describes the present Middle East disruption as the largest supply disruption in the history of the global oil market and documents the collapse in Hormuz traffic.</li> </ol> <p>[IEA: Sheltering From Oil Shocks](<a href=\"https://www.iea.org/reports/sheltering-from-oil-shocks?utm%5C_source=chatgpt.com\">https://www.iea.org/reports/sheltering-from-oil-shocks?utm\\_source=chatgpt.com</a>)</p> <ol> <li>U.S. Energy Information Administration. World Oil Transit Chokepoints. This provides the underlying data for the Strait of Hormuz, including roughly 20.9 million barrels per day of oil moving through the strait in recent prewar data and its importance to global petroleum trade.</li> </ol> <p>[EIA World Oil Transit Chokepoints](<a href=\"https://www.eia.gov/international/analysis/special-topics/World%5C_Oil%5C_Transit%5C_Chokepoints?utm%5C_source=chatgpt.com\">https://www.eia.gov/international/analysis/special-topics/World\\_Oil\\_Transit\\_Chokepoints?utm\\_source=chatgpt.com</a>)</p> <ol> <li>U.S. Department of State, Office of the Historian. “Rapprochement with China, 1972.” This covers Nixon's visit to China, the Shanghai Communiqué, Kissinger's diplomacy, and the broader Cold War realignment occurring at the same time as the energy upheavals of the 1970s.</li> </ol> <p>[Rapprochement with China, 1972](<a href=\"https://history.state.gov/milestones/1969-1976/rapprochement-china?utm%5C_source=chatgpt.com\">https://history.state.gov/milestones/1969-1976/rapprochement-china?utm\\_source=chatgpt.com</a>)</p> <ol> <li>U.S. Department of State, Office of the Historian. “China Policy, 1977–1980.” This traces the Carter administration's negotiations leading to formal diplomatic relations between the United States and the People's Republic of China in 1979.</li> </ol> <p>[China Policy, 1977–1980](<a href=\"https://history.state.gov/milestones/1977-1980/china-policy?utm%5C_source=chatgpt.com\">https://history.state.gov/milestones/1977-1980/china-policy?utm\\_source=chatgpt.com</a>)</p> <ol> <li>Ronald Reagan Presidential Library. “President's Special Review Board: Records, 1987 (The Tower Board).” This is a strong archival starting point for Iran-Contra and documents the investigation into the arms-for-hostages dealings with Iran and the diversion of funds to the Contras.</li> </ol> <p>[Tower Board records on Iran-Contra](<a href=\"https://www.reaganlibrary.gov/research/finding-aids/presidents-special-review-board-records-1987-tower-board?utm%5C_source=chatgpt.com\">https://www.reaganlibrary.gov/research/finding-aids/presidents-special-review-board-records-1987-tower-board?utm\\_source=chatgpt.com</a>)</p> <ol> <li>U.S. Bureau of Labor Statistics. “Consumer Price Index, July 2026.” This provides the current inflation data needed to distinguish today's energy shock from the much more severe inflationary environment of the 1970s.</li> </ol> <p>[July 2026 Consumer Price Index](<a href=\"https://www.bls.gov/news.release/archives/cpi%5C_08122026.htm?utm%5C_source=chatgpt.com\">https://www.bls.gov/news.release/archives/cpi\\_08122026.htm?utm\\_source=chatgpt.com</a>)</p> <ol> <li>Reuters. “Oil Ends Week Higher on Renewed U.S.-Iran Strikes, Diesel Hits Record.” September 4, 2026. This provides current reporting on Brent crude, record U.S. diesel prices, renewed U.S.-Iran fighting, and reduced tanker movement through the Strait of Hormuz.</li> </ol> <p>[Reuters: September 2026 oil and diesel update](<a href=\"https://www.reuters.com/business/energy/oil-set-steepest-weekly-gain-since-mid-july-over-intensifying-us-iran-tensions-2026-09-04/?utm%5C_source=chatgpt.com\">https://www.reuters.com/business/energy/oil-set-steepest-weekly-gain-since-mid-july-over-intensifying-us-iran-tensions-2026-09-04/?utm\\_source=chatgpt.com</a>)</p> </div><!-- SC_ON --> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/One_Term2162\"> /u/One_Term2162 </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/selfevidenttruth/\"> r/selfevidenttruth </a> <br /> <span><a href=\"https://i.redd.it/f8jifivmfrnh1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/selfevidenttruth/comments/1w8bd2z/are_we_heading_toward_another_1970s_oil_shock/\">[comments]</a></span> </td></tr></table>",
@@ -541,8 +726,8 @@
     },
     {
       "id": "b659c9e5230d56b8",
-      "title": "الجمهوريون عالقون مع ترمب بانتخابات الكونغرس وإسرائيل تهبّ للإنقاذ",
-      "summary": "تزداد مخاوف الحزب الجمهوري مع اقتراب انتخابات التجديد النصفي للكونغرس الأميركي وسط توقعات بفوز الحزب الديمقراطي، في المقابل تتحرك جماعات مؤيدة لإسرائيل لحشد الدعم للجمهوريين.",
+      "title": "الجمهوريون عالقون مع ترمب في انتخابات الكونغرس وإسرائيل تهبّ للإنقاذ",
+      "summary": "تزداد مخاوف الحزب الجمهوري مع اقتراب انتخابات التجديد النصفي للكونغرس الأمريكي وسط توقعات بفوز الحزب الديمقراطي، في المقابل تتحرك جماعات مؤيدة لإسرائيل لحشد الدعم للجمهوريين.",
       "link": "https://www.aljazeera.net/politics/2026/9/6/%d8%a7%d9%84%d8%ac%d9%85%d9%87%d9%88%d8%b1%d9%8a%d9%88%d9%86-%d8%b9%d8%a7%d9%84%d9%82%d9%88%d9%86-%d9%85%d8%b9-%d8%aa%d8%b1%d9%85%d8%a8-%d8%a8%d8%a7%d9%86%d8%aa%d8%ae%d8%a7%d8%a8%d8%a7%d8%aa?traffic_source=rss",
       "lang": "ar",
       "source": "Al Jazeera (عربي)",
@@ -574,7 +759,7 @@
     {
       "id": "d5666c56f97fd497",
       "title": "الحرس الثوري: استهدفنا حاملة طائرات ومدمرة أمريكيتين بصواريخ باليستية",
-      "summary": "أعلن الحرس الثوري الإيراني استهداف حاملة طائرات ومدمرة أمريكيتين بصواريخ باليستية، قائلا إن &quot;السفينتان العسكريتان الأمريكيتان فرتا من منطقة الاشتباك بعد تعرضهما لأضرار&quot;.",
+      "summary": "أعلن الحرس الثوري الإيراني استهداف حاملة طائرات ومدمرة أمريكيتين بصواريخ باليستية، قائلا إن &quot;السفينتين العسكريتين الأمريكيتين فرّتا من منطقة الاشتباك بعد تعرضهما لأضرار&quot;.",
       "link": "https://www.aljazeera.net/news/2026/9/6/%d8%b9%d8%a7%d8%ac%d9%84-%d8%a7%d9%84%d8%ad%d8%b1%d8%b3-%d8%a7%d9%84%d8%ab%d9%88%d8%b1%d9%8a-%d8%a7%d9%84%d8%a5%d9%8a%d8%b1%d8%a7%d9%86%d9%8a-%d8%a7%d8%b3%d8%aa%d9%87%d8%af%d9%81%d9%86%d8%a7?traffic_source=rss",
       "lang": "ar",
       "source": "Al Jazeera (عربي)",
@@ -607,7 +792,7 @@
     },
     {
       "id": "37eabb28b9787ede",
-      "title": "الهجري يناجي إسرائيل ومظلوم يندمج.. قطار سوريا انطلق",
+      "title": "الهجري يناجي إسرائيل ومظلوم يندمج.. ما الذي سيحدث قريبا؟",
       "summary": "يتناول المقال حل &quot;قسد&quot; واندماجها في الدولة السورية بوصفه نموذجا قد يمتد إلى السويداء، في ظل تراجع فرص الانفصال وتصاعد الحوار، مؤكدا أن استعادة الدولة لسيادتها وحصر السلاح بيدها يمثلان أساس الاستقرار.",
       "link": "https://www.aljazeera.net/opinions/2026/9/6/%d8%a7%d9%84%d9%87%d8%ac%d8%b1%d9%8a-%d9%8a%d9%86%d8%a7%d8%ac%d9%8a-%d8%a5%d8%b3%d8%b1%d8%a7%d8%a6%d9%8a%d9%84-%d9%88%d9%85%d8%b8%d9%84%d9%88%d9%85-%d9%8a%d9%86%d8%af%d9%85%d8%ac?traffic_source=rss",
       "lang": "ar",
@@ -880,8 +1065,8 @@
     },
     {
       "id": "55b248f9730e9506",
-      "title": "Russia’s Putin meets US envoys to discuss Trump proposal to end Ukraine war",
-      "summary": "Russia and Ukraine pledge not to strike each other&#039;s capitals for three days during talks in Moscow and Kyiv.",
+      "title": "Russia’s Putin and US envoys discuss Trump proposal to end Ukraine war",
+      "summary": "Kremlin aide calls the Moscow talks &#039;very frank and constructive&#039;, as US envoys head to Kyiv next.",
       "link": "https://www.aljazeera.com/news/2026/9/5/russias-putin-meets-us-envoys-to-discuss-trump-proposal-to-end-ukraine-war?traffic_source=rss",
       "lang": "en",
       "source": "Al Jazeera English",
@@ -1181,7 +1366,7 @@
     {
       "id": "276a518fbc60a5ff",
       "title": "جيل يعيد حساباته.. لماذا تتراجع شعبية الكحول بين شباب الغرب؟",
-      "summary": "ما الذي أفقد الكحول مكانته في المجتمع الغربي، وحوّله من رفيق شبه إلزامي للسهر والمرح إلى مجرد خيار، وجعل الامتناع عنه مقبولا، بل مشجعا أحيانا؟",
+      "summary": "ما الذي أفقد الكحول مكانته في المجتمع الغربي، وحوّله من رفيق شبه إلزامي للسهر والمرح إلى مجرد خيار، وجعل الامتناع عنه مقبولا، بل مشجَّعا أحيانا؟",
       "link": "https://www.aljazeera.net/lifestyle/2026/9/5/%d8%ac%d9%8a%d9%84-%d9%8a%d8%b9%d9%8a%d8%af-%d8%ad%d8%b3%d8%a7%d8%a8%d8%a7%d8%aa%d9%87-%d9%84%d9%85%d8%a7%d8%b0%d8%a7-%d8%aa%d8%aa%d8%b1%d8%a7%d8%ac%d8%b9-%d8%b4%d8%b9%d8%a8%d9%8a%d8%a9?traffic_source=rss",
       "lang": "ar",
       "source": "Al Jazeera (عربي)",
@@ -1196,7 +1381,7 @@
     },
     {
       "id": "87b49f00eef0edbd",
-      "title": "\"وفاة مشبوهة\".. العثور على الممثل التركي سرحات كليتش ميتا في منزله",
+      "title": "العثور على الممثل التركي سرحات كليتش متوفى داخل منزله في ظروف غامضة",
       "summary": "توفي الممثل التركي سرحات مصطفى كليتش، اليوم السبت، 5 سبتمبر/أيلول 2026، عن عمر 51 عاما، بعدما عُثر عليه متوفيا داخل منزله في منطقة كاغيتهانة بمدينة إسطنبول، في حادثة صادمة أثارت حالة من الحزن.",
       "link": "https://www.aljazeera.net/arts/2026/9/5/%d9%88%d9%81%d8%a7%d8%a9-%d9%85%d8%b4%d8%a8%d9%88%d9%87%d8%a9-%d8%a7%d9%84%d8%b9%d8%ab%d9%88%d8%b1-%d8%b9%d9%84%d9%89-%d8%a7%d9%84%d9%85%d9%85%d8%ab%d9%84-%d8%a7%d9%84%d8%aa%d8%b1%d9%83%d9%8a?traffic_source=rss",
       "lang": "ar",
@@ -3330,174 +3515,6 @@
       "reliability_letter": "F",
       "published": "2026-09-05T11:58:38Z",
       "published_ts": 1788609518,
-      "keywords": []
-    },
-    {
-      "id": "fea2fe42091a7935",
-      "title": "حرب فوكلاند الثانية.. هل تسقط الجزر مجددا؟",
-      "summary": "لم تعد جزر فوكلاند مجرد نزاع سيادي مؤجل بين لندن وبوينس آيريس بعد أن أعاد الرئيس الأرجنتيني القضية إلى واجهة الأحداث، مستفيدا من موقف ملتبس للرئيس الأمريكي تجاه السيادة البريطانية على الجزر.",
-      "link": "https://www.aljazeera.net/politics/2026/9/5/%d8%ad%d8%b1%d8%a8-%d9%81%d9%88%d9%83%d9%84%d8%a7%d9%86%d8%af-%d8%a7%d9%84%d8%ab%d8%a7%d9%86%d9%8a%d8%a9-%d9%87%d9%84-%d8%aa%d8%b3%d9%82%d8%b7-%d8%a7%d9%84%d8%ac%d8%b2%d8%b1?traffic_source=rss",
-      "lang": "ar",
-      "source": "Al Jazeera (عربي)",
-      "domain": "www.aljazeera.net",
-      "feed": "Al Jazeera (عربي)",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-05T11:51:49Z",
-      "published_ts": 1788609109,
-      "keywords": []
-    },
-    {
-      "id": "4dae53e2434df2b9",
-      "title": "Pickleball and dining: Why courts are the new food destinations",
-      "summary": "The fastest-growing sport in the US is the &#039;eatertainment&#039; trend’s new darling. How long will it last?",
-      "link": "https://www.aljazeera.com/features/longform/2026/9/5/pickleball-and-dining-why-courts-are-the-new-food-destinations?traffic_source=rss",
-      "lang": "en",
-      "source": "Al Jazeera English",
-      "domain": "www.aljazeera.com",
-      "feed": "Al Jazeera English",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-05T11:48:16Z",
-      "published_ts": 1788608896,
-      "keywords": []
-    },
-    {
-      "id": "4b8aea3a5219b07a",
-      "title": "رافينيا القائد.. الحل السحري لمشاكل برشلونة",
-      "summary": "وجد المدرب الألماني هانزي فليك ضالته في البرازيلي رافينيا بعد أن وصل الأخير إلى حالة من التوهج الاستثنائي في مركز رأس الحربة.",
-      "link": "https://www.aljazeera.net/sport/2026/9/5/%d8%b1%d8%a7%d9%81%d9%8a%d9%86%d9%8a%d8%a7-%d8%a7%d9%84%d9%82%d8%a7%d8%a6%d8%af-%d8%a7%d9%84%d8%ad%d9%84-%d8%a7%d9%84%d8%b3%d8%ad%d8%b1%d9%8a-%d9%84%d9%85%d8%b4%d8%a7%d9%83%d9%84?traffic_source=rss",
-      "lang": "ar",
-      "source": "Al Jazeera (عربي)",
-      "domain": "www.aljazeera.net",
-      "feed": "Al Jazeera (عربي)",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-05T11:44:10Z",
-      "published_ts": 1788608650,
-      "keywords": []
-    },
-    {
-      "id": "2fd537308a1f3bc3",
-      "title": "وكلاء الذكاء الاصطناعي يتصرفون بمفردهم.. حادثة غامضة تهز أوبن إيه آي",
-      "summary": "كشف تحقيق أن وكلاء ذكاء اصطناعي مرتبطين بشركة &quot;أوبن إيه آي&quot; أجروا أكثر من 15 ألف تعديل على موقع ألماني وحولوه إلى قناة لتبادل المعلومات وطرق تجاوز القيود وإخفاء النشاط.",
-      "link": "https://www.aljazeera.net/tech/2026/9/5/%d9%88%d9%83%d9%84%d8%a7%d8%a1-%d8%a7%d9%84%d8%b0%d9%83%d8%a7%d8%a1-%d8%a7%d9%84%d8%a7%d8%b5%d8%b7%d9%86%d8%a7%d8%b9%d9%8a-%d9%8a%d8%aa%d8%b5%d8%b1%d9%81%d9%88%d9%86?traffic_source=rss",
-      "lang": "ar",
-      "source": "Al Jazeera (عربي)",
-      "domain": "www.aljazeera.net",
-      "feed": "Al Jazeera (عربي)",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-05T11:41:26Z",
-      "published_ts": 1788608486,
-      "keywords": []
-    },
-    {
-      "id": "53ed366056e98a15",
-      "title": "Iran could end up with Strait of Hormuz ‘that’s not very necessary anymore,’ Trump says",
-      "summary": "&#32; submitted by &#32; <a href=\"https://www.reddit.com/user/interestingfactoid\"> /u/interestingfactoid </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/conservatives/\"> r/conservatives </a> <br /> <span><a href=\"https://www.foxnews.com/live-news/us-iran-war-strait-of-hormuz-energy-prices-09-05-26\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/conservatives/comments/1w7ygdo/iran_could_end_up_with_strait_of_hormuz_thats_not/\">[comments]</a></span>",
-      "link": "https://www.reddit.com/r/conservatives/comments/1w7ygdo/iran_could_end_up_with_strait_of_hormuz_thats_not/",
-      "lang": "en",
-      "source": "Reddit search: hormuz",
-      "domain": "www.reddit.com",
-      "feed": "Reddit search: hormuz",
-      "category": "social",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-05T11:40:50Z",
-      "published_ts": 1788608450,
-      "keywords": [
-        "Hormuz",
-        "Strait of Hormuz",
-        "strait"
-      ]
-    },
-    {
-      "id": "ad53f4ef924de1eb",
-      "title": "Iran could end up with Strait of Hormuz ‘that’s not very necessary anymore,’ Trump says",
-      "summary": "&#32; submitted by &#32; <a href=\"https://www.reddit.com/user/readingreviewsnow\"> /u/readingreviewsnow </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/NewRepublicans/\"> r/NewRepublicans </a> <br /> <span><a href=\"https://www.foxnews.com/live-news/us-iran-war-strait-of-hormuz-energy-prices-09-05-26\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/NewRepublicans/comments/1w7ygaj/iran_could_end_up_with_strait_of_hormuz_thats_not/\">[comments]</a></span>",
-      "link": "https://www.reddit.com/r/NewRepublicans/comments/1w7ygaj/iran_could_end_up_with_strait_of_hormuz_thats_not/",
-      "lang": "en",
-      "source": "Reddit search: hormuz",
-      "domain": "www.reddit.com",
-      "feed": "Reddit search: hormuz",
-      "category": "social",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-05T11:40:42Z",
-      "published_ts": 1788608442,
-      "keywords": [
-        "Hormuz",
-        "Strait of Hormuz",
-        "strait"
-      ]
-    },
-    {
-      "id": "f7eaee9b9d453b2b",
-      "title": "اقدام جدید پنتاگون؛ مسدودسازی ردیاب گوشی‌های نظامیان آمریکا",
-      "summary": "مقام‌های نظامی آمریکا می‌گویند ردیاب‌های تبلیغاتی را در شماری از تلفن‌ها و رایانه‌های نظامی غیرفعال کرده‌اند. این اقدام، واکنشی نسبت به گزارش‌ها درباره داده‌های مکانی قابل خرید برای ردیابی نیروهای آمریکایی است.",
-      "link": "https://www.dw.com/fa-ir/اقدام-جدید-پنتاگون؛-مسدودسازی-ردیاب-گوشی‌های-نظامیان-آمریکا/a-79046797?maca=per-rss-per-all-1491-rdf",
-      "lang": "fa",
-      "source": "DW فارسی",
-      "domain": "www.dw.com",
-      "feed": "DW فارسی",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-05T11:38:00Z",
-      "published_ts": 1788608280,
-      "keywords": []
-    },
-    {
-      "id": "c4102c5f03d5c912",
-      "title": "خط الدفاع الأول لسيارتك.. 5 فلاتر احرص على استبدالها دوريا",
-      "summary": "تحمي فلاتر السيارة المحرك وناقل الحركة ونظام الوقود، كما تحافظ على جودة الهواء داخل المقصورة. ويؤدي إهمال تغيير فلاتر الزيت والوقود والتكييف وناقل الحركة إلى تراجع الأداء، وزيادة استهلاك الوقود.",
-      "link": "https://www.aljazeera.net/motors/2026/9/5/%d8%ae%d8%b7-%d8%a7%d9%84%d8%af%d9%81%d8%a7%d8%b9-%d8%a7%d9%84%d8%a3%d9%88%d9%84-%d9%84%d8%b3%d9%8a%d8%a7%d8%b1%d8%aa%d9%83-5-%d9%81%d9%84%d8%a7%d8%aa%d8%b1-%d8%a7%d8%ad%d8%b1%d8%b5?traffic_source=rss",
-      "lang": "ar",
-      "source": "Al Jazeera (عربي)",
-      "domain": "www.aljazeera.net",
-      "feed": "Al Jazeera (عربي)",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-05T11:32:12Z",
-      "published_ts": 1788607932,
-      "keywords": []
-    },
-    {
-      "id": "81b0072b947683fb",
-      "title": "LIVE: India vs Pakistan – Women’s T20 Asia Cup",
-      "summary": "Follow the updates from our live build-up to our text commentary stream coverage of the Group A match in Dubai.",
-      "link": "https://www.aljazeera.com/sports/liveblog/2026/9/5/live-india-vs-pakistan-womens-t20-asia-cup?traffic_source=rss",
-      "lang": "en",
-      "source": "Al Jazeera English",
-      "domain": "www.aljazeera.com",
-      "feed": "Al Jazeera English",
-      "category": "news",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-05T11:32:07Z",
-      "published_ts": 1788607927,
-      "keywords": []
-    },
-    {
-      "id": "972bbc6dd68a8206",
-      "title": "05-SEPT-2026 NEWS HEADLINES",
-      "summary": "<table> <tr><td> <a href=\"https://www.reddit.com/r/upsc_discussions/comments/1w7y9wu/05sept2026_news_headlines/\"> <img alt=\"05-SEPT-2026 NEWS HEADLINES\" src=\"https://preview.redd.it/dwdbgbbitonh1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=b22cc66f4dd9e2bf7999753bb8a5b14d75cfe416\" title=\"05-SEPT-2026 NEWS HEADLINES\" /> </a> </td><td> &#32; submitted by &#32; <a href=\"https://www.reddit.com/user/VIDYA_KOZHIKODE\"> /u/VIDYA_KOZHIKODE </a> &#32; to &#32; <a href=\"https://www.reddit.com/r/upsc_discussions/\"> r/upsc_discussions </a> <br /> <span><a href=\"https://i.redd.it/dwdbgbbitonh1.png\">[link]</a></span> &#32; <span><a href=\"https://www.reddit.com/r/upsc_discussions/comments/1w7y9wu/05sept2026_news_headlines/\">[comments]</a></span> </td></tr></table>",
-      "link": "https://www.reddit.com/r/upsc_discussions/comments/1w7y9wu/05sept2026_news_headlines/",
-      "lang": "en",
-      "source": "Reddit search: hormuz",
-      "domain": "www.reddit.com",
-      "feed": "Reddit search: hormuz",
-      "category": "social",
-      "confidence": "low",
-      "reliability_letter": "F",
-      "published": "2026-09-05T11:31:32Z",
-      "published_ts": 1788607892,
       "keywords": []
     }
   ]
